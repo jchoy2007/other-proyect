@@ -187,6 +187,122 @@ function getResponse(input: string): { text: string; delay: number } {
     };
   }
 
+  // === WINDOWS SERVER ===
+
+  // Server 2012 Standard
+  if (lower.includes("2012") || lower.includes("server 2012")) {
+    return {
+      text: "📦 *Windows Server 2012 Standard Retail*\nPrecio: *$12.00*\n\nLicencia original Microsoft.\nActivacion permanente.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $12.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
+    };
+  }
+
+  // Server 2019 Datacenter
+  if ((lower.includes("2019") && lower.includes("datacenter")) || lower.includes("server 2019 data")) {
+    return {
+      text: "📦 *Windows Server 2019 Datacenter Retail*\nPrecio: *$25.00*\n\nLicencia original Microsoft.\nActivacion permanente.\nVirtualizacion ilimitada + Shielded VMs.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $25.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
+    };
+  }
+
+  // Server 2019 Standard
+  if (lower.includes("server 2019") || (lower.includes("2019") && lower.includes("standard"))) {
+    return {
+      text: "📦 *Windows Server 2019 Standard Retail*\nPrecio: *$15.00*\n\nLicencia original Microsoft.\nActivacion permanente.\nHyper-V, Storage Spaces.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $15.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
+    };
+  }
+
+  // Server 2022 Datacenter
+  if (lower.includes("2022") || lower.includes("server 2022")) {
+    return {
+      text: "📦 *Windows Server 2022 Datacenter Retail*\nPrecio: *$30.00*\n\nLicencia original Microsoft.\nActivacion permanente.\nVirtualizacion ilimitada + Seguridad avanzada + Azure hybrid.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $30.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
+    };
+  }
+
+  // Server 2025 Datacenter
+  if ((lower.includes("2025") && lower.includes("datacenter")) || lower.includes("server 2025 data")) {
+    return {
+      text: "📦 *Windows Server 2025 Datacenter Retail*\nPrecio: *$35.00*\n\nLicencia original Microsoft.\nActivacion permanente.\nVirtualizacion ilimitada + Todas las funciones enterprise.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $35.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
+    };
+  }
+
+  // Server 2025 Standard
+  if (lower.includes("server 2025") || (lower.includes("2025") && lower.includes("standard"))) {
+    return {
+      text: "📦 *Windows Server 2025 Standard Retail*\nPrecio: *$25.00*\n\nLicencia original Microsoft.\nActivacion permanente.\nSoporte extendido.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $25.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
+    };
+  }
+
+  // "server" generico
+  if (lower.includes("server") && !lower.includes("2012") && !lower.includes("2019") && !lower.includes("2022") && !lower.includes("2025")) {
+    return {
+      text: "📦 *WINDOWS SERVER* disponibles:\n\n• Server 2012 Standard - *$12.00*\n• Server 2019 Standard - *$15.00*\n• Server 2019 Datacenter - *$25.00*\n• Server 2022 Datacenter - *$30.00*\n• Server 2025 Standard - *$25.00*\n• Server 2025 Datacenter - *$35.00*\n\n⚡ Entrega inmediata.\n\n¿Cual necesitas?",
+      delay: 900,
+    };
+  }
+
+  // === MESAS ESPECIFICAS ===
+
+  if (lower.includes("s1-y") || lower.includes("s1 y") || lower.includes("s1y")) {
+    return {
+      text: "🖥️ *Mesa Gamer S1-Y (con luces LED)*\nPrecio: *$90.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Luces LED, estructura de acero, superficie antideslizante.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $90.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.",
+      delay: 1000,
+    };
+  }
+
+  if (lower.includes("r5-7") || lower.includes("r5 7") || lower.includes("r57")) {
+    return {
+      text: "🖥️ *Mesa Gamer R5-7*\nPrecio: *$95.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Estructura de acero reforzado, superficie amplia, diseno ergonomico.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $95.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.",
+      delay: 1000,
+    };
+  }
+
+  if (lower.includes("z5-6") || lower.includes("z5 6") || lower.includes("z56")) {
+    return {
+      text: "🖥️ *Mesa Gamer Z5-6*\nPrecio: *$95.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Diseno en Z estilizado, estructura de acero, superficie antideslizante.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $95.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.",
+      delay: 1000,
+    };
+  }
+
+  if (lower.includes("h2")) {
+    return {
+      text: "🖥️ *Mesa Gamer H2 (con luces LED)*\nPrecio: *$110.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Luces LED integradas, estructura de acero, superficie antideslizante.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $110.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.",
+      delay: 1000,
+    };
+  }
+
+  if (lower.includes("s2") || lower.includes("forma l") || lower.includes("reversible")) {
+    return {
+      text: '🖥️ *Mesa Gamer S2 Reversible (forma "L" o recta)*\nPrecio: *$125.00*\nDimensiones: 190 x 60 x 73 cm\n\nLa mas grande! Configuracion en "L" o recta. Ideal para multiples monitores.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $125.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.',
+      delay: 1000,
+    };
+  }
+
+  if (lower.includes("electrica negra") || lower.includes("ajustable negra")) {
+    return {
+      text: "🖥️ *Mesa Electrica Ajustable - Negra*\nPrecio: *$130.00*\nDimensiones: 140 x 60 x 81-118 cm (ajustable)\n\nMotor electrico de ajuste de altura. Trabaja sentado o de pie.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $130.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.",
+      delay: 1000,
+    };
+  }
+
+  if (lower.includes("electrica blanca") || lower.includes("ajustable blanca")) {
+    return {
+      text: "🖥️ *Mesa Electrica Ajustable - Blanca*\nPrecio: *$130.00*\nDimensiones: 140 x 60 x 81-118 cm (ajustable)\n\nMotor electrico de ajuste de altura. Elegante y funcional.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $130.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.",
+      delay: 1000,
+    };
+  }
+
+  if (lower.includes("s60") || (lower.includes("electrica") && lower.includes("led"))) {
+    return {
+      text: "🖥️ *Mesa Electrica S60 (Motor + Luces LED)*\nPrecio: *$145.00*\nDimensiones: 140 x 60 x 81-118 cm (ajustable)\n\nLa mas completa! Motor electrico + luces LED.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $145.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.",
+      delay: 1000,
+    };
+  }
+
   // Comprar / quiero
   if (lower.includes("comprar") || lower.includes("quiero") || lower.includes("lo quiero") || lower.includes("si")) {
     return { text: `Perfecto! 🎉\n\nPara procesar tu compra:\n\n${catalog.pago}\n\n⚡ Apenas recibamos tu comprobante, te enviamos tu producto de inmediato.`, delay: 1000 };
