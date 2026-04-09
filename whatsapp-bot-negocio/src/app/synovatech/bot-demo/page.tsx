@@ -31,13 +31,13 @@ function getResponse(input: string): { text: string; delay: number } {
     };
   }
 
-  // Software
-  if (lower === "1" || lower.includes("software") || lower.includes("windows") || lower.includes("office") || lower.includes("licencia")) {
+  // Software catalogo (SOLO si no menciona un producto especifico)
+  if (lower === "1" || lower === "software" || lower === "licencias" || lower === "licencia") {
     return { text: catalog.software, delay: 1000 };
   }
 
-  // Mesas
-  if (lower === "2" || lower.includes("mesa") || lower.includes("gamer") || lower.includes("escritorio")) {
+  // Mesas catalogo (SOLO si no menciona un modelo especifico)
+  if (lower === "2" || lower === "mesas" || lower === "mesa" || lower === "escritorio") {
     return { text: catalog.mesas, delay: 1000 };
   }
 
@@ -330,6 +330,15 @@ function getResponse(input: string): { text: string; delay: number } {
       text: "🧾 Si, generamos factura con cada compra. Despues de confirmar tu pago, te la enviamos automaticamente por email.\n\n¿Necesitas algo mas?",
       delay: 800,
     };
+  }
+
+  // Catalogos genericos (catch-all cuando no es un producto especifico)
+  if (lower.includes("office") || lower.includes("windows") || lower.includes("software") || lower.includes("licencia")) {
+    return { text: catalog.software, delay: 1000 };
+  }
+
+  if (lower.includes("mesa") || lower.includes("gamer") || lower.includes("electrica")) {
+    return { text: catalog.mesas, delay: 1000 };
   }
 
   // Default
