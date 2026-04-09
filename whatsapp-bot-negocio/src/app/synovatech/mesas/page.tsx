@@ -40,9 +40,14 @@ export default function MesasPage() {
               key={p.id}
               className="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all group"
             >
-              {/* Image placeholder */}
-              <div className="bg-gradient-to-br from-purple-900/30 to-blue-900/30 h-48 flex items-center justify-center">
-                <span className="text-6xl opacity-50">🖥️</span>
+              {/* Product image */}
+              <div className="bg-gradient-to-br from-purple-900/30 to-blue-900/30 h-48 flex items-center justify-center overflow-hidden">
+                <img
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/Mesas/${p.id}.png`}
+                  alt={p.name}
+                  className="w-full h-full object-cover"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; (e.target as HTMLImageElement).parentElement!.innerHTML = '<span class="text-6xl opacity-50">🖥️</span>'; }}
+                />
               </div>
 
               <div className="p-5">
