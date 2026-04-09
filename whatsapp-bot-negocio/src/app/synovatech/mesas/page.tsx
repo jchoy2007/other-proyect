@@ -48,11 +48,7 @@ export default function MesasPage() {
               <div className="p-5">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded-full">{p.subcategory}</span>
-                  {p.stock && p.stock <= 10 ? (
-                    <span className="text-xs bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded-full">Quedan {p.stock}</span>
-                  ) : (
-                    <span className="text-xs bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full">En stock</span>
-                  )}
+                  <span className="text-xs bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full">Disponible</span>
                 </div>
 
                 <h3 className="font-bold text-lg group-hover:text-purple-400 transition-colors">{p.name}</h3>

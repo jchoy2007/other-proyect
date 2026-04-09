@@ -141,9 +141,6 @@ export default function SynovaTechHome() {
                   <span className="text-2xl font-black text-purple-400">${p.price.toFixed(2)}</span>
                   <span className="text-xs bg-purple-500/20 text-purple-400 px-2 py-1 rounded-full">🚚 Envio gratis</span>
                 </div>
-                {p.stock && p.stock <= 10 && (
-                  <p className="text-xs text-yellow-400 mt-2">Quedan {p.stock} unidades</p>
-                )}
               </Link>
             ))}
           </div>
