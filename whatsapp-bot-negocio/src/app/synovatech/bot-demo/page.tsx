@@ -9,8 +9,8 @@ interface Message {
 }
 
 const catalog: Record<string, string> = {
-  software: `💻 *CATALOGO DE SOFTWARE*\n(Entrega inmediata por email y WhatsApp)\n\n📦 *WINDOWS 11:*\n• Win 11 Home OEM - $10.00\n• Win 11 Home Retail - $15.00\n• Win 11 Pro OEM - $12.00\n• Win 11 Pro Retail - $17.00\n\n📦 *WINDOWS 10:*\n• Win 10 Home OEM - $8.00\n• Win 10 Pro OEM - $10.00\n\n📦 *MICROSOFT OFFICE:*\n• Office Pro Plus 2016 - $10.00\n• Office Pro Plus 2019 - $15.00\n• Office Pro Plus 2021 - $25.00\n• Office Pro Plus 2024 - $45.00\n\n📦 *WINDOWS SERVER:*\n• Server 2012 Standard - $12.00\n• Server 2019 Standard - $15.00\n• Server 2019 Datacenter - $25.00\n• Server 2022 Datacenter - $30.00\n• Server 2025 Standard - $25.00\n• Server 2025 Datacenter - $35.00\n\n¿Cual te interesa?`,
-  mesas: `🖥️ *MESAS GAMER Y ELECTRICAS*\n(Envio GRATIS a todo Panama)\n\n🎮 *MESAS GAMER:*\n• Mesa S1-Y (LED) 140x60cm - $90\n• Mesa R5-7 140x60cm - $95\n• Mesa Z5-6 140x60cm - $95\n• Mesa H2 (LED) 140x60cm - $110\n• Mesa S2 Reversible "L" 190x60cm - $125\n\n⚡ *MESAS ELECTRICAS AJUSTABLES:*\n• Electrica Negra 140x60cm - $130\n• Electrica Blanca 140x60cm - $130\n• S60 Motor+LED 140x60cm - $145\n\n📦 Envio gratis por Red Servi a todo Panama\n\n¿Cual te interesa?`,
+  software: `💻 *CATALOGO DE SOFTWARE*\n⚡ Entrega inmediata por email y WhatsApp\n\n📦 *WINDOWS 11:*\n1️⃣ Win 11 Home OEM - $10.00\n2️⃣ Win 11 Home Retail - $15.00\n3️⃣ Win 11 Pro OEM - $12.00\n4️⃣ Win 11 Pro Retail - $17.00\n\n📦 *WINDOWS 10:*\n5️⃣ Win 10 Home OEM - $8.00\n6️⃣ Win 10 Pro OEM - $10.00\n\n📦 *MICROSOFT OFFICE (solo PC, no MAC):*\n7️⃣ Office Pro Plus 2016 - $10.00\n8️⃣ Office Pro Plus 2019 - $15.00\n9️⃣ Office Pro Plus 2021 - $25.00\n🔟 Office Pro Plus 2024 - $45.00\n\n📦 *WINDOWS SERVER:*\n1️⃣1️⃣ Server 2012 Standard - $12.00\n1️⃣2️⃣ Server 2019 Standard - $15.00\n1️⃣3️⃣ Server 2019 Datacenter - $25.00\n1️⃣4️⃣ Server 2022 Datacenter - $30.00\n1️⃣5️⃣ Server 2025 Standard - $25.00\n1️⃣6️⃣ Server 2025 Datacenter - $35.00\n\n👉 *Escoge el numero del producto que te interesa* o escribe el nombre.`,
+  mesas: `🖥️ *MESAS GAMER Y ELECTRICAS*\n🚚 Envio GRATIS en Ciudad de Panamá\n\n🎮 *MESAS GAMER:*\n1️⃣ Mesa S1-Y (LED) 140x60cm - $90\n2️⃣ Mesa R5-7 140x60cm - $95\n3️⃣ Mesa Z5-6 140x60cm - $95\n4️⃣ Mesa H2 (LED) 140x60cm - $110\n5️⃣ Mesa S2 Reversible "L" 190x60cm - $125\n\n⚡ *MESAS ELECTRICAS AJUSTABLES:*\n6️⃣ Electrica Negra 140x60cm - $130\n7️⃣ Electrica Blanca 140x60cm - $130\n8️⃣ S60 Motor+LED 140x60cm - $145\n\n👉 *Escoge el numero de la mesa que te interesa* o escribe el nombre.`,
   pago: `💳 *METODOS DE PAGO:*\n\n📱 *Yappy:*\n• 6043-4542 (Jorge Choy)\n• 6537-0196 (Daysi Torres)\n\n🏦 *ACH / Transferencia:*\n• Banco General\n• Cuenta de Ahorros\n• Jorge Choy\n• Cuenta: 0472984345786\n\nDespues de pagar, envianos el comprobante por aqui y procesamos tu pedido de inmediato. ✅`,
   instalacion_windows: `🔧 *GUIA DE INSTALACION - WINDOWS:*\n\n1️⃣ Descargar la herramienta de creacion de medios de Microsoft\n2️⃣ Crear USB booteable\n3️⃣ Instalar Windows desde el USB\n4️⃣ Activar con la clave que te enviamos\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*. Solo dinos y nos conectamos a tu PC para ayudarte.`,
   instalacion_office_2024: `🔧 *GUIA DE INSTALACION - OFFICE 2024:*\n⚠️ *Solo para PC (no compatible con MAC)*\n\n1️⃣ Descarga el instalador:\n👉 https://softkeypc.com/wp-content/uploads/2024/12/Office_2024_ES_64Bits.exe\n2️⃣ Ejecuta el archivo descargado\n3️⃣ Sigue las instrucciones de instalacion\n4️⃣ Activa con tu clave al abrir Word, Excel o PowerPoint\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*.`,
@@ -20,25 +20,86 @@ const catalog: Record<string, string> = {
   oem_retail: `📋 *DIFERENCIA OEM vs RETAIL:*\n\n🔹 *OEM:* Licencia vinculada a 1 PC. No se puede transferir a otro equipo. Es mas economica.\n\n🔹 *Retail:* Licencia transferible. Si cambias de PC, puedes mover tu licencia al nuevo equipo.\n\n💡 Si tu PC es fijo y no piensas cambiarlo pronto, OEM es la mejor opcion. Si cambias de equipo seguido, Retail es mejor inversion.\n\n¿Te ayudo a elegir?`,
 };
 
+// Software products mapped by number
+const SW: Record<string, { name: string; price: string; extra: string; keywords: string[] }> = {
+  "1":  { name: "Windows 11 Home OEM", price: "$10.00", extra: "Activacion permanente - 1 PC (no transferible).", keywords: ["11 home oem"] },
+  "2":  { name: "Windows 11 Home Retail", price: "$15.00", extra: "Activacion permanente - Transferible a otro PC.", keywords: ["11 home retail"] },
+  "3":  { name: "Windows 11 Pro OEM", price: "$12.00", extra: "Activacion permanente - 1 PC (no transferible).\nBitLocker, Hyper-V, Remote Desktop.", keywords: ["11 pro oem"] },
+  "4":  { name: "Windows 11 Pro Retail", price: "$17.00", extra: "Activacion permanente - Transferible a otro PC.\nBitLocker, Hyper-V, Remote Desktop.", keywords: ["11 pro retail"] },
+  "5":  { name: "Windows 10 Home OEM", price: "$8.00", extra: "Activacion permanente - 1 PC.", keywords: ["10 home"] },
+  "6":  { name: "Windows 10 Pro OEM", price: "$10.00", extra: "Activacion permanente - 1 PC.\nBitLocker, Remote Desktop.", keywords: ["10 pro"] },
+  "7":  { name: "Office Pro Plus 2016", price: "$10.00", extra: "⚠️ Solo para PC (no MAC).\nWord, Excel, PowerPoint, Outlook, Access, Publisher.", keywords: ["office 2016", "2016"] },
+  "8":  { name: "Office Pro Plus 2019", price: "$15.00", extra: "⚠️ Solo para PC (no MAC).\nWord, Excel, PowerPoint, Outlook, Access, Publisher.", keywords: ["office 2019", "2019"] },
+  "9":  { name: "Office Pro Plus 2021", price: "$25.00", extra: "⚠️ Solo para PC (no MAC).\nWord, Excel, PowerPoint, Outlook, Access, Publisher, Teams.", keywords: ["office 2021", "2021"] },
+  "10": { name: "Office Pro Plus 2024", price: "$45.00", extra: "⚠️ Solo para PC (no MAC).\nWord, Excel, PowerPoint, Outlook, Access, Publisher, Teams + IA.", keywords: ["office 2024", "2024"] },
+  "11": { name: "Server 2012 Standard", price: "$12.00", extra: "Activacion permanente.", keywords: ["server 2012", "2012"] },
+  "12": { name: "Server 2019 Standard", price: "$15.00", extra: "Activacion permanente. Hyper-V.", keywords: ["server 2019 standard"] },
+  "13": { name: "Server 2019 Datacenter", price: "$25.00", extra: "Activacion permanente. Virtualizacion ilimitada.", keywords: ["server 2019 datacenter", "2019 datacenter"] },
+  "14": { name: "Server 2022 Datacenter", price: "$30.00", extra: "Activacion permanente. Virtualizacion ilimitada + Azure.", keywords: ["server 2022", "2022"] },
+  "15": { name: "Server 2025 Standard", price: "$25.00", extra: "Activacion permanente. Soporte extendido.", keywords: ["server 2025 standard"] },
+  "16": { name: "Server 2025 Datacenter", price: "$35.00", extra: "Activacion permanente. Virtualizacion ilimitada.", keywords: ["server 2025 datacenter", "2025 datacenter"] },
+};
+
+const MESA_MAP: Record<string, { name: string; price: string; dims: string; extra: string; keywords: string[] }> = {
+  "m1": { name: "Mesa Gamer S1-Y (con LED)", price: "$90.00", dims: "140x60x73cm", extra: "Luces LED, acero, superficie antideslizante.", keywords: ["s1-y", "s1 y", "s1y", "s1"] },
+  "m2": { name: "Mesa Gamer R5-7", price: "$95.00", dims: "140x60x73cm", extra: "Acero reforzado, superficie amplia, ergonomica.", keywords: ["r5-7", "r5 7", "r57", "r5"] },
+  "m3": { name: "Mesa Gamer Z5-6", price: "$95.00", dims: "140x60x73cm", extra: "Diseno en Z, acero, superficie antideslizante.", keywords: ["z5-6", "z5 6", "z56", "z5"] },
+  "m4": { name: "Mesa Gamer H2 (con LED)", price: "$110.00", dims: "140x60x73cm", extra: "Luces LED integradas, acero, antideslizante.", keywords: ["h2"] },
+  "m5": { name: 'Mesa Gamer S2 Reversible ("L" o recta)', price: "$125.00", dims: "190x60x73cm", extra: 'Forma "L" o recta. La mas grande. Ideal para multiples monitores.', keywords: ["s2", "forma l", "reversible"] },
+  "m6": { name: "Mesa Electrica Ajustable Negra", price: "$130.00", dims: "140x60x81-118cm", extra: "Motor electrico de ajuste de altura. Color negro.", keywords: ["electrica negra", "ajustable negra", "negra"] },
+  "m7": { name: "Mesa Electrica Ajustable Blanca", price: "$130.00", dims: "140x60x81-118cm", extra: "Motor electrico de ajuste de altura. Color blanco.", keywords: ["electrica blanca", "ajustable blanca", "blanca"] },
+  "m8": { name: "Mesa Electrica S60 Motor+LED", price: "$145.00", dims: "140x60x81-118cm", extra: "Motor electrico + luces LED. La mas completa!", keywords: ["s60", "motor", "motor led"] },
+};
+
+const PAGO_INFO = "📱 Yappy: 6043-4542 (Jorge Choy) o 6537-0196 (Daysi Torres)\n🏦 ACH: Banco General - Cta Ahorros - Jorge Choy - 0472984345786";
+
+function makeSoftwareResponse(sw: typeof SW[string]): { text: string; delay: number } {
+  return {
+    text: `📦 *${sw.name}*\nPrecio: *${sw.price}*\n\nLicencia original Microsoft.\n${sw.extra}\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga ${sw.price} a:*\n${PAGO_INFO}\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.`,
+    delay: 1000,
+  };
+}
+
+function makeMesaResponse(m: typeof MESA_MAP[string]): { text: string; delay: number; _mesa: boolean } {
+  return {
+    text: `🖥️ *${m.name}*\nPrecio: *${m.price}*\nDimensiones: ${m.dims}\n\n${m.extra}\n\n¿Como deseas recibirla? Escoge el numero:\n\n1️⃣ *Pago contra entrega* - Te la llevamos y pagas al recibirla\n2️⃣ *Pago anticipado + envio* - Pagas primero y te la enviamos gratis\n3️⃣ *Retiro en bodega* - Vas a recogerla y pagas alla (El Dorado)\n4️⃣ *Envio al interior* - Se paga antes, llega por Red Servi en 2 dias`,
+    delay: 1000, _mesa: true,
+  };
+}
+
+function findSoftware(lower: string): typeof SW[string] | null {
+  if (SW[lower]) return SW[lower];
+  for (const sw of Object.values(SW)) {
+    for (const kw of sw.keywords) { if (lower.includes(kw)) return sw; }
+  }
+  return null;
+}
+
+function findMesa(lower: string): typeof MESA_MAP[string] | null {
+  if (MESA_MAP[lower]) return MESA_MAP[lower];
+  for (const m of Object.values(MESA_MAP)) {
+    for (const kw of m.keywords) { if (lower.includes(kw)) return m; }
+  }
+  return null;
+}
+
 function getResponse(input: string): { text: string; delay: number; _mesa?: boolean } {
   const lower = input.toLowerCase().trim();
 
   // Saludos
   if (lower.match(/^(hola|hi|buenos|buenas|hey|que tal|saludos)/)) {
     return {
-      text: "Hola! 👋 Bienvenido a *SynovaTech PTY* - Soluciones Tecnologicas Integrales.\n\n¿En que te puedo ayudar?\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Metodos de pago\n4️⃣ Guia de instalacion\n5️⃣ Hablar con un asesor",
+      text: "Hola! 👋 Bienvenido a *SynovaTech PTY* - Soluciones Tecnológicas Integrales.\n\n¿En que te puedo ayudar? Escoge un numero:\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Metodos de pago\n4️⃣ Guia de instalacion\n5️⃣ Hablar con un asesor",
       delay: 800,
     };
   }
 
-  // Software catalogo (SOLO si no menciona un producto especifico)
-  if (lower === "1" || lower === "software" || lower === "licencias" || lower === "licencia") {
-    return { text: catalog.software, delay: 1000 };
+  // Pagos (before catalog to avoid "3" conflict)
+  if (lower === "3" && !lower.includes("server")) {
+    return { text: catalog.pago, delay: 800 };
   }
-
-  // Mesas catalogo (SOLO si no menciona un modelo especifico)
-  if (lower === "2" || lower === "mesas" || lower === "mesa" || lower === "escritorio") {
-    return { text: catalog.mesas, delay: 1000 };
+  if (lower.includes("pago") || lower.includes("yappy") || lower.includes("ach") || lower.includes("transferencia") || lower.includes("pagar")) {
+    return { text: catalog.pago, delay: 800 };
   }
 
   // Pagos
@@ -84,266 +145,64 @@ function getResponse(input: string): { text: string; delay: number; _mesa?: bool
     };
   }
 
-  // OEM vs Retail (solo si pregunta la diferencia, no si pide un producto)
+  // OEM vs Retail
   if ((lower.includes("diferencia") || lower === "oem" || lower === "retail") && !lower.includes("win") && !lower.includes("pro") && !lower.includes("home")) {
     return { text: catalog.oem_retail, delay: 900 };
   }
 
-  // === PRODUCTOS ESPECIFICOS - Respuesta directa con datos de pago ===
-
-  // Windows 11 Pro OEM
-  if (lower.includes("11 pro oem") || lower.includes("11 pro") && lower.includes("oem")) {
-    return {
-      text: "📦 *Windows 11 Pro OEM*\nPrecio: *$12.00*\n\nLicencia original Microsoft.\nActivacion permanente - 1 PC (no transferible).\nIncluye: BitLocker, Hyper-V, Remote Desktop.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $12.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
+  // Win 11 Pro sin especificar
+  if ((lower.includes("windows 11 pro") || lower.includes("win 11 pro")) && !lower.includes("oem") && !lower.includes("retail")) {
+    return { text: "📦 *Windows 11 Pro* - 2 opciones:\n\n3️⃣ *OEM* (1 PC, no transferible): *$12.00*\n4️⃣ *Retail* (transferible): *$17.00*\n\n💡 *OEM* si no cambias de PC. *Retail* si cambias seguido.\n\n👉 Escoge *3* o *4*.", delay: 900 };
   }
 
-  // Windows 11 Pro Retail
-  if (lower.includes("11 pro retail") || (lower.includes("11 pro") && lower.includes("retail"))) {
-    return {
-      text: "📦 *Windows 11 Pro Retail*\nPrecio: *$17.00*\n\nLicencia original Microsoft.\nActivacion permanente - Transferible a otro PC.\nIncluye: BitLocker, Hyper-V, Remote Desktop.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $17.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
+  // Win 11 Home sin especificar
+  if ((lower.includes("windows 11 home") || lower.includes("win 11 home")) && !lower.includes("oem") && !lower.includes("retail")) {
+    return { text: "📦 *Windows 11 Home* - 2 opciones:\n\n1️⃣ *OEM* (1 PC, no transferible): *$10.00*\n2️⃣ *Retail* (transferible): *$15.00*\n\n👉 Escoge *1* o *2*.", delay: 900 };
   }
 
-  // Windows 11 Home OEM
-  if (lower.includes("11 home oem") || (lower.includes("11 home") && lower.includes("oem"))) {
-    return {
-      text: "📦 *Windows 11 Home OEM*\nPrecio: *$10.00*\n\nLicencia original Microsoft.\nActivacion permanente - 1 PC (no transferible).\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $10.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
+  // === PRODUCTOS POR NUMERO O KEYWORD ===
+  const foundSw = findSoftware(lower);
+  if (foundSw) return makeSoftwareResponse(foundSw);
+
+  const foundMesa = findMesa(lower);
+  if (foundMesa) return makeMesaResponse(foundMesa);
+
+  // Server generico
+  if (lower.includes("server")) {
+    return { text: "📦 *WINDOWS SERVER:*\n\n1️⃣1️⃣ Server 2012 Standard - *$12.00*\n1️⃣2️⃣ Server 2019 Standard - *$15.00*\n1️⃣3️⃣ Server 2019 Datacenter - *$25.00*\n1️⃣4️⃣ Server 2022 Datacenter - *$30.00*\n1️⃣5️⃣ Server 2025 Standard - *$25.00*\n1️⃣6️⃣ Server 2025 Datacenter - *$35.00*\n\n👉 Escoge el numero.", delay: 900 };
   }
 
-  // Windows 11 Home Retail
-  if (lower.includes("11 home retail") || (lower.includes("11 home") && lower.includes("retail"))) {
-    return {
-      text: "📦 *Windows 11 Home Retail*\nPrecio: *$15.00*\n\nLicencia original Microsoft.\nActivacion permanente - Transferible a otro PC.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $15.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
-  }
-
-  // Windows 11 Pro (sin especificar OEM/Retail)
-  if (lower.includes("windows 11 pro") || lower.includes("win 11 pro")) {
-    return {
-      text: "📦 *Windows 11 Pro* - Tenemos 2 opciones:\n\n• *OEM* (1 PC, no transferible): *$12.00*\n• *Retail* (transferible a otro PC): *$17.00*\n\n💡 *OEM* es ideal si no piensas cambiar de PC. *Retail* si cambias de equipo seguido.\n\n¿Cual prefieres?",
-      delay: 900,
-    };
-  }
-
-  // Windows 11 Home (sin especificar)
-  if (lower.includes("windows 11 home") || lower.includes("win 11 home")) {
-    return {
-      text: "📦 *Windows 11 Home* - Tenemos 2 opciones:\n\n• *OEM* (1 PC, no transferible): *$10.00*\n• *Retail* (transferible a otro PC): *$15.00*\n\n💡 *OEM* es ideal si no piensas cambiar de PC. *Retail* si cambias de equipo seguido.\n\n¿Cual prefieres?",
-      delay: 900,
-    };
-  }
-
-  // Windows 10 Pro OEM
-  if (lower.includes("10 pro") || lower.includes("windows 10 pro") || lower.includes("win 10 pro")) {
-    return {
-      text: "📦 *Windows 10 Pro OEM*\nPrecio: *$10.00*\n\nLicencia original Microsoft.\nActivacion permanente - 1 PC.\nIncluye: BitLocker, Remote Desktop.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $10.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
-  }
-
-  // Windows 10 Home OEM
-  if (lower.includes("10 home") || lower.includes("windows 10 home") || lower.includes("win 10 home")) {
-    return {
-      text: "📦 *Windows 10 Home OEM*\nPrecio: *$8.00*\n\nLicencia original Microsoft.\nActivacion permanente - 1 PC.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $8.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
-  }
-
-  // Office 2024
-  if (lower.includes("office 2024") || lower.includes("2024")) {
-    return {
-      text: "📦 *Office Profesional Pro Plus 2024*\nPrecio: *$45.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher, Teams + IA.\nLicencia permanente - 1 PC.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $45.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
-  }
-
-  // Office 2021
-  if (lower.includes("office 2021") || lower.includes("2021")) {
-    return {
-      text: "📦 *Office Profesional Pro Plus 2021*\nPrecio: *$25.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher, Teams.\nLicencia permanente - 1 PC.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $25.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
-  }
-
-  // Office 2019
-  if (lower.includes("office 2019") || lower.includes("2019")) {
-    return {
-      text: "📦 *Office Profesional Pro Plus 2019*\nPrecio: *$15.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher.\nLicencia permanente - 1 PC.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $15.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
-  }
-
-  // Office 2016
-  if (lower.includes("office 2016") || lower.includes("2016")) {
-    return {
-      text: "📦 *Office Profesional Pro Plus 2016*\nPrecio: *$10.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher.\nLicencia permanente - 1 PC.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $10.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
-  }
-
-  // === WINDOWS SERVER ===
-
-  // Server 2012 Standard
-  if (lower.includes("2012") || lower.includes("server 2012")) {
-    return {
-      text: "📦 *Windows Server 2012 Standard Retail*\nPrecio: *$12.00*\n\nLicencia original Microsoft.\nActivacion permanente.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $12.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
-  }
-
-  // Server 2019 Datacenter
-  if ((lower.includes("2019") && lower.includes("datacenter")) || lower.includes("server 2019 data")) {
-    return {
-      text: "📦 *Windows Server 2019 Datacenter Retail*\nPrecio: *$25.00*\n\nLicencia original Microsoft.\nActivacion permanente.\nVirtualizacion ilimitada + Shielded VMs.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $25.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
-  }
-
-  // Server 2019 Standard
-  if (lower.includes("server 2019") || (lower.includes("2019") && lower.includes("standard"))) {
-    return {
-      text: "📦 *Windows Server 2019 Standard Retail*\nPrecio: *$15.00*\n\nLicencia original Microsoft.\nActivacion permanente.\nHyper-V, Storage Spaces.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $15.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
-  }
-
-  // Server 2022 Datacenter
-  if (lower.includes("2022") || lower.includes("server 2022")) {
-    return {
-      text: "📦 *Windows Server 2022 Datacenter Retail*\nPrecio: *$30.00*\n\nLicencia original Microsoft.\nActivacion permanente.\nVirtualizacion ilimitada + Seguridad avanzada + Azure hybrid.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $30.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
-  }
-
-  // Server 2025 Datacenter
-  if ((lower.includes("2025") && lower.includes("datacenter")) || lower.includes("server 2025 data")) {
-    return {
-      text: "📦 *Windows Server 2025 Datacenter Retail*\nPrecio: *$35.00*\n\nLicencia original Microsoft.\nActivacion permanente.\nVirtualizacion ilimitada + Todas las funciones enterprise.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $35.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
-  }
-
-  // Server 2025 Standard
-  if (lower.includes("server 2025") || (lower.includes("2025") && lower.includes("standard"))) {
-    return {
-      text: "📦 *Windows Server 2025 Standard Retail*\nPrecio: *$25.00*\n\nLicencia original Microsoft.\nActivacion permanente.\nSoporte extendido.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $25.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
-      delay: 1000,
-    };
-  }
-
-  // "server" generico
-  if (lower.includes("server") && !lower.includes("2012") && !lower.includes("2019") && !lower.includes("2022") && !lower.includes("2025")) {
-    return {
-      text: "📦 *WINDOWS SERVER* disponibles:\n\n• Server 2012 Standard - *$12.00*\n• Server 2019 Standard - *$15.00*\n• Server 2019 Datacenter - *$25.00*\n• Server 2022 Datacenter - *$30.00*\n• Server 2025 Standard - *$25.00*\n• Server 2025 Datacenter - *$35.00*\n\n⚡ Entrega inmediata.\n\n¿Cual necesitas?",
-      delay: 900,
-    };
-  }
-
-  // === MESAS ESPECIFICAS (sin datos de pago, van directo a opciones de entrega) ===
-
-  if (lower.includes("s1-y") || lower.includes("s1 y") || lower.includes("s1y")) {
-    return {
-      text: "🖥️ *Mesa Gamer S1-Y (con luces LED)*\nPrecio: *$90.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Luces LED, estructura de acero, superficie antideslizante.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)",
-      delay: 1000, _mesa: true,
-    };
-  }
-
-  if (lower.includes("r5-7") || lower.includes("r5 7") || lower.includes("r57") || lower === "r5") {
-    return {
-      text: "🖥️ *Mesa Gamer R5-7*\nPrecio: *$95.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Estructura de acero reforzado, superficie amplia, diseno ergonomico.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)",
-      delay: 1000, _mesa: true,
-    };
-  }
-
-  if (lower.includes("z5-6") || lower.includes("z5 6") || lower.includes("z56") || lower === "z5") {
-    return {
-      text: "🖥️ *Mesa Gamer Z5-6*\nPrecio: *$95.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Diseno en Z estilizado, estructura de acero, superficie antideslizante.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)",
-      delay: 1000, _mesa: true,
-    };
-  }
-
-  if (lower.includes("h2")) {
-    return {
-      text: "🖥️ *Mesa Gamer H2 (con luces LED)*\nPrecio: *$110.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Luces LED integradas, estructura de acero, superficie antideslizante.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)",
-      delay: 1000, _mesa: true,
-    };
-  }
-
-  if (lower.includes("s2") || lower.includes("forma l") || lower.includes("reversible")) {
-    return {
-      text: '🖥️ *Mesa Gamer S2 Reversible (forma "L" o recta)*\nPrecio: *$125.00*\nDimensiones: 190 x 60 x 73 cm\n\nLa mas grande! Configuracion en "L" o recta. Ideal para multiples monitores.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)',
-      delay: 1000, _mesa: true,
-    };
-  }
-
-  if (lower.includes("electrica negra") || lower.includes("ajustable negra") || lower.includes("negra")) {
-    return {
-      text: "🖥️ *Mesa Electrica Ajustable - Negra*\nPrecio: *$130.00*\nDimensiones: 140 x 60 x 81-118 cm (ajustable)\n\nMotor electrico de ajuste de altura. Trabaja sentado o de pie.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)",
-      delay: 1000, _mesa: true,
-    };
-  }
-
-  if (lower.includes("electrica blanca") || lower.includes("ajustable blanca") || lower.includes("blanca")) {
-    return {
-      text: "🖥️ *Mesa Electrica Ajustable - Blanca*\nPrecio: *$130.00*\nDimensiones: 140 x 60 x 81-118 cm (ajustable)\n\nMotor electrico de ajuste de altura. Elegante y funcional.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)",
-      delay: 1000, _mesa: true,
-    };
-  }
-
-  if (lower.includes("s60") || (lower.includes("electrica") && lower.includes("led")) || lower.includes("motor")) {
-    return {
-      text: "🖥️ *Mesa Electrica S60 (Motor + Luces LED)*\nPrecio: *$145.00*\nDimensiones: 140 x 60 x 81-118 cm (ajustable)\n\nLa mas completa! Motor electrico + luces LED.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)",
-      delay: 1000, _mesa: true,
-    };
-  }
-
-  // Comprar / quiero
-  if (lower.includes("comprar") || lower.includes("quiero") || lower.includes("lo quiero") || lower.includes("si")) {
-    return { text: `Perfecto! 🎉\n\nPara procesar tu compra:\n\n${catalog.pago}\n\n⚡ Apenas recibamos tu comprobante, te enviamos tu producto de inmediato.`, delay: 1000 };
+  // Comprar generico
+  if (lower.includes("comprar") || lower.includes("quiero") || lower.includes("lo quiero")) {
+    return { text: "¿Que te interesa? Escoge:\n\n1️⃣ Ver *software* (Windows, Office)\n2️⃣ Ver *mesas gamer*\n\n👉 Escoge el numero.", delay: 800 };
   }
 
   // Envio
   if (lower.includes("envio") || lower.includes("enviar") || lower.includes("entrega") || lower.includes("red servi")) {
-    return {
-      text: "📦 *ENVIOS:*\n\n💻 *Software:* Entrega *inmediata* por email y WhatsApp. En minutos tienes tu clave.\n\n🖥️ *Mesas:* Envio *GRATIS* a todo Panama por Red Servi. Tiempo estimado: 3-5 dias habiles. Tambien puedes retirar en nuestras instalaciones.\n\n¿Necesitas algo mas?",
-      delay: 900,
-    };
+    return { text: "📦 *ENVIOS:*\n\n💻 *Software:* Entrega *inmediata* por email y WhatsApp.\n\n🖥️ *Mesas en Panamá capital:* Envio gratis. L/Mi/V 10am-3pm.\n\n🚚 *Mesas al interior:* Por Red Servi, se paga antes. Entrega en 2 días hábiles directo en tu residencia.\n\n¿Algo mas?", delay: 900 };
   }
 
   // Garantia
   if (lower.includes("garantia") || lower.includes("original") || lower.includes("legal")) {
-    return {
-      text: "🛡️ *GARANTIA:*\n\nTodas nuestras licencias son *100% originales de Microsoft*.\n\n• Activacion permanente (de por vida)\n• Funcionan con actualizaciones de Windows/Office\n• Soporte de instalacion incluido\n• Si tienes algun problema con la activacion, lo resolvemos sin costo\n\n¿Te ayudo con algo mas?",
-      delay: 900,
-    };
+    return { text: "🛡️ Todas nuestras licencias son *100% originales de Microsoft*.\n\n• Activación permanente (de por vida)\n• Funcionan con actualizaciones\n• Soporte de instalación incluido\n• Cualquier problema, lo resolvemos sin costo\n\n¿Algo mas?", delay: 900 };
   }
 
   // Factura
   if (lower.includes("factura")) {
-    return {
-      text: "🧾 Si, generamos factura con cada compra. Despues de confirmar tu pago, te la enviamos automaticamente por email.\n\n¿Necesitas algo mas?",
-      delay: 800,
-    };
+    return { text: "🧾 Sí, generamos factura con cada compra. Después de confirmar tu pago, te la enviamos por email.\n\n¿Algo mas?", delay: 800 };
   }
 
-  // Catalogos genericos (catch-all cuando no es un producto especifico)
-  if (lower.includes("office") || lower.includes("windows") || lower.includes("software") || lower.includes("licencia")) {
+  // Catalogos genericos
+  if (lower === "1" || lower === "software" || lower === "licencia" || lower === "licencias" || lower.includes("office") || lower.includes("windows")) {
     return { text: catalog.software, delay: 1000 };
   }
-
-  if (lower.includes("mesa") || lower.includes("gamer") || lower.includes("electrica")) {
+  if (lower === "2" || lower === "mesas" || lower === "mesa" || lower === "escritorio" || lower.includes("gamer") || lower.includes("electrica")) {
     return { text: catalog.mesas, delay: 1000 };
   }
 
   // Default
   return {
-    text: "Disculpa, no entendi tu mensaje. 😅\n\n¿En que te puedo ayudar?\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Metodos de pago\n4️⃣ Guia de instalacion\n5️⃣ Hablar con un asesor",
+    text: "No logré identificar tu solicitud. 😅\n\nPuedes decirme el *número de la opción* que deseas y te ayudo de inmediato:\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Métodos de pago\n4️⃣ Guía de instalación\n5️⃣ Hablar con un asesor\n\n👉 Solo escribe el número.",
     delay: 800,
   };
 }
@@ -356,7 +215,7 @@ export default function SynovaTechBotDemo() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "bot",
-      text: "Hola! 👋 Bienvenido a *SynovaTech PTY* - Soluciones Tecnologicas Integrales.\n\n¿En que te puedo ayudar hoy?\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Metodos de pago\n4️⃣ Guia de instalacion\n5️⃣ Hablar con un asesor",
+      text: "Hola! 👋 Bienvenido a *SynovaTech PTY* - Soluciones Tecnológicas Integrales.\n\n¿En que te puedo ayudar hoy?\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Metodos de pago\n4️⃣ Guia de instalacion\n5️⃣ Hablar con un asesor",
       time: getTime(),
     },
   ]);
@@ -397,28 +256,33 @@ export default function SynovaTechBotDemo() {
     // === ESTADO: Mesa ya mostro producto → preguntar forma de pago y entrega ===
     if (botState === "mesa_payment") {
       setBotState("mesa_delivery_choice");
-      sendBotMessage("Excelente eleccion! 🎉 ¿Como prefieres pagar y recibir tu mesa?\n\n1️⃣ *Pago contra entrega* - Te la llevamos a tu casa y pagas cuando la recibas (efectivo, Yappy o transferencia al momento)\n\n2️⃣ *Pago anticipado + envio* - Pagas primero por Yappy/ACH y te la enviamos gratis\n\n3️⃣ *Retiro en bodega* - Vas a recogerla y pagas directamente alla (El Dorado, Ciudad de Panama)", 1000);
+      sendBotMessage("Excelente elección! 🎉 ¿Cómo prefieres pagar y recibir tu mesa? Escoge el número:\n\n1️⃣ *Pago contra entrega* - Te la llevamos y pagas cuando la recibas\n2️⃣ *Pago anticipado + envío* - Pagas primero y te la enviamos gratis\n3️⃣ *Retiro en bodega* - Vas a recogerla y pagas allá (El Dorado)\n4️⃣ *Envío al interior del país* - Se paga antes, llega por Red Servi", 1000);
       return;
     }
 
     // === ESTADO: Eligiendo forma de pago/entrega ===
     if (botState === "mesa_delivery_choice") {
       // Opcion 1: Pago contra entrega
-      if (lower.includes("1") || lower.includes("contra entrega") || lower.includes("cuando llegue") || lower.includes("cuando reciba")) {
+      if (lower === "1" || lower.includes("contra entrega") || lower.includes("cuando llegue") || lower.includes("cuando reciba")) {
         setBotState("mesa_delivery_info");
-        sendBotMessage("📦 *Pago contra entrega*\n\nTu mesa llega a tu puerta y pagas en el momento que la recibas. Puedes pagar en efectivo, Yappy o transferencia al recibir.\n\n🚚 *Horario de entregas:* Lunes, Miercoles y Viernes de 10:00am a 3:00pm.\n⚠️ Si necesitas otro dia u horario, lo coordinamos con anticipacion.\n\nPor favor envianos:\n\n📌 *Nombre completo y telefono*\n📍 *Direccion exacta* (ubicacion GPS de preferencia)\n📝 *Referencia del lugar*\n\nCon esa info programamos tu entrega. 🚚", 1000);
+        sendBotMessage("📦 *Pago contra entrega*\n\nTu mesa llega a tu puerta y pagas en el momento que la recibas. Puedes pagar en efectivo, Yappy o transferencia al momento de recibir.\n\n🚚 *Horario de entregas:* Lunes, Miércoles y Viernes de 10:00am a 3:00pm.\n⚠️ Otro día u horario se coordina con anticipación.\n\nPor favor envíanos:\n\n📌 *Nombre completo y teléfono*\n📍 *Dirección exacta* (ubicación GPS de preferencia)\n📝 *Referencia del lugar*\n\nCon esa info programamos tu entrega. 🚚", 1000);
       }
       // Opcion 2: Pago anticipado
-      else if (lower.includes("2") || lower.includes("anticipado") || lower.includes("antes") || lower.includes("pagar primero") || lower.includes("yappy") || lower.includes("transferencia")) {
+      else if (lower === "2" || lower.includes("anticipado") || lower.includes("antes") || lower.includes("pagar primero")) {
         setBotState("mesa_delivery_info");
-        sendBotMessage("📦 *Pago anticipado + envio gratis*\n\nRealiza tu pago y te enviamos la mesa sin costo adicional.\n\n💳 *Paga a:*\n📱 Yappy: 6043-4542 (Jorge Choy) o 6537-0196 (Daysi Torres)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n🚚 *Horario de entregas:* Lunes, Miercoles y Viernes de 10:00am a 3:00pm.\n\nEnvianos el comprobante de pago junto con:\n\n📌 *Nombre completo y telefono*\n📍 *Direccion exacta* (ubicacion GPS de preferencia)\n📝 *Referencia del lugar*", 1000);
+        sendBotMessage("📦 *Pago anticipado + envío gratis*\n\nRealiza tu pago y te enviamos la mesa sin costo adicional.\n\n💳 *Paga a:*\n📱 Yappy: 6043-4542 (Jorge Choy) o 6537-0196 (Daysi Torres)\n🏦 ACH: Banco General - Cta Ahorros - Jorge Choy - 0472984345786\n\n🚚 *Entregas:* L/Mi/V de 10:00am a 3:00pm.\n\nEnvíanos el comprobante junto con:\n\n📌 *Nombre completo y teléfono*\n📍 *Dirección exacta* (ubicación GPS)\n📝 *Referencia del lugar*", 1000);
       }
       // Opcion 3: Retiro en bodega
-      else if (lower.includes("3") || lower.includes("retiro") || lower.includes("bodega") || lower.includes("recoger") || lower.includes("buscar") || lower.includes("ir")) {
+      else if (lower === "3" || lower.includes("retiro") || lower.includes("bodega") || lower.includes("recoger") || lower.includes("buscar")) {
         setBotState("mesa_pickup_info");
-        sendBotMessage("🏢 *Retiro en bodega - 3Way Technology*\n📍 El Dorado, Ciudad de Panama\n🗺️ https://maps.app.goo.gl/4vEZ6hhfUtyG99qw9\n\n🕒 *Horario:*\n• Lunes a Viernes: 9:00am - 5:30pm\n• Sabados: 9:00am - 2:00pm\n\nPagas directamente en bodega al retirar tu mesa.\n\n⚠️ *MUY IMPORTANTE:* Al llegar, pregunta por *Angel Peña*. Si no preguntas por el, no se aplica el precio promocional.\n\nSolo envianos:\n\n👤 *Nombre de quien retira*\n🕐 *Hora estimada de llegada*\n\nAsi le avisamos a Angel para que te atienda. 👍", 1000);
+        sendBotMessage("🏢 *Retiro en bodega - 3Way Technology*\n📍 El Dorado, Ciudad de Panamá\n🗺️ https://maps.app.goo.gl/4vEZ6hhfUtyG99qw9\n\n🕒 *Horario:*\n• Lunes a Viernes: 9:00am - 5:30pm\n• Sábados: 9:00am - 2:00pm\n\nPagas directamente en bodega al retirar.\n\n⚠️ *MUY IMPORTANTE:* Al llegar, pregunta por *Ángel Peña*. Si no preguntas por él, no se aplica el precio promocional.\n\nSolo envíanos:\n\n👤 *Nombre de quien retira*\n🕐 *Hora estimada de llegada*\n\nAsí le avisamos a Ángel para que te espere. 👍", 1000);
+      }
+      // Opcion 4: Envio al interior
+      else if (lower === "4" || lower.includes("interior") || lower.includes("provincia")) {
+        setBotState("mesa_delivery_info");
+        sendBotMessage("🚚 *Envío al interior del país*\n\nPara envíos fuera de Ciudad de Panamá, es necesario realizar el pago antes del despacho.\n\n📦 El envío se realiza por *Red Servi* y llega en aproximadamente *2 días hábiles* directamente a tu residencia.\n\n💳 *Paga a:*\n📱 Yappy: 6043-4542 (Jorge Choy) o 6537-0196 (Daysi Torres)\n🏦 ACH: Banco General - Cta Ahorros - Jorge Choy - 0472984345786\n\nEnvíanos el comprobante junto con:\n\n📌 *Nombre completo y teléfono*\n📍 *Dirección exacta, provincia y distrito*\n📝 *Referencia del lugar*\n\nUna vez confirmado el pago, despachamos tu mesa. 📦", 1000);
       } else {
-        sendBotMessage("Por favor indicanos como prefieres:\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (vas a recogerla)", 600);
+        sendBotMessage("Por favor escoge el *número* de la opción que prefieres:\n\n1️⃣ Pago contra entrega\n2️⃣ Pago anticipado + envío\n3️⃣ Retiro en bodega\n4️⃣ Envío al interior del país\n\n👉 Solo escribe el número.", 600);
       }
       return;
     }

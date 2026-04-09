@@ -61,7 +61,7 @@ function CheckoutContent() {
 
           <div className="mt-4 pt-4 border-t border-white/10">
             <p className="text-sm text-gray-400">
-              {isSoftware ? "⚡ Entrega: Inmediata por email y WhatsApp" : `🚚 Envio: GRATIS a todo Panama (Red Servi, 3-5 dias)`}
+              {isSoftware ? "⚡ Entrega: Inmediata por email y WhatsApp" : `🚚 Envio: GRATIS a todo Panamá (Red Servi, 3-5 dias)`}
             </p>
           </div>
 

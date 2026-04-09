@@ -21,14 +21,14 @@ export default function MesasPage() {
         <div className="mb-8">
           <Link href="/synovatech" className="text-cyan-400 text-sm hover:underline">← Volver a inicio</Link>
           <h1 className="text-3xl sm:text-4xl font-bold mt-4">Mesas Gamer y Electricas</h1>
-          <p className="text-gray-400 mt-2">Envio GRATIS a todo Panama por Red Servi. Stock disponible inmediato.</p>
+          <p className="text-gray-400 mt-2">Envio GRATIS a todo Panamá por Red Servi. Stock disponible inmediato.</p>
         </div>
 
         {/* Banner */}
         <div className="bg-gradient-to-r from-purple-900/50 to-pink-900/30 border border-purple-500/20 rounded-xl p-6 mb-8 flex items-center gap-4">
           <span className="text-4xl">🚚</span>
           <div>
-            <p className="font-bold text-lg">Envio GRATIS a todo Panama</p>
+            <p className="font-bold text-lg">Envio GRATIS a todo Panamá</p>
             <p className="text-gray-400 text-sm">Todas las mesas incluyen envio sin costo por Red Servi. Tiempo estimado: 3-5 dias habiles.</p>
           </div>
         </div>

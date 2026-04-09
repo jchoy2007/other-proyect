@@ -1,7 +1,7 @@
 export const BUSINESS = {
   name: "SynovaTech",
   fullName: "SynovaTech PTY",
-  tagline: "Soluciones Tecnologicas Integrales",
+  tagline: "Soluciones Tecnológicas Integrales",
   slogan: "Entrega Inmediata",
   instagram: "@synovatechpty",
   instagramUrl: "https://www.instagram.com/synovatechpty/",
@@ -13,7 +13,7 @@ export const BUSINESS = {
     "Software 100% original: Windows | Office",
     "Configuracion de correos con dominio en GoDaddy",
     "Instalacion remota rapida y segura",
-    "Mesas Gamer con envio gratis a todo Panama",
+    "Mesas Gamer con envio gratis a todo Panamá",
   ],
   payment: {
     yappy: [
@@ -226,8 +226,8 @@ export const DESK_PRODUCTS: Product[] = [
     price: 90,
     dimensions: "140 x 60 x 73 cm",
     description: "Mesa gamer con luces LED y diseno en Y. Compacta, resistente y con estilo.",
-    features: ["Luces LED integradas", "Diseno en Y estilizado", "Estructura de acero resistente", "Superficie antideslizante", "140 x 60 x 73 cm", "Envio GRATIS a todo Panama"],
-    delivery: "Envio gratis a todo Panama por Red Servi (3-5 dias habiles)",
+    features: ["Luces LED integradas", "Diseno en Y estilizado", "Estructura de acero resistente", "Superficie antideslizante", "140 x 60 x 73 cm", "Envio GRATIS a todo Panamá"],
+    delivery: "Envio gratis a todo Panamá por Red Servi (3-5 dias habiles)",
   },
   {
     id: "mesa-h2-led",
@@ -237,8 +237,8 @@ export const DESK_PRODUCTS: Product[] = [
     price: 110,
     dimensions: "140 x 60 x 73 cm",
     description: "Mesa gamer con luces LED integradas. Diseno moderno y resistente para tu setup gaming.",
-    features: ["Luces LED integradas", "Estructura de acero resistente", "Superficie antideslizante", "Porta vasos y gancho para audifonos", "140 x 60 x 73 cm", "Envio GRATIS a todo Panama"],
-    delivery: "Envio gratis a todo Panama por Red Servi (3-5 dias habiles)",
+    features: ["Luces LED integradas", "Estructura de acero resistente", "Superficie antideslizante", "Porta vasos y gancho para audifonos", "140 x 60 x 73 cm", "Envio GRATIS a todo Panamá"],
+    delivery: "Envio gratis a todo Panamá por Red Servi (3-5 dias habiles)",
   },
   {
     id: "mesa-electrica-negra",
@@ -248,8 +248,8 @@ export const DESK_PRODUCTS: Product[] = [
     price: 130,
     dimensions: "140 x 60 x 81-118 cm (ajustable)",
     description: "Mesa con motor electrico de altura ajustable. Trabaja sentado o de pie con un boton.",
-    features: ["Motor electrico de ajuste de altura", "Rango: 81 a 118 cm", "Color: Negro", "Panel de control integrado", "140 x 60 cm superficie", "Envio GRATIS a todo Panama"],
-    delivery: "Envio gratis a todo Panama por Red Servi (3-5 dias habiles)",
+    features: ["Motor electrico de ajuste de altura", "Rango: 81 a 118 cm", "Color: Negro", "Panel de control integrado", "140 x 60 cm superficie", "Envio GRATIS a todo Panamá"],
+    delivery: "Envio gratis a todo Panamá por Red Servi (3-5 dias habiles)",
   },
   {
     id: "mesa-electrica-blanca",
@@ -259,8 +259,8 @@ export const DESK_PRODUCTS: Product[] = [
     price: 130,
     dimensions: "140 x 60 x 81-118 cm (ajustable)",
     description: "Mesa con motor electrico de altura ajustable en color blanco. Elegante y funcional.",
-    features: ["Motor electrico de ajuste de altura", "Rango: 81 a 118 cm", "Color: Blanco", "Panel de control integrado", "140 x 60 cm superficie", "Envio GRATIS a todo Panama"],
-    delivery: "Envio gratis a todo Panama por Red Servi (3-5 dias habiles)",
+    features: ["Motor electrico de ajuste de altura", "Rango: 81 a 118 cm", "Color: Blanco", "Panel de control integrado", "140 x 60 cm superficie", "Envio GRATIS a todo Panamá"],
+    delivery: "Envio gratis a todo Panamá por Red Servi (3-5 dias habiles)",
   },
   {
     id: "mesa-r5-7",
@@ -270,8 +270,8 @@ export const DESK_PRODUCTS: Product[] = [
     price: 95,
     dimensions: "140 x 60 x 73 cm",
     description: "Mesa gamer resistente y espaciosa. Excelente relacion calidad-precio.",
-    features: ["Estructura de acero reforzado", "Superficie amplia", "Diseno ergonomico", "Porta vasos y gancho para audifonos", "140 x 60 x 73 cm", "Envio GRATIS a todo Panama"],
-    delivery: "Envio gratis a todo Panama por Red Servi (3-5 dias habiles)",
+    features: ["Estructura de acero reforzado", "Superficie amplia", "Diseno ergonomico", "Porta vasos y gancho para audifonos", "140 x 60 x 73 cm", "Envio GRATIS a todo Panamá"],
+    delivery: "Envio gratis a todo Panamá por Red Servi (3-5 dias habiles)",
   },
   {
     id: "mesa-z5-6",
@@ -281,8 +281,8 @@ export const DESK_PRODUCTS: Product[] = [
     price: 95,
     dimensions: "140 x 60 x 73 cm",
     description: "Mesa gamer con diseno Z estilizado. Estable y con espacio para todo tu equipo.",
-    features: ["Diseno en Z estilizado", "Estructura de acero", "Superficie amplia antideslizante", "Porta vasos y gancho para audifonos", "140 x 60 x 73 cm", "Envio GRATIS a todo Panama"],
-    delivery: "Envio gratis a todo Panama por Red Servi (3-5 dias habiles)",
+    features: ["Diseno en Z estilizado", "Estructura de acero", "Superficie amplia antideslizante", "Porta vasos y gancho para audifonos", "140 x 60 x 73 cm", "Envio GRATIS a todo Panamá"],
+    delivery: "Envio gratis a todo Panamá por Red Servi (3-5 dias habiles)",
   },
   {
     id: "mesa-s60-led",
@@ -292,8 +292,8 @@ export const DESK_PRODUCTS: Product[] = [
     price: 145,
     dimensions: "140 x 60 x 81-118 cm (ajustable)",
     description: "La mesa mas completa: motor electrico ajustable + luces LED. Lo mejor de ambos mundos.",
-    features: ["Motor electrico de ajuste de altura", "Luces LED integradas", "Rango: 81 a 118 cm", "Panel de control", "140 x 60 cm superficie", "Envio GRATIS a todo Panama"],
-    delivery: "Envio gratis a todo Panama por Red Servi (3-5 dias habiles)",
+    features: ["Motor electrico de ajuste de altura", "Luces LED integradas", "Rango: 81 a 118 cm", "Panel de control", "140 x 60 cm superficie", "Envio GRATIS a todo Panamá"],
+    delivery: "Envio gratis a todo Panamá por Red Servi (3-5 dias habiles)",
   },
   {
     id: "mesa-s2-l",
@@ -303,8 +303,8 @@ export const DESK_PRODUCTS: Product[] = [
     price: 125,
     dimensions: "190 x 60 x 73 cm",
     description: 'Mesa gamer reversible que puedes usar en forma de "L" o recta. La mas grande y versatil.',
-    features: ['Configuracion en "L" o recta', "190 cm de largo - la mas grande", "Estructura de acero reforzado", "Ideal para setup con multiples monitores", "190 x 60 x 73 cm", "Envio GRATIS a todo Panama"],
-    delivery: "Envio gratis a todo Panama por Red Servi (3-5 dias habiles)",
+    features: ['Configuracion en "L" o recta', "190 cm de largo - la mas grande", "Estructura de acero reforzado", "Ideal para setup con multiples monitores", "190 x 60 x 73 cm", "Envio GRATIS a todo Panamá"],
+    delivery: "Envio gratis a todo Panamá por Red Servi (3-5 dias habiles)",
   },
 ];
 

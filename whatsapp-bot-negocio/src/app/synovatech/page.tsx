@@ -41,7 +41,7 @@ export default function SynovaTechHome() {
               Entrega Inmediata - Software 100% Original
             </div>
             <h1 className="text-4xl sm:text-6xl font-black leading-tight mb-6">
-              Licencias <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Originales</span> al Mejor Precio de Panama
+              Licencias <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Originales</span> al Mejor Precio de Panamá
             </h1>
             <p className="text-lg sm:text-xl text-gray-400 mb-8">
               Windows, Office, Servidores y Mesas Gamer. Software con entrega inmediata y mesas con envio gratis a todo el pais.
@@ -61,7 +61,7 @@ export default function SynovaTechHome() {
             {[
               { icon: "⚡", label: "Entrega Inmediata", sub: "Software al instante" },
               { icon: "✅", label: "100% Original", sub: "Licencias genuinas" },
-              { icon: "🚚", label: "Envio Gratis", sub: "Mesas a todo Panama" },
+              { icon: "🚚", label: "Envio Gratis", sub: "Mesas a todo Panamá" },
               { icon: "🛡️", label: "Soporte Incluido", sub: "Instalacion remota" },
             ].map((badge, i) => (
               <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
@@ -91,7 +91,7 @@ export default function SynovaTechHome() {
               <div className="relative z-10">
                 <span className="text-5xl">🖥️</span>
                 <h3 className="text-2xl font-bold mt-4 mb-2 group-hover:text-purple-400 transition-colors">Mesas Gamer</h3>
-                <p className="text-gray-400 mb-4">Mesas gamer, electricas ajustables y con LED. Envio GRATIS a todo Panama por Red Servi.</p>
+                <p className="text-gray-400 mb-4">Mesas gamer, electricas ajustables y con LED. Envio GRATIS a todo Panamá por Red Servi.</p>
                 <p className="text-purple-400 font-semibold">Desde $95.00 → Ver mesas</p>
               </div>
             </Link>
@@ -215,7 +215,7 @@ export default function SynovaTechHome() {
               <ul className="space-y-1 text-sm text-gray-400">
                 <li>WhatsApp: {BUSINESS.whatsappDisplay}</li>
                 <li>{BUSINESS.email}</li>
-                <li>Panama</li>
+                <li>Panamá</li>
               </ul>
             </div>
           </div>

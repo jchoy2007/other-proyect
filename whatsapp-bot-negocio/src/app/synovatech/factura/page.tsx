@@ -47,13 +47,13 @@ function InvoiceContent() {
                 <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center text-white font-black text-sm">ST</div>
                 <div>
                   <h1 className="text-xl font-bold text-gray-900">SynovaTech PTY</h1>
-                  <p className="text-xs text-gray-500">Soluciones Tecnologicas Integrales</p>
+                  <p className="text-xs text-gray-500">Soluciones Tecnológicas Integrales</p>
                 </div>
               </div>
               <div className="mt-3 text-xs text-gray-500 space-y-0.5">
                 <p>{BUSINESS.email}</p>
                 <p>WhatsApp: {BUSINESS.whatsappDisplay}</p>
-                <p>Panama</p>
+                <p>Panamá</p>
               </div>
             </div>
             <div className="text-right">
@@ -87,7 +87,7 @@ function InvoiceContent() {
                 {product.category === "mesa" && (
                   <tr className="border-b border-gray-100">
                     <td className="py-3">
-                      <p className="text-gray-700">Envio a todo Panama (Red Servi)</p>
+                      <p className="text-gray-700">Envio a todo Panamá (Red Servi)</p>
                     </td>
                     <td className="py-3 text-center text-gray-700">1</td>
                     <td className="py-3 text-right text-gray-700">$0.00</td>
