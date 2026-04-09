@@ -60,9 +60,17 @@ function CheckoutContent() {
           </div>
 
           <div className="mt-4 pt-4 border-t border-white/10">
-            <p className="text-sm text-gray-400">
-              {isSoftware ? "⚡ Entrega: Inmediata por email y WhatsApp" : `🚚 Envio: GRATIS a todo Panamá (Red Servi, 3-5 dias)`}
-            </p>
+            {isSoftware ? (
+              <p className="text-sm text-gray-400">⚡ Entrega: Inmediata por email y WhatsApp</p>
+            ) : (
+              <div className="space-y-2 text-sm text-gray-400">
+                <p className="font-semibold text-white text-xs uppercase tracking-wide mb-2">Opciones de entrega:</p>
+                <p>🏠 *Pago contra entrega* - Te la llevamos y pagas al recibir (L/Mi/V 10am-3pm)</p>
+                <p>💳 *Pago anticipado* - Pagas y te la enviamos gratis en Ciudad de Panamá</p>
+                <p>🏢 *Retiro en bodega* - 3Way Technology, El Dorado (L-V 9am-5:30pm, Sáb 9am-2pm)</p>
+                <p>🚚 *Envío al interior* - Se paga antes, Red Servi, 2 días hábiles a tu residencia</p>
+              </div>
+            )}
           </div>
 
           <ul className="mt-4 grid grid-cols-2 gap-2">

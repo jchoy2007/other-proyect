@@ -24,12 +24,31 @@ export default function MesasPage() {
           <p className="text-gray-400 mt-2">Envio GRATIS a todo Panamá por Red Servi. Stock disponible inmediato.</p>
         </div>
 
-        {/* Banner */}
-        <div className="bg-gradient-to-r from-purple-900/50 to-pink-900/30 border border-purple-500/20 rounded-xl p-6 mb-8 flex items-center gap-4">
-          <span className="text-4xl">🚚</span>
-          <div>
-            <p className="font-bold text-lg">Envio GRATIS a todo Panamá</p>
-            <p className="text-gray-400 text-sm">Todas las mesas incluyen envio sin costo por Red Servi. Tiempo estimado: 3-5 dias habiles.</p>
+        {/* Opciones de entrega */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div className="bg-white/5 border border-green-500/20 rounded-xl p-5">
+            <span className="text-2xl">🏠</span>
+            <h3 className="font-bold text-sm mt-2 text-green-400">Pago contra entrega</h3>
+            <p className="text-xs text-gray-400 mt-1">Te la llevamos y pagas al recibirla. Efectivo, Yappy o transferencia al momento.</p>
+            <p className="text-xs text-gray-500 mt-2">📅 L/Mi/V de 10am a 3pm</p>
+          </div>
+          <div className="bg-white/5 border border-cyan-500/20 rounded-xl p-5">
+            <span className="text-2xl">💳</span>
+            <h3 className="font-bold text-sm mt-2 text-cyan-400">Pago anticipado + envío</h3>
+            <p className="text-xs text-gray-400 mt-1">Pagas primero por Yappy o ACH y te la enviamos gratis en Ciudad de Panamá.</p>
+            <p className="text-xs text-gray-500 mt-2">📅 L/Mi/V de 10am a 3pm</p>
+          </div>
+          <div className="bg-white/5 border border-purple-500/20 rounded-xl p-5">
+            <span className="text-2xl">🏢</span>
+            <h3 className="font-bold text-sm mt-2 text-purple-400">Retiro en bodega</h3>
+            <p className="text-xs text-gray-400 mt-1">Recoge tu mesa en 3Way Technology, El Dorado, Ciudad de Panamá. Pagas allá.</p>
+            <p className="text-xs text-gray-500 mt-2">🕒 L-V 9am-5:30pm | Sáb 9am-2pm</p>
+          </div>
+          <div className="bg-white/5 border border-yellow-500/20 rounded-xl p-5">
+            <span className="text-2xl">🚚</span>
+            <h3 className="font-bold text-sm mt-2 text-yellow-400">Envío al interior</h3>
+            <p className="text-xs text-gray-400 mt-1">Se paga antes del despacho. Envío por Red Servi directo a tu residencia.</p>
+            <p className="text-xs text-gray-500 mt-2">📦 Entrega en 2 días hábiles</p>
           </div>
         </div>
 

@@ -144,6 +144,26 @@ export default function SynovaTechHome() {
               </Link>
             ))}
           </div>
+
+          {/* Delivery options mini */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8">
+            <div className="bg-white/5 rounded-lg p-3 text-center">
+              <span className="text-lg">🏠</span>
+              <p className="text-xs text-gray-400 mt-1">Pago contra entrega</p>
+            </div>
+            <div className="bg-white/5 rounded-lg p-3 text-center">
+              <span className="text-lg">💳</span>
+              <p className="text-xs text-gray-400 mt-1">Pago anticipado + envío</p>
+            </div>
+            <div className="bg-white/5 rounded-lg p-3 text-center">
+              <span className="text-lg">🏢</span>
+              <p className="text-xs text-gray-400 mt-1">Retiro en bodega</p>
+            </div>
+            <div className="bg-white/5 rounded-lg p-3 text-center">
+              <span className="text-lg">🚚</span>
+              <p className="text-xs text-gray-400 mt-1">Envío al interior</p>
+            </div>
+          </div>
         </div>
       </section>
 
