@@ -243,8 +243,11 @@ export default function SynovaTechBotDemo() {
       if (lower.includes("pagu") || lower.includes("pagué") || lower.includes("pague") || lower.includes("listo") || lower.includes("enviado") || lower.includes("comprobante") || lower.includes("transferi") || lower.includes("transferí") || lower.includes("foto") || lower.includes("captura") || lower.includes("si") || lower.includes("sí")) {
         setBotState("idle");
         sendBotMessage("¡Gracias! 🙌 Te conecto con un asesor para verificar tu pago y enviarte tu clave de inmediato.\n\nEn un momento te atenderá. 👤\n\n[TRANSFERIR]", 800);
+      } else if (lower.includes("no") || lower.includes("menu") || lower.includes("menú") || lower.includes("cancelar") || lower.includes("salir") || lower.includes("volver") || lower === "0") {
+        setBotState("menu");
+        sendBotMessage("Sin problema. 👍 ¿En qué más te puedo ayudar?\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Métodos de pago\n4️⃣ Guía de instalación\n5️⃣ Hablar con un asesor\n\n👉 Escoge el número.", 800);
       } else {
-        sendBotMessage("Para procesar tu compra, por favor:\n\n📸 *Envíanos una foto del comprobante de pago*\n\nO si ya pagaste, escríbenos *\"ya pagué\"* y te conectamos con un asesor para enviarte tu clave al instante. ⚡", 800);
+        sendBotMessage("Para procesar tu compra:\n\n📸 *Envíanos una foto del comprobante de pago*\nO escríbenos *\"ya pagué\"*\n\nSi no deseas continuar, escribe *0* para volver al menú. ⚡", 800);
       }
       return;
     }
@@ -277,8 +280,13 @@ export default function SynovaTechBotDemo() {
       else if (lower === "4" || lower.includes("interior") || lower.includes("provincia")) {
         setBotState("mesa_delivery_info");
         sendBotMessage("🚚 *Envío al interior del país*\n\nPara envíos fuera de Ciudad de Panamá, es necesario realizar el pago antes del despacho.\n\n📦 El envío se realiza por *Red Servi* y llega en aproximadamente *2 días hábiles* directamente a tu residencia.\n\n💳 *Paga a:*\n📱 Yappy: 6043-4542 (Jorge Choy) o 6537-0196 (Daysi Torres)\n🏦 ACH: Banco General - Cta Ahorros - Jorge Choy - 0472984345786\n\nEnvíanos el comprobante junto con:\n\n📌 *Nombre completo y teléfono*\n📍 *Dirección exacta, provincia y distrito*\n📝 *Referencia del lugar*\n\nUna vez confirmado el pago, despachamos tu mesa. 📦", 1000);
+      }
+      // Cancelar / volver al menú
+      else if (lower.includes("no") || lower.includes("menu") || lower.includes("menú") || lower.includes("cancelar") || lower.includes("salir") || lower.includes("ninguna") || lower.includes("volver") || lower === "0") {
+        setBotState("menu");
+        sendBotMessage("Sin problema. 👍 ¿En qué más te puedo ayudar?\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Métodos de pago\n4️⃣ Guía de instalación\n5️⃣ Hablar con un asesor\n\n👉 Escoge el número.", 800);
       } else {
-        sendBotMessage("Por favor escoge el *número* de la opción que prefieres:\n\n1️⃣ Pago contra entrega\n2️⃣ Pago anticipado + envío\n3️⃣ Retiro en bodega\n4️⃣ Envío al interior del país\n\n👉 Solo escribe el número.", 600);
+        sendBotMessage("No reconocí esa opción. Escoge el *número* o escribe *0* para volver al menú:\n\n1️⃣ Pago contra entrega\n2️⃣ Pago anticipado + envío\n3️⃣ Retiro en bodega\n4️⃣ Envío al interior del país\n0️⃣ Volver al menú principal\n\n👉 Solo escribe el número.", 600);
       }
       return;
     }
