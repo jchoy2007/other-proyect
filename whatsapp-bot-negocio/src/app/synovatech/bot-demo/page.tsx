@@ -46,6 +46,14 @@ function getResponse(input: string): { text: string; delay: number } {
     return { text: catalog.pago, delay: 800 };
   }
 
+  // Instalacion Windows -> transferir a asesor
+  if ((lower.includes("instalar") || lower.includes("instalacion") || lower.includes("descargar") || lower.includes("descarga")) && (lower.includes("windows") || lower.includes("win 10") || lower.includes("win 11"))) {
+    return {
+      text: "La instalacion de Windows requiere atencion personalizada para asegurarnos de que todo quede perfecto. 💻\n\nTe voy a conectar con un asesor que te guiara paso a paso o se conectara remotamente a tu PC para hacerlo por ti. *Sin costo adicional.*\n\nEn un momento te atendera. 👤\n\n[TRANSFERIR]",
+      delay: 900,
+    };
+  }
+
   // Instalacion Office especifica
   if ((lower.includes("instalar") || lower.includes("instalacion") || lower.includes("descargar") || lower.includes("descarga")) && lower.includes("2024")) {
     return { text: catalog.instalacion_office_2024, delay: 900 };
@@ -63,7 +71,7 @@ function getResponse(input: string): { text: string; delay: number } {
   // Instalacion general
   if (lower === "4" || lower.includes("instalacion") || lower.includes("instalar") || lower.includes("activar") || lower.includes("guia") || lower.includes("descargar") || lower.includes("descarga")) {
     return {
-      text: "¿Para que producto necesitas la guia de instalacion?\n\n1️⃣ Windows (10 u 11)\n2️⃣ Office 2016\n3️⃣ Office 2019\n4️⃣ Office 2021\n5️⃣ Office 2024\n\n⚠️ Los Office son *solo para PC* (no compatibles con MAC).\n\n💡 Tambien ofrecemos *instalacion remota gratuita* si prefieres que te ayudemos directamente.",
+      text: "¿Para que producto necesitas la guia de instalacion?\n\n1️⃣ Windows (10 u 11) → Te conectamos con un asesor\n2️⃣ Office 2016\n3️⃣ Office 2019\n4️⃣ Office 2021\n5️⃣ Office 2024\n\n⚠️ Los Office son *solo para PC* (no compatibles con MAC).\n\n💡 Para Windows, un asesor te ayuda personalmente o se conecta a tu PC de forma remota sin costo.",
       delay: 800,
     };
   }
