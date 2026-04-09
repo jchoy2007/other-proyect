@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import Link from "next/link";
 import { getProduct, BUSINESS } from "@/lib/synovatech-data";
 
@@ -9,6 +9,11 @@ function CheckoutContent() {
   const searchParams = useSearchParams();
   const productId = searchParams.get("id");
   const product = productId ? getProduct(productId) : null;
+  const [orderNumber, setOrderNumber] = useState("");
+
+  useEffect(() => {
+    setOrderNumber(`ST-${Date.now().toString().slice(-6)}`);
+  }, []);
 
   if (!product) {
     return (
@@ -21,7 +26,6 @@ function CheckoutContent() {
     );
   }
 
-  const orderNumber = `ST-${Date.now().toString().slice(-6)}`;
   const isSoftware = product.category === "software";
 
   const whatsappMsg = encodeURIComponent(
