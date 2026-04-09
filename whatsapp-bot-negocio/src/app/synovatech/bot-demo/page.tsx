@@ -84,44 +84,106 @@ function getResponse(input: string): { text: string; delay: number } {
     };
   }
 
-  // OEM vs Retail
-  if (lower.includes("oem") || lower.includes("retail") || lower.includes("diferencia")) {
+  // OEM vs Retail (solo si pregunta la diferencia, no si pide un producto)
+  if ((lower.includes("diferencia") || lower === "oem" || lower === "retail") && !lower.includes("win") && !lower.includes("pro") && !lower.includes("home")) {
     return { text: catalog.oem_retail, delay: 900 };
   }
 
-  // Precio especifico
+  // === PRODUCTOS ESPECIFICOS - Respuesta directa con datos de pago ===
+
+  // Windows 11 Pro OEM
+  if (lower.includes("11 pro oem") || lower.includes("11 pro") && lower.includes("oem")) {
+    return {
+      text: "📦 *Windows 11 Pro OEM*\nPrecio: *$12.00*\n\nLicencia original Microsoft.\nActivacion permanente - 1 PC (no transferible).\nIncluye: BitLocker, Hyper-V, Remote Desktop.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $12.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
+    };
+  }
+
+  // Windows 11 Pro Retail
+  if (lower.includes("11 pro retail") || (lower.includes("11 pro") && lower.includes("retail"))) {
+    return {
+      text: "📦 *Windows 11 Pro Retail*\nPrecio: *$17.00*\n\nLicencia original Microsoft.\nActivacion permanente - Transferible a otro PC.\nIncluye: BitLocker, Hyper-V, Remote Desktop.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $17.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
+    };
+  }
+
+  // Windows 11 Home OEM
+  if (lower.includes("11 home oem") || (lower.includes("11 home") && lower.includes("oem"))) {
+    return {
+      text: "📦 *Windows 11 Home OEM*\nPrecio: *$10.00*\n\nLicencia original Microsoft.\nActivacion permanente - 1 PC (no transferible).\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $10.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
+    };
+  }
+
+  // Windows 11 Home Retail
+  if (lower.includes("11 home retail") || (lower.includes("11 home") && lower.includes("retail"))) {
+    return {
+      text: "📦 *Windows 11 Home Retail*\nPrecio: *$15.00*\n\nLicencia original Microsoft.\nActivacion permanente - Transferible a otro PC.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $15.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
+    };
+  }
+
+  // Windows 11 Pro (sin especificar OEM/Retail)
+  if (lower.includes("windows 11 pro") || lower.includes("win 11 pro")) {
+    return {
+      text: "📦 *Windows 11 Pro* - Tenemos 2 opciones:\n\n• *OEM* (1 PC, no transferible): *$12.00*\n• *Retail* (transferible a otro PC): *$17.00*\n\n💡 *OEM* es ideal si no piensas cambiar de PC. *Retail* si cambias de equipo seguido.\n\n¿Cual prefieres?",
+      delay: 900,
+    };
+  }
+
+  // Windows 11 Home (sin especificar)
+  if (lower.includes("windows 11 home") || lower.includes("win 11 home")) {
+    return {
+      text: "📦 *Windows 11 Home* - Tenemos 2 opciones:\n\n• *OEM* (1 PC, no transferible): *$10.00*\n• *Retail* (transferible a otro PC): *$15.00*\n\n💡 *OEM* es ideal si no piensas cambiar de PC. *Retail* si cambias de equipo seguido.\n\n¿Cual prefieres?",
+      delay: 900,
+    };
+  }
+
+  // Windows 10 Pro OEM
+  if (lower.includes("10 pro") || lower.includes("windows 10 pro") || lower.includes("win 10 pro")) {
+    return {
+      text: "📦 *Windows 10 Pro OEM*\nPrecio: *$10.00*\n\nLicencia original Microsoft.\nActivacion permanente - 1 PC.\nIncluye: BitLocker, Remote Desktop.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $10.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
+    };
+  }
+
+  // Windows 10 Home OEM
+  if (lower.includes("10 home") || lower.includes("windows 10 home") || lower.includes("win 10 home")) {
+    return {
+      text: "📦 *Windows 10 Home OEM*\nPrecio: *$8.00*\n\nLicencia original Microsoft.\nActivacion permanente - 1 PC.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $8.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
+    };
+  }
+
+  // Office 2024
   if (lower.includes("office 2024") || lower.includes("2024")) {
     return {
-      text: "📦 *Office Profesional Pro Plus 2024*\nPrecio: *$45.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher, Teams.\nFunciones de IA incluidas.\nLicencia permanente - 1 PC.\n\n⚡ Entrega inmediata por email y WhatsApp.\n\n¿Lo quieres comprar? Te paso los datos de pago. 😊",
-      delay: 900,
+      text: "📦 *Office Profesional Pro Plus 2024*\nPrecio: *$45.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher, Teams + IA.\nLicencia permanente - 1 PC.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $45.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
     };
   }
 
+  // Office 2021
   if (lower.includes("office 2021") || lower.includes("2021")) {
     return {
-      text: "📦 *Office Profesional Pro Plus 2021*\nPrecio: *$25.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher, Teams.\nLicencia permanente - 1 PC.\n\n⚡ Entrega inmediata por email y WhatsApp.\n\n¿Lo quieres comprar? Te paso los datos de pago.",
-      delay: 900,
+      text: "📦 *Office Profesional Pro Plus 2021*\nPrecio: *$25.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher, Teams.\nLicencia permanente - 1 PC.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $25.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
     };
   }
 
+  // Office 2019
   if (lower.includes("office 2019") || lower.includes("2019")) {
     return {
-      text: "📦 *Office Profesional Pro Plus 2019*\nPrecio: *$15.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher.\nLicencia permanente - 1 PC.\n\n⚡ Entrega inmediata por email y WhatsApp.\n\n¿Lo quieres comprar?",
-      delay: 900,
+      text: "📦 *Office Profesional Pro Plus 2019*\nPrecio: *$15.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher.\nLicencia permanente - 1 PC.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $15.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
     };
   }
 
+  // Office 2016
   if (lower.includes("office 2016") || lower.includes("2016")) {
     return {
-      text: "📦 *Office Profesional Pro Plus 2016*\nPrecio: *$10.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher.\nLicencia permanente - 1 PC.\n\n⚡ Entrega inmediata por email y WhatsApp.\n\n¿Lo quieres comprar?",
-      delay: 900,
-    };
-  }
-
-  if (lower.includes("win 11 pro") || lower.includes("windows 11 pro")) {
-    return {
-      text: "📦 *Windows 11 Pro*\n\n• OEM (1 PC, no transferible): *$12.00*\n• Retail (transferible): *$17.00*\n\nIncluye: BitLocker, Hyper-V, Remote Desktop.\nActivacion permanente.\n\n¿Cual prefieres? ¿Necesitas saber la diferencia entre OEM y Retail?",
-      delay: 900,
+      text: "📦 *Office Profesional Pro Plus 2016*\nPrecio: *$10.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher.\nLicencia permanente - 1 PC.\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga $10.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.",
+      delay: 1000,
     };
   }
 
