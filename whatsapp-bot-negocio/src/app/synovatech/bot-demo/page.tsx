@@ -9,35 +9,35 @@ interface Message {
 }
 
 const catalog: Record<string, string> = {
-  software: `💻 *CATALOGO DE SOFTWARE*\n⚡ Entrega inmediata por email y WhatsApp\n\n📦 *WINDOWS 11:*\n1️⃣ Win 11 Home OEM - $10.00\n2️⃣ Win 11 Home Retail - $15.00\n3️⃣ Win 11 Pro OEM - $12.00\n4️⃣ Win 11 Pro Retail - $17.00\n\n📦 *WINDOWS 10:*\n5️⃣ Win 10 Home OEM - $8.00\n6️⃣ Win 10 Pro OEM - $10.00\n\n📦 *MICROSOFT OFFICE (solo PC, no MAC):*\n7️⃣ Office Pro Plus 2016 - $10.00\n8️⃣ Office Pro Plus 2019 - $15.00\n9️⃣ Office Pro Plus 2021 - $25.00\n🔟 Office Pro Plus 2024 - $45.00\n\n📦 *WINDOWS SERVER:*\n1️⃣1️⃣ Server 2012 Standard - $12.00\n1️⃣2️⃣ Server 2019 Standard - $15.00\n1️⃣3️⃣ Server 2019 Datacenter - $25.00\n1️⃣4️⃣ Server 2022 Datacenter - $30.00\n1️⃣5️⃣ Server 2025 Standard - $25.00\n1️⃣6️⃣ Server 2025 Datacenter - $35.00\n\n👉 *Escoge el numero del producto que te interesa* o escribe el nombre.`,
-  mesas: `🖥️ *MESAS GAMER Y ELECTRICAS*\n🚚 Envio GRATIS en Ciudad de Panamá\n\n🎮 *MESAS GAMER:*\n1️⃣ Mesa S1-Y (LED) 140x60cm - $90\n2️⃣ Mesa R5-7 140x60cm - $95\n3️⃣ Mesa Z5-6 140x60cm - $95\n4️⃣ Mesa H2 (LED) 140x60cm - $110\n5️⃣ Mesa S2 Reversible "L" 190x60cm - $125\n\n⚡ *MESAS ELECTRICAS AJUSTABLES:*\n6️⃣ Electrica Negra 140x60cm - $130\n7️⃣ Electrica Blanca 140x60cm - $130\n8️⃣ S60 Motor+LED 140x60cm - $145\n\n👉 *Escoge el numero de la mesa que te interesa* o escribe el nombre.`,
-  pago: `💳 *METODOS DE PAGO:*\n\n📱 *Yappy:*\n• 6043-4542 (Jorge Choy)\n• 6537-0196 (Daysi Torres)\n\n🏦 *ACH / Transferencia:*\n• Banco General\n• Cuenta de Ahorros\n• Jorge Choy\n• Cuenta: 0472984345786\n\nDespues de pagar, envianos el comprobante por aqui y procesamos tu pedido de inmediato. ✅`,
-  instalacion_windows: `🔧 *GUIA DE INSTALACION - WINDOWS:*\n\n1️⃣ Descargar la herramienta de creacion de medios de Microsoft\n2️⃣ Crear USB booteable\n3️⃣ Instalar Windows desde el USB\n4️⃣ Activar con la clave que te enviamos\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*. Solo dinos y nos conectamos a tu PC para ayudarte.`,
-  instalacion_office_2024: `🔧 *GUIA DE INSTALACION - OFFICE 2024:*\n⚠️ *Solo para PC (no compatible con MAC)*\n\n1️⃣ Descarga el instalador:\n👉 https://softkeypc.com/wp-content/uploads/2024/12/Office_2024_ES_64Bits.exe\n2️⃣ Ejecuta el archivo descargado\n3️⃣ Sigue las instrucciones de instalacion\n4️⃣ Activa con tu clave al abrir Word, Excel o PowerPoint\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*.`,
-  instalacion_office_2021: `🔧 *GUIA DE INSTALACION - OFFICE 2021:*\n⚠️ *Solo para PC (no compatible con MAC)*\n\n1️⃣ Descarga el archivo .IMG:\n👉 https://officecdn.microsoft.com/db/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/es-es/ProPlus2021Retail.img\n2️⃣ Clic derecho > Montar (o extraer con WinRAR)\n3️⃣ Ejecuta setup.exe\n4️⃣ Activa con tu clave al abrir cualquier app de Office\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*.`,
-  instalacion_office_2019: `🔧 *GUIA DE INSTALACION - OFFICE 2019:*\n⚠️ *Solo para PC (no compatible con MAC)*\n\n1️⃣ Descarga el archivo .IMG:\n👉 https://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/es-es/ProPlus2019Retail.img\n2️⃣ Clic derecho > Montar (o extraer con WinRAR)\n3️⃣ Ejecuta setup.exe\n4️⃣ Activa con tu clave al abrir cualquier app de Office\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*.`,
-  instalacion_office_2016: `🔧 *GUIA DE INSTALACION - OFFICE 2016:*\n⚠️ *Solo para PC (no compatible con MAC)*\n\n1️⃣ Descarga el archivo .IMG:\n👉 https://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/es-es/ProPlusRetail.img\n2️⃣ Clic derecho > Montar (o extraer con WinRAR)\n3️⃣ Ejecuta setup.exe\n4️⃣ Activa con tu clave al abrir cualquier app de Office\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*.`,
+  software: `💻 *CATALOGO DE SOFTWARE*\n⚡ Entrega inmediata por email y WhatsApp\n\n📦 *WINDOWS 11:*\n1️⃣ Win 11 Home OEM - $10.00\n2️⃣ Win 11 Home Retail - $15.00\n3️⃣ Win 11 Pro OEM - $12.00\n4️⃣ Win 11 Pro Retail - $17.00\n\n📦 *WINDOWS 10:*\n5️⃣ Win 10 Home OEM - $8.00\n6️⃣ Win 10 Pro OEM - $10.00\n\n📦 *MICROSOFT OFFICE (solo PC, no MAC):*\n7️⃣ Office Pro Plus 2016 - $10.00\n8️⃣ Office Pro Plus 2019 - $15.00\n9️⃣ Office Pro Plus 2021 - $25.00\n🔟 Office Pro Plus 2024 - $45.00\n\n📦 *WINDOWS SERVER:*\n1️⃣1️⃣ Server 2012 Standard - $12.00\n1️⃣2️⃣ Server 2019 Standard - $15.00\n1️⃣3️⃣ Server 2019 Datacenter - $25.00\n1️⃣4️⃣ Server 2022 Datacenter - $30.00\n1️⃣5️⃣ Server 2025 Standard - $25.00\n1️⃣6️⃣ Server 2025 Datacenter - $35.00\n\n👉 *Escoge el número del producto que te interesa* o escribe el nombre.`,
+  mesas: `🖥️ *MESAS GAMER Y ELECTRICAS*\n🚚 Envio GRATIS en Ciudad de Panamá\n\n🎮 *MESAS GAMER:*\n1️⃣ Mesa S1-Y (LED) 140x60cm - $90\n2️⃣ Mesa R5-7 140x60cm - $95\n3️⃣ Mesa Z5-6 140x60cm - $95\n4️⃣ Mesa H2 (LED) 140x60cm - $110\n5️⃣ Mesa S2 Reversible "L" 190x60cm - $125\n\n⚡ *MESAS ELECTRICAS AJUSTABLES:*\n6️⃣ Electrica Negra 140x60cm - $130\n7️⃣ Electrica Blanca 140x60cm - $130\n8️⃣ S60 Motor+LED 140x60cm - $145\n\n👉 *Escoge el número de la mesa que te interesa* o escribe el nombre.`,
+  pago: `💳 *METODOS DE PAGO:*\n\n📱 *Yappy:*\n• 6043-4542 (Jorge Choy)\n• 6537-0196 (Daysi Torres)\n\n🏦 *ACH / Transferencia:*\n• Banco General\n• Cuenta de Ahorros\n• Jorge Choy\n• Cuenta: 0472984345786\n\nDespues de pagar, envíanos el comprobante por aqui y procesamos tu pedido de inmediato. ✅`,
+  instalacion_windows: `🔧 *GUIA DE INSTALACION - WINDOWS:*\n\n1️⃣ Descargar la herramienta de creacion de medios de Microsoft\n2️⃣ Crear USB booteable\n3️⃣ Instalar Windows desde el USB\n4️⃣ Activar con la clave que te enviamos\n\n💡 Si necesitas ayuda, ofrecemos *instalación remota gratuita*. Solo dinos y nos conectamos a tu PC para ayudarte.`,
+  instalacion_office_2024: `🔧 *GUIA DE INSTALACION - OFFICE 2024:*\n⚠️ *Solo para PC (no compatible con MAC)*\n\n1️⃣ Descarga el instalador:\n👉 https://softkeypc.com/wp-content/uploads/2024/12/Office_2024_ES_64Bits.exe\n2️⃣ Ejecuta el archivo descargado\n3️⃣ Sigue las instrucciones de instalacion\n4️⃣ Activa con tu clave al abrir Word, Excel o PowerPoint\n\n💡 Si necesitas ayuda, ofrecemos *instalación remota gratuita*.`,
+  instalacion_office_2021: `🔧 *GUIA DE INSTALACION - OFFICE 2021:*\n⚠️ *Solo para PC (no compatible con MAC)*\n\n1️⃣ Descarga el archivo .IMG:\n👉 https://officecdn.microsoft.com/db/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/es-es/ProPlus2021Retail.img\n2️⃣ Clic derecho > Montar (o extraer con WinRAR)\n3️⃣ Ejecuta setup.exe\n4️⃣ Activa con tu clave al abrir cualquier app de Office\n\n💡 Si necesitas ayuda, ofrecemos *instalación remota gratuita*.`,
+  instalacion_office_2019: `🔧 *GUIA DE INSTALACION - OFFICE 2019:*\n⚠️ *Solo para PC (no compatible con MAC)*\n\n1️⃣ Descarga el archivo .IMG:\n👉 https://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/es-es/ProPlus2019Retail.img\n2️⃣ Clic derecho > Montar (o extraer con WinRAR)\n3️⃣ Ejecuta setup.exe\n4️⃣ Activa con tu clave al abrir cualquier app de Office\n\n💡 Si necesitas ayuda, ofrecemos *instalación remota gratuita*.`,
+  instalacion_office_2016: `🔧 *GUIA DE INSTALACION - OFFICE 2016:*\n⚠️ *Solo para PC (no compatible con MAC)*\n\n1️⃣ Descarga el archivo .IMG:\n👉 https://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/es-es/ProPlusRetail.img\n2️⃣ Clic derecho > Montar (o extraer con WinRAR)\n3️⃣ Ejecuta setup.exe\n4️⃣ Activa con tu clave al abrir cualquier app de Office\n\n💡 Si necesitas ayuda, ofrecemos *instalación remota gratuita*.`,
   oem_retail: `📋 *DIFERENCIA OEM vs RETAIL:*\n\n🔹 *OEM:* Licencia vinculada a 1 PC. No se puede transferir a otro equipo. Es mas economica.\n\n🔹 *Retail:* Licencia transferible. Si cambias de PC, puedes mover tu licencia al nuevo equipo.\n\n💡 Si tu PC es fijo y no piensas cambiarlo pronto, OEM es la mejor opcion. Si cambias de equipo seguido, Retail es mejor inversion.\n\n¿Te ayudo a elegir?`,
 };
 
 // Software products mapped by number
 const SW: Record<string, { name: string; price: string; extra: string; keywords: string[] }> = {
-  "1":  { name: "Windows 11 Home OEM", price: "$10.00", extra: "Activacion permanente - 1 PC (no transferible).", keywords: ["11 home oem"] },
-  "2":  { name: "Windows 11 Home Retail", price: "$15.00", extra: "Activacion permanente - Transferible a otro PC.", keywords: ["11 home retail"] },
-  "3":  { name: "Windows 11 Pro OEM", price: "$12.00", extra: "Activacion permanente - 1 PC (no transferible).\nBitLocker, Hyper-V, Remote Desktop.", keywords: ["11 pro oem"] },
-  "4":  { name: "Windows 11 Pro Retail", price: "$17.00", extra: "Activacion permanente - Transferible a otro PC.\nBitLocker, Hyper-V, Remote Desktop.", keywords: ["11 pro retail"] },
-  "5":  { name: "Windows 10 Home OEM", price: "$8.00", extra: "Activacion permanente - 1 PC.", keywords: ["10 home"] },
-  "6":  { name: "Windows 10 Pro OEM", price: "$10.00", extra: "Activacion permanente - 1 PC.\nBitLocker, Remote Desktop.", keywords: ["10 pro"] },
+  "1":  { name: "Windows 11 Home OEM", price: "$10.00", extra: "Activación permanente - 1 PC (no transferible).", keywords: ["11 home oem"] },
+  "2":  { name: "Windows 11 Home Retail", price: "$15.00", extra: "Activación permanente - Transferible a otro PC.", keywords: ["11 home retail"] },
+  "3":  { name: "Windows 11 Pro OEM", price: "$12.00", extra: "Activación permanente - 1 PC (no transferible).\nBitLocker, Hyper-V, Remote Desktop.", keywords: ["11 pro oem"] },
+  "4":  { name: "Windows 11 Pro Retail", price: "$17.00", extra: "Activación permanente - Transferible a otro PC.\nBitLocker, Hyper-V, Remote Desktop.", keywords: ["11 pro retail"] },
+  "5":  { name: "Windows 10 Home OEM", price: "$8.00", extra: "Activación permanente - 1 PC.", keywords: ["10 home"] },
+  "6":  { name: "Windows 10 Pro OEM", price: "$10.00", extra: "Activación permanente - 1 PC.\nBitLocker, Remote Desktop.", keywords: ["10 pro"] },
   "7":  { name: "Office Pro Plus 2016", price: "$10.00", extra: "⚠️ Solo para PC (no MAC).\nWord, Excel, PowerPoint, Outlook, Access, Publisher.", keywords: ["office 2016", "2016"] },
   "8":  { name: "Office Pro Plus 2019", price: "$15.00", extra: "⚠️ Solo para PC (no MAC).\nWord, Excel, PowerPoint, Outlook, Access, Publisher.", keywords: ["office 2019", "2019"] },
   "9":  { name: "Office Pro Plus 2021", price: "$25.00", extra: "⚠️ Solo para PC (no MAC).\nWord, Excel, PowerPoint, Outlook, Access, Publisher, Teams.", keywords: ["office 2021", "2021"] },
   "10": { name: "Office Pro Plus 2024", price: "$45.00", extra: "⚠️ Solo para PC (no MAC).\nWord, Excel, PowerPoint, Outlook, Access, Publisher, Teams + IA.", keywords: ["office 2024", "2024"] },
-  "11": { name: "Server 2012 Standard", price: "$12.00", extra: "Activacion permanente.", keywords: ["server 2012", "2012"] },
-  "12": { name: "Server 2019 Standard", price: "$15.00", extra: "Activacion permanente. Hyper-V.", keywords: ["server 2019 standard"] },
-  "13": { name: "Server 2019 Datacenter", price: "$25.00", extra: "Activacion permanente. Virtualizacion ilimitada.", keywords: ["server 2019 datacenter", "2019 datacenter"] },
-  "14": { name: "Server 2022 Datacenter", price: "$30.00", extra: "Activacion permanente. Virtualizacion ilimitada + Azure.", keywords: ["server 2022", "2022"] },
-  "15": { name: "Server 2025 Standard", price: "$25.00", extra: "Activacion permanente. Soporte extendido.", keywords: ["server 2025 standard"] },
-  "16": { name: "Server 2025 Datacenter", price: "$35.00", extra: "Activacion permanente. Virtualizacion ilimitada.", keywords: ["server 2025 datacenter", "2025 datacenter"] },
+  "11": { name: "Server 2012 Standard", price: "$12.00", extra: "Activación permanente.", keywords: ["server 2012", "2012"] },
+  "12": { name: "Server 2019 Standard", price: "$15.00", extra: "Activación permanente. Hyper-V.", keywords: ["server 2019 standard"] },
+  "13": { name: "Server 2019 Datacenter", price: "$25.00", extra: "Activación permanente. Virtualización ilimitada.", keywords: ["server 2019 datacenter", "2019 datacenter"] },
+  "14": { name: "Server 2022 Datacenter", price: "$30.00", extra: "Activación permanente. Virtualización ilimitada + Azure.", keywords: ["server 2022", "2022"] },
+  "15": { name: "Server 2025 Standard", price: "$25.00", extra: "Activación permanente. Soporte extendido.", keywords: ["server 2025 standard"] },
+  "16": { name: "Server 2025 Datacenter", price: "$35.00", extra: "Activación permanente. Virtualización ilimitada.", keywords: ["server 2025 datacenter", "2025 datacenter"] },
 };
 
 const MESA_MAP: Record<string, { name: string; price: string; dims: string; extra: string; keywords: string[] }> = {
@@ -55,14 +55,14 @@ const PAGO_INFO = "📱 Yappy: 6043-4542 (Jorge Choy) o 6537-0196 (Daysi Torres)
 
 function makeSoftwareResponse(sw: typeof SW[string]): { text: string; delay: number } {
   return {
-    text: `📦 *${sw.name}*\nPrecio: *${sw.price}*\n\nLicencia original Microsoft.\n${sw.extra}\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga ${sw.price} a:*\n${PAGO_INFO}\n\n📩 Envianos el comprobante por aqui y te mandamos tu clave al instante.`,
+    text: `📦 *${sw.name}*\nPrecio: *${sw.price}*\n\nLicencia original Microsoft.\n${sw.extra}\n\n⚡ *Entrega inmediata* por email y WhatsApp.\n\n💳 *Para comprar, paga ${sw.price} a:*\n${PAGO_INFO}\n\n📩 Envíanos el comprobante por aqui y te mandamos tu clave al instante.`,
     delay: 1000,
   };
 }
 
 function makeMesaResponse(m: typeof MESA_MAP[string]): { text: string; delay: number; _mesa: boolean } {
   return {
-    text: `🖥️ *${m.name}*\nPrecio: *${m.price}*\nDimensiones: ${m.dims}\n\n${m.extra}\n\n¿Como deseas recibirla? Escoge el numero:\n\n1️⃣ *Pago contra entrega* - Te la llevamos y pagas al recibirla\n2️⃣ *Pago anticipado + envio* - Pagas primero y te la enviamos gratis\n3️⃣ *Retiro en bodega* - Vas a recogerla y pagas alla (El Dorado)\n4️⃣ *Envio al interior* - Se paga antes, llega por Red Servi en 2 dias`,
+    text: `🖥️ *${m.name}*\nPrecio: *${m.price}*\nDimensiones: ${m.dims}\n\n${m.extra}\n\n¿Cómo deseas recibirla? Escoge el número:\n\n1️⃣ *Pago contra entrega* - Te la llevamos y pagas al recibirla\n2️⃣ *Pago anticipado + envío* - Pagas primero y te la enviamos gratis\n3️⃣ *Retiro en bodega* - Vas a recogerla y pagas allá (El Dorado)\n4️⃣ *Envío al interior* - Se paga antes, llega por Red Servi en 2 días`,
     delay: 1000, _mesa: true,
   };
 }
@@ -89,7 +89,7 @@ function getResponse(input: string): { text: string; delay: number; _mesa?: bool
   // Saludos
   if (lower.match(/^(hola|hi|buenos|buenas|hey|que tal|saludos)/)) {
     return {
-      text: "Hola! 👋 Bienvenido a *SynovaTech PTY* - Soluciones Tecnológicas Integrales.\n\n¿En que te puedo ayudar? Escoge un numero:\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Metodos de pago\n4️⃣ Guia de instalacion\n5️⃣ Hablar con un asesor",
+      text: "Hola! 👋 Bienvenido a *SynovaTech PTY* - Soluciones Tecnológicas Integrales.\n\n¿En qué te puedo ayudar? Escoge un número:\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Métodos de pago\n4️⃣ Guía de instalación\n5️⃣ Hablar con un asesor",
       delay: 800,
     };
   }
@@ -102,7 +102,7 @@ function getResponse(input: string): { text: string; delay: number; _mesa?: bool
   // Instalacion Windows -> transferir a asesor
   if ((lower.includes("instalar") || lower.includes("instalacion") || lower.includes("descargar") || lower.includes("descarga")) && (lower.includes("windows") || lower.includes("win 10") || lower.includes("win 11"))) {
     return {
-      text: "La instalacion de Windows requiere atencion personalizada para asegurarnos de que todo quede perfecto. 💻\n\nTe voy a conectar con un asesor que te guiara paso a paso o se conectara remotamente a tu PC para hacerlo por ti. *Sin costo adicional.*\n\nEn un momento te atendera. 👤\n\n[TRANSFERIR]",
+      text: "La instalacion de Windows requiere atención personalizada para asegurarnos de que todo quede perfecto. 💻\n\nTe voy a conectar con un asesor que te guiara paso a paso o se conectara remotamente a tu PC para hacerlo por ti. *Sin costo adicional.*\n\nEn un momento te atenderá. 👤\n\n[TRANSFERIR]",
       delay: 900,
     };
   }
@@ -124,7 +124,7 @@ function getResponse(input: string): { text: string; delay: number; _mesa?: bool
   // Instalacion general (por keyword, "4" se maneja por estado)
   if (lower.includes("instalacion") || lower.includes("instalar") || lower.includes("activar") || lower.includes("guia") || lower.includes("descargar") || lower.includes("descarga")) {
     return {
-      text: "¿Para que producto necesitas la guia de instalacion?\n\n1️⃣ Windows (10 u 11) → Te conectamos con un asesor\n2️⃣ Office 2016\n3️⃣ Office 2019\n4️⃣ Office 2021\n5️⃣ Office 2024\n\n⚠️ Los Office son *solo para PC* (no compatibles con MAC).\n\n💡 Para Windows, un asesor te ayuda personalmente o se conecta a tu PC de forma remota sin costo.",
+      text: "¿Para que producto necesitas la guía de instalación?\n\n1️⃣ Windows (10 u 11) → Te conectamos con un asesor\n2️⃣ Office 2016\n3️⃣ Office 2019\n4️⃣ Office 2021\n5️⃣ Office 2024\n\n⚠️ Los Office son *solo para PC* (no compatibles con MAC).\n\n💡 Para Windows, un asesor te ayuda personalmente o se conecta a tu PC de forma remota sin costo.",
       delay: 800,
     };
   }
@@ -132,7 +132,7 @@ function getResponse(input: string): { text: string; delay: number; _mesa?: bool
   // Agente (por keyword, "5" se maneja por estado)
   if (lower.includes("asesor") || lower.includes("persona") || lower.includes("humano") || lower.includes("agente")) {
     return {
-      text: "Te conecto con un asesor de nuestro equipo. 👤\n\nEn un momento te atendera. Gracias por tu paciencia.\n\n[TRANSFERIR]",
+      text: "Te conecto con un asesor de nuestro equipo. 👤\n\nEn un momento te atenderá. Gracias por tu paciencia.\n\n[TRANSFERIR]",
       delay: 800,
     };
   }
@@ -161,26 +161,26 @@ function getResponse(input: string): { text: string; delay: number; _mesa?: bool
 
   // Server generico
   if (lower.includes("server")) {
-    return { text: "📦 *WINDOWS SERVER:*\n\n1️⃣1️⃣ Server 2012 Standard - *$12.00*\n1️⃣2️⃣ Server 2019 Standard - *$15.00*\n1️⃣3️⃣ Server 2019 Datacenter - *$25.00*\n1️⃣4️⃣ Server 2022 Datacenter - *$30.00*\n1️⃣5️⃣ Server 2025 Standard - *$25.00*\n1️⃣6️⃣ Server 2025 Datacenter - *$35.00*\n\n👉 Escoge el numero.", delay: 900 };
+    return { text: "📦 *WINDOWS SERVER:*\n\n1️⃣1️⃣ Server 2012 Standard - *$12.00*\n1️⃣2️⃣ Server 2019 Standard - *$15.00*\n1️⃣3️⃣ Server 2019 Datacenter - *$25.00*\n1️⃣4️⃣ Server 2022 Datacenter - *$30.00*\n1️⃣5️⃣ Server 2025 Standard - *$25.00*\n1️⃣6️⃣ Server 2025 Datacenter - *$35.00*\n\n👉 Escoge el número.", delay: 900 };
   }
 
   // Comprar generico
   if (lower.includes("comprar") || lower.includes("quiero") || lower.includes("lo quiero")) {
-    return { text: "¿Que te interesa? Escoge:\n\n1️⃣ Ver *software* (Windows, Office)\n2️⃣ Ver *mesas gamer*\n\n👉 Escoge el numero.", delay: 800 };
+    return { text: "¿Qué te interesa? Escoge:\n\n1️⃣ Ver *software* (Windows, Office)\n2️⃣ Ver *mesas gamer*\n\n👉 Escoge el número.", delay: 800 };
   }
 
   // Envio
   if (lower.includes("envio") || lower.includes("enviar") || lower.includes("entrega") || lower.includes("red servi")) {
-    return { text: "📦 *ENVIOS:*\n\n💻 *Software:* Entrega *inmediata* por email y WhatsApp.\n\n🖥️ *Mesas en Panamá capital:* Envio gratis. L/Mi/V 10am-3pm.\n\n🚚 *Mesas al interior:* Por Red Servi, se paga antes. Entrega en 2 días hábiles directo en tu residencia.\n\n¿Algo mas?", delay: 900 };
+    return { text: "📦 *ENVIOS:*\n\n💻 *Software:* Entrega *inmediata* por email y WhatsApp.\n\n🖥️ *Mesas en Panamá capital:* Envio gratis. L/Mi/V 10am-3pm.\n\n🚚 *Mesas al interior:* Por Red Servi, se paga antes. Entrega en 2 días hábiles directo en tu residencia.\n\n¿Algo más?", delay: 900 };
   }
 
   // Garantia
   if (lower.includes("garantia") || lower.includes("original") || lower.includes("legal")) {
-    return { text: "🛡️ Todas nuestras licencias son *100% originales de Microsoft*.\n\n• Activación permanente (de por vida)\n• Funcionan con actualizaciones\n• Soporte de instalación incluido\n• Cualquier problema, lo resolvemos sin costo\n\n¿Algo mas?", delay: 900 };
+    return { text: "🛡️ Todas nuestras licencias son *100% originales de Microsoft*.\n\n• Activación permanente (de por vida)\n• Funcionan con actualizaciones\n• Soporte de instalación incluido\n• Cualquier problema, lo resolvemos sin costo\n\n¿Algo más?", delay: 900 };
   }
 
-  // Factura / cotizacion
-  if (lower.includes("factura") || lower.includes("cotizacion") || lower.includes("cotización") || lower.includes("recibo")) {
+  // Factura / cotización
+  if (lower.includes("factura") || lower.includes("cotización") || lower.includes("cotización") || lower.includes("recibo")) {
     return { text: "🧾 Al momento de tu pedido te generamos una *cotización*. Una vez confirmado tu pago, se genera la *factura oficial* y te la enviamos por email.\n\n¿Algo más?", delay: 800 };
   }
 
@@ -207,7 +207,7 @@ export default function SynovaTechBotDemo() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "bot",
-      text: "Hola! 👋 Bienvenido a *SynovaTech PTY* - Soluciones Tecnológicas Integrales.\n\n¿En que te puedo ayudar hoy?\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Metodos de pago\n4️⃣ Guia de instalacion\n5️⃣ Hablar con un asesor",
+      text: "Hola! 👋 Bienvenido a *SynovaTech PTY* - Soluciones Tecnológicas Integrales.\n\n¿En qué te puedo ayudar hoy?\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Métodos de pago\n4️⃣ Guía de instalación\n5️⃣ Hablar con un asesor",
       time: getTime(),
     },
   ]);
@@ -238,10 +238,14 @@ export default function SynovaTechBotDemo() {
     setMessages((prev) => [...prev, customerMsg]);
     setInput("");
 
-    // === ESTADO: Software ya mostro pago → transferir a asesor ===
+    // === ESTADO: Software mostró datos de pago → pedir comprobante ===
     if (botState === "software_payment") {
-      setBotState("idle");
-      sendBotMessage("Gracias! 🙌 Te conecto con un asesor para confirmar tu pago y enviarte tu clave de inmediato.\n\nEn un momento te atendera. 👤\n\n[TRANSFERIR]", 800);
+      if (lower.includes("pagu") || lower.includes("pagué") || lower.includes("pague") || lower.includes("listo") || lower.includes("enviado") || lower.includes("comprobante") || lower.includes("transferi") || lower.includes("transferí") || lower.includes("foto") || lower.includes("captura") || lower.includes("si") || lower.includes("sí")) {
+        setBotState("idle");
+        sendBotMessage("¡Gracias! 🙌 Te conecto con un asesor para verificar tu pago y enviarte tu clave de inmediato.\n\nEn un momento te atenderá. 👤\n\n[TRANSFERIR]", 800);
+      } else {
+        sendBotMessage("Para procesar tu compra, por favor:\n\n📸 *Envíanos una foto del comprobante de pago*\n\nO si ya pagaste, escríbenos *\"ya pagué\"* y te conectamos con un asesor para enviarte tu clave al instante. ⚡", 800);
+      }
       return;
     }
 
@@ -282,7 +286,7 @@ export default function SynovaTechBotDemo() {
     // === ESTADO: Esperando datos de entrega → transferir ===
     if (botState === "mesa_delivery_info" || botState === "mesa_pickup_info") {
       setBotState("idle");
-      sendBotMessage("Perfecto! 📝 Ya tenemos tus datos. Te conecto con un asesor para confirmar y coordinar todo.\n\nEn un momento te atendera. 👤\n\n[TRANSFERIR]", 800);
+      sendBotMessage("Perfecto! 📝 Ya tenemos tus datos. Te conecto con un asesor para confirmar y coordinar todo.\n\nEn un momento te atenderá. 👤\n\n[TRANSFERIR]", 800);
       return;
     }
 
@@ -307,7 +311,7 @@ export default function SynovaTechBotDemo() {
         return;
       }
       if (lower === "5") {
-        sendBotMessage("Te conecto con un asesor de nuestro equipo. 👤\n\nEn un momento te atenderá. Gracias por tu paciencia.\n\n[TRANSFERIR]", 800);
+        sendBotMessage("Te conecto con un asesor de nuestro equipo. 👤\n\nEn un momento te atenderáá. Gracias por tu paciencia.\n\n[TRANSFERIR]", 800);
         return;
       }
     }
@@ -355,13 +359,13 @@ export default function SynovaTechBotDemo() {
       // Detectar contexto de la respuesta
       if (response._mesa) {
         setBotState("mesa_delivery_choice");
-      } else if (response.text.includes("Para comprar, paga") || response.text.includes("Envianos el comprobante")) {
+      } else if (response.text.includes("Para comprar, paga") || response.text.includes("Envíanos el comprobante")) {
         setBotState("software_payment");
-      } else if (response.text.includes("Escoge el numero del producto")) {
+      } else if (response.text.includes("Escoge el número del producto")) {
         setBotState("software_catalog");
-      } else if (response.text.includes("Escoge el numero de la mesa")) {
+      } else if (response.text.includes("Escoge el número de la mesa")) {
         setBotState("mesa_catalog");
-      } else if (response.text.includes("¿En que te puedo ayudar")) {
+      } else if (response.text.includes("¿En qué te puedo ayudar")) {
         setBotState("menu");
       }
     }, response.delay);
