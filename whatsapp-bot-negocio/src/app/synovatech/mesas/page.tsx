@@ -43,10 +43,9 @@ export default function MesasPage() {
               {/* Product image */}
               <div className="bg-gradient-to-br from-purple-900/30 to-blue-900/30 h-48 flex items-center justify-center overflow-hidden">
                 <img
-                  src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/Mesas/${p.id}.png`}
+                  src={`/other-proyect/mesas/${p.id}.png`}
                   alt={p.name}
                   className="w-full h-full object-cover"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; (e.target as HTMLImageElement).parentElement!.innerHTML = '<span class="text-6xl opacity-50">🖥️</span>'; }}
                 />
               </div>
 
