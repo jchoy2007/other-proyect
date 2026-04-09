@@ -324,10 +324,15 @@ export default function SynovaTechBotDemo() {
         sendBotMessage(makeSoftwareResponse(sw).text, 1000);
         return;
       }
-      // Si escribe "2" quiere ver mesas
-      if (lower === "2") {
-        setBotState("mesa_catalog");
-        sendBotMessage(catalog.mesas, 1000);
+      // Si es un número pero no válido
+      if (/^\d+$/.test(lower)) {
+        if (lower === "2") {
+          setBotState("mesa_catalog");
+          sendBotMessage(catalog.mesas, 1000);
+        } else {
+          sendBotMessage("Ese número no está en nuestro catálogo de software. 😅\n\nTenemos del *1 al 16*. ¿Quieres que te muestre el catálogo otra vez?\n\n👉 Escribe *1* para ver software\n👉 Escribe *2* para ver mesas\n👉 Escribe *5* para hablar con un asesor", 800);
+          setBotState("menu");
+        }
         return;
       }
     }
@@ -341,10 +346,15 @@ export default function SynovaTechBotDemo() {
         sendBotMessage(makeMesaResponse(mesa).text, 1000);
         return;
       }
-      // Si escribe "1" quiere ver software
-      if (lower === "1") {
-        setBotState("software_catalog");
-        sendBotMessage(catalog.software, 1000);
+      // Si es un número pero no válido
+      if (/^\d+$/.test(lower)) {
+        if (lower === "1") {
+          setBotState("software_catalog");
+          sendBotMessage(catalog.software, 1000);
+        } else {
+          sendBotMessage("Ese número no está en nuestro catálogo de mesas. 😅\n\nTenemos del *1 al 8*. ¿Quieres que te muestre las mesas otra vez?\n\n👉 Escribe *2* para ver mesas\n👉 Escribe *1* para ver software\n👉 Escribe *5* para hablar con un asesor", 800);
+          setBotState("menu");
+        }
         return;
       }
     }
