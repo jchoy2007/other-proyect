@@ -394,23 +394,31 @@ export default function SynovaTechBotDemo() {
       return;
     }
 
-    // === ESTADO: Mesa ya mostro pago → preguntar entrega o retiro ===
+    // === ESTADO: Mesa ya mostro producto → preguntar forma de pago y entrega ===
     if (botState === "mesa_payment") {
       setBotState("mesa_delivery_choice");
-      sendBotMessage("Excelente! 🎉 ¿Como prefieres recibir tu mesa?\n\n1️⃣ *Envio a domicilio* (GRATIS a todo Panama)\n2️⃣ *Retiro en bodega* (El Dorado, Ciudad de Panama)", 800);
+      sendBotMessage("Excelente eleccion! 🎉 ¿Como prefieres pagar y recibir tu mesa?\n\n1️⃣ *Pago contra entrega* - Te la llevamos a tu casa y pagas cuando la recibas (efectivo, Yappy o transferencia al momento)\n\n2️⃣ *Pago anticipado + envio* - Pagas primero por Yappy/ACH y te la enviamos gratis\n\n3️⃣ *Retiro en bodega* - Vas a recogerla y pagas directamente alla (El Dorado, Ciudad de Panama)", 1000);
       return;
     }
 
-    // === ESTADO: Eligiendo entrega o retiro ===
+    // === ESTADO: Eligiendo forma de pago/entrega ===
     if (botState === "mesa_delivery_choice") {
-      if (lower.includes("1") || lower.includes("envio") || lower.includes("domicilio") || lower.includes("entrega") || lower.includes("casa")) {
+      // Opcion 1: Pago contra entrega
+      if (lower.includes("1") || lower.includes("contra entrega") || lower.includes("cuando llegue") || lower.includes("cuando reciba")) {
         setBotState("mesa_delivery_info");
-        sendBotMessage("📦 *Entrega a domicilio - Pago contra entrega*\n\nEl producto llega a tu puerta y pagas al momento de recibirlo.\n\n🚚 *Horario de entregas:* Lunes, Miercoles y Viernes de 10:00am a 3:00pm.\n⚠️ Si necesitas otro dia u horario, lo coordinamos con anticipacion.\n\nPor favor envianos los siguientes datos:\n\n📌 *Nombre completo y telefono*\n📍 *Direccion exacta* (preferiblemente ubicacion GPS)\n📝 *Referencia del lugar*\n\nCon esa info coordinamos tu entrega. 🚚", 1000);
-      } else if (lower.includes("2") || lower.includes("retiro") || lower.includes("bodega") || lower.includes("recoger") || lower.includes("buscar")) {
+        sendBotMessage("📦 *Pago contra entrega*\n\nTu mesa llega a tu puerta y pagas en el momento que la recibas. Puedes pagar en efectivo, Yappy o transferencia al recibir.\n\n🚚 *Horario de entregas:* Lunes, Miercoles y Viernes de 10:00am a 3:00pm.\n⚠️ Si necesitas otro dia u horario, lo coordinamos con anticipacion.\n\nPor favor envianos:\n\n📌 *Nombre completo y telefono*\n📍 *Direccion exacta* (ubicacion GPS de preferencia)\n📝 *Referencia del lugar*\n\nCon esa info programamos tu entrega. 🚚", 1000);
+      }
+      // Opcion 2: Pago anticipado
+      else if (lower.includes("2") || lower.includes("anticipado") || lower.includes("antes") || lower.includes("pagar primero") || lower.includes("yappy") || lower.includes("transferencia")) {
+        setBotState("mesa_delivery_info");
+        sendBotMessage("📦 *Pago anticipado + envio gratis*\n\nRealiza tu pago y te enviamos la mesa sin costo adicional.\n\n💳 *Paga a:*\n📱 Yappy: 6043-4542 (Jorge Choy) o 6537-0196 (Daysi Torres)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n🚚 *Horario de entregas:* Lunes, Miercoles y Viernes de 10:00am a 3:00pm.\n\nEnvianos el comprobante de pago junto con:\n\n📌 *Nombre completo y telefono*\n📍 *Direccion exacta* (ubicacion GPS de preferencia)\n📝 *Referencia del lugar*", 1000);
+      }
+      // Opcion 3: Retiro en bodega
+      else if (lower.includes("3") || lower.includes("retiro") || lower.includes("bodega") || lower.includes("recoger") || lower.includes("buscar") || lower.includes("ir")) {
         setBotState("mesa_pickup_info");
-        sendBotMessage("🏢 *Retiro en bodega - 3Way Technology*\n\n📍 Ubicacion: El Dorado, Ciudad de Panama\n🗺️ Google Maps: https://maps.app.goo.gl/4vEZ6hhfUtyG99qw9\n\n🕒 *Horario:*\n• Lunes a Viernes: 9:00am - 5:30pm\n• Sabados: 9:00am - 2:00pm\n\n⚠️ *MUY IMPORTANTE:* Al llegar, pregunta por *Angel Peña*. Si no preguntas por el, no aplica el precio promocional.\n\nPor favor envianos:\n\n👤 *Nombre de quien retira*\n🕐 *Hora estimada de llegada*\n\nAsi le avisamos a Angel que te espere. 👍", 1000);
+        sendBotMessage("🏢 *Retiro en bodega - 3Way Technology*\n📍 El Dorado, Ciudad de Panama\n🗺️ https://maps.app.goo.gl/4vEZ6hhfUtyG99qw9\n\n🕒 *Horario:*\n• Lunes a Viernes: 9:00am - 5:30pm\n• Sabados: 9:00am - 2:00pm\n\nPagas directamente en bodega al retirar tu mesa.\n\n⚠️ *MUY IMPORTANTE:* Al llegar, pregunta por *Angel Peña*. Si no preguntas por el, no se aplica el precio promocional.\n\nSolo envianos:\n\n👤 *Nombre de quien retira*\n🕐 *Hora estimada de llegada*\n\nAsi le avisamos a Angel para que te atienda. 👍", 1000);
       } else {
-        sendBotMessage("Por favor indicanos:\n\n1️⃣ *Envio a domicilio* (gratis)\n2️⃣ *Retiro en bodega* (El Dorado)\n\n¿Cual prefieres?", 600);
+        sendBotMessage("Por favor indicanos como prefieres:\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (vas a recogerla)", 600);
       }
       return;
     }
