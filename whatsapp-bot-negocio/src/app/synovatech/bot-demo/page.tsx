@@ -187,9 +187,9 @@ function getResponse(input: string): { text: string; delay: number; _mesa?: bool
     return { text: "🛡️ Todas nuestras licencias son *100% originales de Microsoft*.\n\n• Activación permanente (de por vida)\n• Funcionan con actualizaciones\n• Soporte de instalación incluido\n• Cualquier problema, lo resolvemos sin costo\n\n¿Algo mas?", delay: 900 };
   }
 
-  // Factura
-  if (lower.includes("factura")) {
-    return { text: "🧾 Sí, generamos factura con cada compra. Después de confirmar tu pago, te la enviamos por email.\n\n¿Algo mas?", delay: 800 };
+  // Factura / cotizacion
+  if (lower.includes("factura") || lower.includes("cotizacion") || lower.includes("cotización") || lower.includes("recibo")) {
+    return { text: "🧾 Al momento de tu pedido te generamos una *cotización*. Una vez confirmado tu pago, se genera la *factura oficial* y te la enviamos por email.\n\n¿Algo más?", delay: 800 };
   }
 
   // Catalogos genericos

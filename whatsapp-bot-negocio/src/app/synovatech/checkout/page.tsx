@@ -168,13 +168,13 @@ function CheckoutContent() {
           </a>
         </div>
 
-        {/* Invoice link */}
+        {/* Cotizacion link */}
         <div className="text-center">
           <Link
-            href={`/synovatech/factura?id=${product.id}&order=${orderNumber}`}
+            href={`/synovatech/factura?id=${product.id}&order=${orderNumber}&type=cotizacion`}
             className="text-sm text-cyan-400 hover:underline"
           >
-            Ver factura de esta compra →
+            Ver cotización de este pedido →
           </Link>
         </div>
       </div>
