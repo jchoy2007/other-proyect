@@ -68,7 +68,7 @@ function makeMesaResponse(m: typeof MESA_MAP[string]): { text: string; delay: nu
 }
 
 function findSoftware(lower: string): typeof SW[string] | null {
-  if (SW[lower]) return SW[lower];
+  // Solo busca por keywords, no por número (números se manejan por estado)
   for (const sw of Object.values(SW)) {
     for (const kw of sw.keywords) { if (lower.includes(kw)) return sw; }
   }
@@ -76,7 +76,7 @@ function findSoftware(lower: string): typeof SW[string] | null {
 }
 
 function findMesa(lower: string): typeof MESA_MAP[string] | null {
-  if (MESA_MAP[lower]) return MESA_MAP[lower];
+  // Solo busca por keywords, no por número
   for (const m of Object.values(MESA_MAP)) {
     for (const kw of m.keywords) { if (lower.includes(kw)) return m; }
   }
@@ -94,16 +94,8 @@ function getResponse(input: string): { text: string; delay: number; _mesa?: bool
     };
   }
 
-  // Pagos (before catalog to avoid "3" conflict)
-  if (lower === "3" && !lower.includes("server")) {
-    return { text: catalog.pago, delay: 800 };
-  }
+  // Pagos (solo por keyword, "3" se maneja por estado de menú)
   if (lower.includes("pago") || lower.includes("yappy") || lower.includes("ach") || lower.includes("transferencia") || lower.includes("pagar")) {
-    return { text: catalog.pago, delay: 800 };
-  }
-
-  // Pagos
-  if (lower === "3" || lower.includes("pago") || lower.includes("yappy") || lower.includes("ach") || lower.includes("transferencia") || lower.includes("pagar")) {
     return { text: catalog.pago, delay: 800 };
   }
 
@@ -129,16 +121,16 @@ function getResponse(input: string): { text: string; delay: number; _mesa?: bool
     return { text: catalog.instalacion_office_2016, delay: 900 };
   }
 
-  // Instalacion general
-  if (lower === "4" || lower.includes("instalacion") || lower.includes("instalar") || lower.includes("activar") || lower.includes("guia") || lower.includes("descargar") || lower.includes("descarga")) {
+  // Instalacion general (por keyword, "4" se maneja por estado)
+  if (lower.includes("instalacion") || lower.includes("instalar") || lower.includes("activar") || lower.includes("guia") || lower.includes("descargar") || lower.includes("descarga")) {
     return {
       text: "¿Para que producto necesitas la guia de instalacion?\n\n1️⃣ Windows (10 u 11) → Te conectamos con un asesor\n2️⃣ Office 2016\n3️⃣ Office 2019\n4️⃣ Office 2021\n5️⃣ Office 2024\n\n⚠️ Los Office son *solo para PC* (no compatibles con MAC).\n\n💡 Para Windows, un asesor te ayuda personalmente o se conecta a tu PC de forma remota sin costo.",
       delay: 800,
     };
   }
 
-  // Agente
-  if (lower === "5" || lower.includes("asesor") || lower.includes("persona") || lower.includes("humano") || lower.includes("agente")) {
+  // Agente (por keyword, "5" se maneja por estado)
+  if (lower.includes("asesor") || lower.includes("persona") || lower.includes("humano") || lower.includes("agente")) {
     return {
       text: "Te conecto con un asesor de nuestro equipo. 👤\n\nEn un momento te atendera. Gracias por tu paciencia.\n\n[TRANSFERIR]",
       delay: 800,
@@ -192,11 +184,11 @@ function getResponse(input: string): { text: string; delay: number; _mesa?: bool
     return { text: "🧾 Al momento de tu pedido te generamos una *cotización*. Una vez confirmado tu pago, se genera la *factura oficial* y te la enviamos por email.\n\n¿Algo más?", delay: 800 };
   }
 
-  // Catalogos genericos
-  if (lower === "1" || lower === "software" || lower === "licencia" || lower === "licencias" || lower.includes("office") || lower.includes("windows")) {
+  // Catalogos genericos (por keyword, números se manejan por estado)
+  if (lower === "software" || lower === "licencia" || lower === "licencias" || lower.includes("office") || lower.includes("windows")) {
     return { text: catalog.software, delay: 1000 };
   }
-  if (lower === "2" || lower === "mesas" || lower === "mesa" || lower === "escritorio" || lower.includes("gamer") || lower.includes("electrica")) {
+  if (lower === "mesas" || lower === "mesa" || lower === "escritorio" || lower.includes("gamer") || lower.includes("electrica")) {
     return { text: catalog.mesas, delay: 1000 };
   }
 
@@ -221,8 +213,8 @@ export default function SynovaTechBotDemo() {
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  // "idle" | "software_payment" | "mesa_payment" | "mesa_delivery_choice" | "mesa_delivery_info" | "mesa_pickup_info"
-  const [botState, setBotState] = useState<string>("idle");
+  // "idle" | "menu" | "software_catalog" | "mesa_catalog" | "software_payment" | "mesa_payment" | "mesa_delivery_choice" | "mesa_delivery_info" | "mesa_pickup_info"
+  const [botState, setBotState] = useState<string>("menu");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -294,18 +286,83 @@ export default function SynovaTechBotDemo() {
       return;
     }
 
-    // === ESTADO NORMAL: procesar mensaje ===
+    // === ESTADO: Menu principal - números 1-5 navegan ===
+    if (botState === "menu" || botState === "idle") {
+      if (lower === "1") {
+        setBotState("software_catalog");
+        sendBotMessage(catalog.software, 1000);
+        return;
+      }
+      if (lower === "2") {
+        setBotState("mesa_catalog");
+        sendBotMessage(catalog.mesas, 1000);
+        return;
+      }
+      if (lower === "3") {
+        sendBotMessage(catalog.pago, 800);
+        return;
+      }
+      if (lower === "4") {
+        sendBotMessage("¿Para qué producto necesitas la guía? Escoge un número:\n\n1️⃣ Windows (10 u 11) → Te conectamos con un asesor\n2️⃣ Office 2016\n3️⃣ Office 2019\n4️⃣ Office 2021\n5️⃣ Office 2024\n\n⚠️ Los Office son *solo para PC* (no MAC).\n💡 Para Windows, un asesor te ayuda o se conecta a tu PC sin costo.", 800);
+        return;
+      }
+      if (lower === "5") {
+        sendBotMessage("Te conecto con un asesor de nuestro equipo. 👤\n\nEn un momento te atenderá. Gracias por tu paciencia.\n\n[TRANSFERIR]", 800);
+        return;
+      }
+    }
+
+    // === ESTADO: Catálogo software - números seleccionan producto ===
+    if (botState === "software_catalog") {
+      const sw = SW[lower];
+      if (sw) {
+        setBotState("software_payment");
+        sendBotMessage(makeSoftwareResponse(sw).text, 1000);
+        return;
+      }
+      // Si escribe "2" quiere ver mesas
+      if (lower === "2") {
+        setBotState("mesa_catalog");
+        sendBotMessage(catalog.mesas, 1000);
+        return;
+      }
+    }
+
+    // === ESTADO: Catálogo mesas - números seleccionan mesa ===
+    if (botState === "mesa_catalog") {
+      const mesaKey = `m${lower}`;
+      const mesa = MESA_MAP[mesaKey];
+      if (mesa) {
+        setBotState("mesa_delivery_choice");
+        sendBotMessage(makeMesaResponse(mesa).text, 1000);
+        return;
+      }
+      // Si escribe "1" quiere ver software
+      if (lower === "1") {
+        setBotState("software_catalog");
+        sendBotMessage(catalog.software, 1000);
+        return;
+      }
+    }
+
+    // === ESTADO NORMAL: procesar por keywords ===
     const response = getResponse(input);
     setIsTyping(true);
 
     setTimeout(() => {
       setIsTyping(false);
       setMessages((prev) => [...prev, { role: "bot", text: response.text, time: getTime() }]);
-      // Detectar tipo de respuesta para activar estado
+      // Detectar contexto de la respuesta
       if (response._mesa) {
         setBotState("mesa_delivery_choice");
       } else if (response.text.includes("Para comprar, paga") || response.text.includes("Envianos el comprobante")) {
         setBotState("software_payment");
+      } else if (response.text.includes("Escoge el numero del producto")) {
+        setBotState("software_catalog");
+      } else if (response.text.includes("Escoge el numero de la mesa")) {
+        setBotState("mesa_catalog");
+      } else if (response.text.includes("¿En que te puedo ayudar")) {
+        setBotState("menu");
       }
     }, response.delay);
   }
