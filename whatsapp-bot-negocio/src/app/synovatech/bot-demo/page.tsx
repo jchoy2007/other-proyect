@@ -362,46 +362,81 @@ export default function SynovaTechBotDemo() {
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [waitingPayment, setWaitingPayment] = useState(false);
+  // "idle" | "software_payment" | "mesa_payment" | "mesa_delivery_choice" | "mesa_delivery_info" | "mesa_pickup_info"
+  const [botState, setBotState] = useState<string>("idle");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
+  function sendBotMessage(text: string, delay: number) {
+    setIsTyping(true);
+    setTimeout(() => {
+      setIsTyping(false);
+      setMessages((prev) => [...prev, { role: "bot", text, time: getTime() }]);
+    }, delay);
+  }
+
   function handleSend(e: React.FormEvent) {
     e.preventDefault();
     if (!input.trim() || isTyping) return;
 
     const customerMsg: Message = { role: "customer", text: input.trim(), time: getTime() };
+    const lower = input.toLowerCase().trim();
     setMessages((prev) => [...prev, customerMsg]);
+    setInput("");
 
-    // Si ya mostramos producto con datos de pago, transferir al asesor
-    if (waitingPayment) {
-      setInput("");
-      setIsTyping(true);
-      setTimeout(() => {
-        setIsTyping(false);
-        setMessages((prev) => [...prev, {
-          role: "bot",
-          text: "Gracias! 🙌 Te conecto con un asesor para confirmar tu pago y procesar tu pedido.\n\nEn un momento te atendera. 👤\n\n[TRANSFERIR]",
-          time: getTime(),
-        }]);
-        setWaitingPayment(false);
-      }, 800);
+    // === ESTADO: Software ya mostro pago → transferir a asesor ===
+    if (botState === "software_payment") {
+      setBotState("idle");
+      sendBotMessage("Gracias! 🙌 Te conecto con un asesor para confirmar tu pago y enviarte tu clave de inmediato.\n\nEn un momento te atendera. 👤\n\n[TRANSFERIR]", 800);
       return;
     }
 
+    // === ESTADO: Mesa ya mostro pago → preguntar entrega o retiro ===
+    if (botState === "mesa_payment") {
+      setBotState("mesa_delivery_choice");
+      sendBotMessage("Excelente! 🎉 ¿Como prefieres recibir tu mesa?\n\n1️⃣ *Envio a domicilio* (GRATIS a todo Panama)\n2️⃣ *Retiro en bodega* (El Dorado, Ciudad de Panama)", 800);
+      return;
+    }
+
+    // === ESTADO: Eligiendo entrega o retiro ===
+    if (botState === "mesa_delivery_choice") {
+      if (lower.includes("1") || lower.includes("envio") || lower.includes("domicilio") || lower.includes("entrega") || lower.includes("casa")) {
+        setBotState("mesa_delivery_info");
+        sendBotMessage("📦 *Entrega a domicilio - Pago contra entrega*\n\nEl producto llega a tu puerta y pagas al momento de recibirlo.\n\n🚚 *Horario de entregas:* Lunes, Miercoles y Viernes de 10:00am a 3:00pm.\n⚠️ Si necesitas otro dia u horario, lo coordinamos con anticipacion.\n\nPor favor envianos los siguientes datos:\n\n📌 *Nombre completo y telefono*\n📍 *Direccion exacta* (preferiblemente ubicacion GPS)\n📝 *Referencia del lugar*\n\nCon esa info coordinamos tu entrega. 🚚", 1000);
+      } else if (lower.includes("2") || lower.includes("retiro") || lower.includes("bodega") || lower.includes("recoger") || lower.includes("buscar")) {
+        setBotState("mesa_pickup_info");
+        sendBotMessage("🏢 *Retiro en bodega - 3Way Technology*\n\n📍 Ubicacion: El Dorado, Ciudad de Panama\n🗺️ Google Maps: https://maps.app.goo.gl/4vEZ6hhfUtyG99qw9\n\n🕒 *Horario:*\n• Lunes a Viernes: 9:00am - 5:30pm\n• Sabados: 9:00am - 2:00pm\n\n⚠️ *MUY IMPORTANTE:* Al llegar, pregunta por *Angel Peña*. Si no preguntas por el, no aplica el precio promocional.\n\nPor favor envianos:\n\n👤 *Nombre de quien retira*\n🕐 *Hora estimada de llegada*\n\nAsi le avisamos a Angel que te espere. 👍", 1000);
+      } else {
+        sendBotMessage("Por favor indicanos:\n\n1️⃣ *Envio a domicilio* (gratis)\n2️⃣ *Retiro en bodega* (El Dorado)\n\n¿Cual prefieres?", 600);
+      }
+      return;
+    }
+
+    // === ESTADO: Esperando datos de entrega → transferir ===
+    if (botState === "mesa_delivery_info" || botState === "mesa_pickup_info") {
+      setBotState("idle");
+      sendBotMessage("Perfecto! 📝 Ya tenemos tus datos. Te conecto con un asesor para confirmar y coordinar todo.\n\nEn un momento te atendera. 👤\n\n[TRANSFERIR]", 800);
+      return;
+    }
+
+    // === ESTADO NORMAL: procesar mensaje ===
     const response = getResponse(input);
-    setInput("");
     setIsTyping(true);
 
     setTimeout(() => {
       setIsTyping(false);
       setMessages((prev) => [...prev, { role: "bot", text: response.text, time: getTime() }]);
-      // Si la respuesta incluye datos de pago, activar modo espera de comprobante
+      // Detectar si mostro producto con datos de pago
       if (response.text.includes("Para comprar, paga") || response.text.includes("Envianos el comprobante")) {
-        setWaitingPayment(true);
+        // Determinar si es mesa o software
+        if (response.text.includes("coordinamos el envio")) {
+          setBotState("mesa_payment");
+        } else {
+          setBotState("software_payment");
+        }
       }
     }, response.delay);
   }
