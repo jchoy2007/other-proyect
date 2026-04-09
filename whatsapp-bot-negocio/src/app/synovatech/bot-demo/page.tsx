@@ -1,0 +1,254 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+
+interface Message {
+  role: "customer" | "bot";
+  text: string;
+  time: string;
+}
+
+const catalog: Record<string, string> = {
+  software: `💻 *CATALOGO DE SOFTWARE*\n(Entrega inmediata por email y WhatsApp)\n\n📦 *WINDOWS 11:*\n• Win 11 Home OEM - $10.00\n• Win 11 Home Retail - $15.00\n• Win 11 Pro OEM - $12.00\n• Win 11 Pro Retail - $17.00\n\n📦 *WINDOWS 10:*\n• Win 10 Home OEM - $8.00\n• Win 10 Pro OEM - $10.00\n\n📦 *MICROSOFT OFFICE:*\n• Office Pro Plus 2016 - $10.00\n• Office Pro Plus 2019 - $15.00\n• Office Pro Plus 2021 - $25.00\n• Office Pro Plus 2024 - $45.00\n\n📦 *WINDOWS SERVER:*\n• Server 2012 Standard - $12.00\n• Server 2019 Standard - $15.00\n• Server 2019 Datacenter - $25.00\n• Server 2022 Datacenter - $30.00\n• Server 2025 Standard - $25.00\n• Server 2025 Datacenter - $35.00\n\n¿Cual te interesa?`,
+  mesas: `🖥️ *MESAS GAMER Y ELECTRICAS*\n(Envio GRATIS a todo Panama)\n\n🎮 *MESAS GAMER:*\n• Mesa S1-Y (LED) 140x60cm - $90\n• Mesa R5-7 140x60cm - $95\n• Mesa Z5-6 140x60cm - $95\n• Mesa H2 (LED) 140x60cm - $110\n• Mesa S2 Reversible "L" 190x60cm - $125\n\n⚡ *MESAS ELECTRICAS AJUSTABLES:*\n• Electrica Negra 140x60cm - $130\n• Electrica Blanca 140x60cm - $130\n• S60 Motor+LED 140x60cm - $145\n\n📦 Envio gratis por Red Servi a todo Panama\n\n¿Cual te interesa?`,
+  pago: `💳 *METODOS DE PAGO:*\n\n📱 *Yappy:*\n• 6043-4542 (Jorge Choy)\n• 6537-0196 (Daysi Torres)\n\n🏦 *ACH / Transferencia:*\n• Banco General\n• Cuenta de Ahorros\n• Jorge Choy\n• Cuenta: 0472984345786\n\nDespues de pagar, envianos el comprobante por aqui y procesamos tu pedido de inmediato. ✅`,
+  instalacion_windows: `🔧 *GUIA DE INSTALACION - WINDOWS:*\n\n1️⃣ Descargar la herramienta de creacion de medios de Microsoft\n2️⃣ Crear USB booteable\n3️⃣ Instalar Windows desde el USB\n4️⃣ Activar con la clave que te enviamos\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*. Solo dinos y nos conectamos a tu PC para ayudarte.`,
+  instalacion_office: `🔧 *GUIA DE INSTALACION - OFFICE:*\n\n1️⃣ Ir a setup.office.com\n2️⃣ Iniciar sesion con tu cuenta Microsoft\n3️⃣ Ingresar la clave del producto\n4️⃣ Descargar e instalar\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*. Solo dinos y nos conectamos a tu PC.`,
+  oem_retail: `📋 *DIFERENCIA OEM vs RETAIL:*\n\n🔹 *OEM:* Licencia vinculada a 1 PC. No se puede transferir a otro equipo. Es mas economica.\n\n🔹 *Retail:* Licencia transferible. Si cambias de PC, puedes mover tu licencia al nuevo equipo.\n\n💡 Si tu PC es fijo y no piensas cambiarlo pronto, OEM es la mejor opcion. Si cambias de equipo seguido, Retail es mejor inversion.\n\n¿Te ayudo a elegir?`,
+};
+
+function getResponse(input: string): { text: string; delay: number } {
+  const lower = input.toLowerCase().trim();
+
+  // Saludos
+  if (lower.match(/^(hola|hi|buenos|buenas|hey|que tal|saludos)/)) {
+    return {
+      text: "Hola! 👋 Bienvenido a *SynovaTech PTY* - Soluciones Tecnologicas Integrales.\n\n¿En que te puedo ayudar?\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Metodos de pago\n4️⃣ Guia de instalacion\n5️⃣ Hablar con un asesor",
+      delay: 800,
+    };
+  }
+
+  // Software
+  if (lower === "1" || lower.includes("software") || lower.includes("windows") || lower.includes("office") || lower.includes("licencia")) {
+    return { text: catalog.software, delay: 1000 };
+  }
+
+  // Mesas
+  if (lower === "2" || lower.includes("mesa") || lower.includes("gamer") || lower.includes("escritorio")) {
+    return { text: catalog.mesas, delay: 1000 };
+  }
+
+  // Pagos
+  if (lower === "3" || lower.includes("pago") || lower.includes("yappy") || lower.includes("ach") || lower.includes("transferencia") || lower.includes("pagar")) {
+    return { text: catalog.pago, delay: 800 };
+  }
+
+  // Instalacion
+  if (lower === "4" || lower.includes("instalacion") || lower.includes("instalar") || lower.includes("activar") || lower.includes("guia")) {
+    return {
+      text: "¿Para que producto necesitas la guia?\n\n1️⃣ Windows (10 u 11)\n2️⃣ Office (2016-2024)\n\nTambien ofrecemos *instalacion remota gratuita* si prefieres que te ayudemos directamente.",
+      delay: 800,
+    };
+  }
+
+  // Agente
+  if (lower === "5" || lower.includes("asesor") || lower.includes("persona") || lower.includes("humano") || lower.includes("agente")) {
+    return {
+      text: "Te conecto con un asesor de nuestro equipo. 👤\n\nEn un momento te atendera. Gracias por tu paciencia.\n\n[TRANSFERIR]",
+      delay: 800,
+    };
+  }
+
+  // OEM vs Retail
+  if (lower.includes("oem") || lower.includes("retail") || lower.includes("diferencia")) {
+    return { text: catalog.oem_retail, delay: 900 };
+  }
+
+  // Precio especifico
+  if (lower.includes("office 2024") || lower.includes("2024")) {
+    return {
+      text: "📦 *Office Profesional Pro Plus 2024*\nPrecio: *$45.00*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher, Teams.\nFunciones de IA incluidas.\nLicencia permanente - 1 PC.\n\n⚡ Entrega inmediata por email y WhatsApp.\n\n¿Lo quieres comprar? Te paso los datos de pago. 😊",
+      delay: 900,
+    };
+  }
+
+  if (lower.includes("office 2021") || lower.includes("2021")) {
+    return {
+      text: "📦 *Office Profesional Pro Plus 2021*\nPrecio: *$25.00*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher, Teams.\nLicencia permanente - 1 PC.\n\n⚡ Entrega inmediata por email y WhatsApp.\n\n¿Lo quieres comprar? Te paso los datos de pago.",
+      delay: 900,
+    };
+  }
+
+  if (lower.includes("win 11 pro") || lower.includes("windows 11 pro")) {
+    return {
+      text: "📦 *Windows 11 Pro*\n\n• OEM (1 PC, no transferible): *$12.00*\n• Retail (transferible): *$17.00*\n\nIncluye: BitLocker, Hyper-V, Remote Desktop.\nActivacion permanente.\n\n¿Cual prefieres? ¿Necesitas saber la diferencia entre OEM y Retail?",
+      delay: 900,
+    };
+  }
+
+  // Comprar / quiero
+  if (lower.includes("comprar") || lower.includes("quiero") || lower.includes("lo quiero") || lower.includes("si")) {
+    return { text: `Perfecto! 🎉\n\nPara procesar tu compra:\n\n${catalog.pago}\n\n⚡ Apenas recibamos tu comprobante, te enviamos tu producto de inmediato.`, delay: 1000 };
+  }
+
+  // Envio
+  if (lower.includes("envio") || lower.includes("enviar") || lower.includes("entrega") || lower.includes("red servi")) {
+    return {
+      text: "📦 *ENVIOS:*\n\n💻 *Software:* Entrega *inmediata* por email y WhatsApp. En minutos tienes tu clave.\n\n🖥️ *Mesas:* Envio *GRATIS* a todo Panama por Red Servi. Tiempo estimado: 3-5 dias habiles. Tambien puedes retirar en nuestras instalaciones.\n\n¿Necesitas algo mas?",
+      delay: 900,
+    };
+  }
+
+  // Garantia
+  if (lower.includes("garantia") || lower.includes("original") || lower.includes("legal")) {
+    return {
+      text: "🛡️ *GARANTIA:*\n\nTodas nuestras licencias son *100% originales de Microsoft*.\n\n• Activacion permanente (de por vida)\n• Funcionan con actualizaciones de Windows/Office\n• Soporte de instalacion incluido\n• Si tienes algun problema con la activacion, lo resolvemos sin costo\n\n¿Te ayudo con algo mas?",
+      delay: 900,
+    };
+  }
+
+  // Factura
+  if (lower.includes("factura")) {
+    return {
+      text: "🧾 Si, generamos factura con cada compra. Despues de confirmar tu pago, te la enviamos automaticamente por email.\n\n¿Necesitas algo mas?",
+      delay: 800,
+    };
+  }
+
+  // Default
+  return {
+    text: "Disculpa, no entendi tu mensaje. 😅\n\n¿En que te puedo ayudar?\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Metodos de pago\n4️⃣ Guia de instalacion\n5️⃣ Hablar con un asesor",
+    delay: 800,
+  };
+}
+
+function getTime(): string {
+  return new Date().toLocaleTimeString("es", { hour: "2-digit", minute: "2-digit" });
+}
+
+export default function SynovaTechBotDemo() {
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      role: "bot",
+      text: "Hola! 👋 Bienvenido a *SynovaTech PTY* - Soluciones Tecnologicas Integrales.\n\n¿En que te puedo ayudar hoy?\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Metodos de pago\n4️⃣ Guia de instalacion\n5️⃣ Hablar con un asesor",
+      time: getTime(),
+    },
+  ]);
+  const [input, setInput] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, isTyping]);
+
+  function handleSend(e: React.FormEvent) {
+    e.preventDefault();
+    if (!input.trim() || isTyping) return;
+
+    const customerMsg: Message = { role: "customer", text: input.trim(), time: getTime() };
+    setMessages((prev) => [...prev, customerMsg]);
+
+    const response = getResponse(input);
+    setInput("");
+    setIsTyping(true);
+
+    setTimeout(() => {
+      setIsTyping(false);
+      setMessages((prev) => [...prev, { role: "bot", text: response.text, time: getTime() }]);
+    }, response.delay);
+  }
+
+  function formatText(text: string) {
+    return text.split("\n").map((line, i) => {
+      // Bold *text*
+      const formatted = line.replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+      return <span key={i} dangerouslySetInnerHTML={{ __html: formatted || "&nbsp;" }} />;
+    }).reduce((acc: React.ReactNode[], curr, i) => {
+      if (i > 0) acc.push(<br key={`br-${i}`} />);
+      acc.push(curr);
+      return acc;
+    }, []);
+  }
+
+  return (
+    <div className="min-h-screen bg-[#0a1628] flex items-center justify-center p-4">
+      <div className="w-full max-w-md">
+        <div className="text-center mb-6">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center text-white font-black text-xs">ST</div>
+            <h1 className="text-xl font-bold text-white">SynovaTech <span className="text-cyan-400">Bot</span></h1>
+          </div>
+          <p className="text-gray-400 text-sm">Demo del bot de WhatsApp - Prueba escribir mensajes</p>
+          <p className="text-gray-500 text-xs mt-1">Prueba: &quot;hola&quot;, &quot;1&quot;, &quot;office 2024&quot;, &quot;quiero comprar&quot;, &quot;mesas&quot;</p>
+        </div>
+
+        <div className="bg-gray-800 rounded-[2.5rem] p-3 shadow-2xl">
+          <div className="bg-[#ECE5DD] rounded-[2rem] overflow-hidden flex flex-col" style={{ height: "600px" }}>
+            {/* Header */}
+            <div className="bg-[#075E54] px-4 py-3 flex items-center gap-3 shrink-0">
+              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              <div className="w-9 h-9 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center text-white font-black text-xs">ST</div>
+              <div className="flex-1">
+                <p className="text-white text-sm font-semibold">SynovaTech PTY</p>
+                <p className="text-green-200 text-xs">{isTyping ? "escribiendo..." : "en linea"}</p>
+              </div>
+            </div>
+
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto p-3 space-y-2">
+              {messages.map((msg, i) => (
+                <div key={i} className={`flex ${msg.role === "customer" ? "justify-end" : "justify-start"}`}>
+                  <div className={`max-w-[85%] rounded-lg px-3 py-2 ${
+                    msg.role === "customer"
+                      ? "bg-[#DCF8C6] text-gray-800"
+                      : "bg-white text-gray-800 shadow-sm"
+                  }`}>
+                    <div className="text-sm">{formatText(msg.text)}</div>
+                    <p className="text-[10px] text-gray-500 text-right mt-1">{msg.time}</p>
+                  </div>
+                </div>
+              ))}
+
+              {isTyping && (
+                <div className="flex justify-start">
+                  <div className="bg-white rounded-lg px-4 py-3 shadow-sm">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} />
+            </div>
+
+            {/* Input */}
+            <form onSubmit={handleSend} className="p-2 flex gap-2 bg-[#F0F0F0] shrink-0">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Escribe un mensaje..."
+                className="flex-1 px-4 py-2 rounded-full bg-white text-sm outline-none text-gray-800"
+                disabled={isTyping}
+              />
+              <button
+                type="submit"
+                className="w-10 h-10 bg-[#075E54] rounded-full flex items-center justify-center text-white shrink-0"
+                disabled={isTyping}
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
