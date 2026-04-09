@@ -362,6 +362,7 @@ export default function SynovaTechBotDemo() {
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [waitingPayment, setWaitingPayment] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -375,6 +376,22 @@ export default function SynovaTechBotDemo() {
     const customerMsg: Message = { role: "customer", text: input.trim(), time: getTime() };
     setMessages((prev) => [...prev, customerMsg]);
 
+    // Si ya mostramos producto con datos de pago, transferir al asesor
+    if (waitingPayment) {
+      setInput("");
+      setIsTyping(true);
+      setTimeout(() => {
+        setIsTyping(false);
+        setMessages((prev) => [...prev, {
+          role: "bot",
+          text: "Gracias! 🙌 Te conecto con un asesor para confirmar tu pago y procesar tu pedido.\n\nEn un momento te atendera. 👤\n\n[TRANSFERIR]",
+          time: getTime(),
+        }]);
+        setWaitingPayment(false);
+      }, 800);
+      return;
+    }
+
     const response = getResponse(input);
     setInput("");
     setIsTyping(true);
@@ -382,6 +399,10 @@ export default function SynovaTechBotDemo() {
     setTimeout(() => {
       setIsTyping(false);
       setMessages((prev) => [...prev, { role: "bot", text: response.text, time: getTime() }]);
+      // Si la respuesta incluye datos de pago, activar modo espera de comprobante
+      if (response.text.includes("Para comprar, paga") || response.text.includes("Envianos el comprobante")) {
+        setWaitingPayment(true);
+      }
     }, response.delay);
   }
 
