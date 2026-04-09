@@ -20,7 +20,7 @@ const catalog: Record<string, string> = {
   oem_retail: `📋 *DIFERENCIA OEM vs RETAIL:*\n\n🔹 *OEM:* Licencia vinculada a 1 PC. No se puede transferir a otro equipo. Es mas economica.\n\n🔹 *Retail:* Licencia transferible. Si cambias de PC, puedes mover tu licencia al nuevo equipo.\n\n💡 Si tu PC es fijo y no piensas cambiarlo pronto, OEM es la mejor opcion. Si cambias de equipo seguido, Retail es mejor inversion.\n\n¿Te ayudo a elegir?`,
 };
 
-function getResponse(input: string): { text: string; delay: number } {
+function getResponse(input: string): { text: string; delay: number; _mesa?: boolean } {
   const lower = input.toLowerCase().trim();
 
   // Saludos
@@ -245,61 +245,61 @@ function getResponse(input: string): { text: string; delay: number } {
     };
   }
 
-  // === MESAS ESPECIFICAS ===
+  // === MESAS ESPECIFICAS (sin datos de pago, van directo a opciones de entrega) ===
 
   if (lower.includes("s1-y") || lower.includes("s1 y") || lower.includes("s1y")) {
     return {
-      text: "🖥️ *Mesa Gamer S1-Y (con luces LED)*\nPrecio: *$90.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Luces LED, estructura de acero, superficie antideslizante.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $90.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.",
-      delay: 1000,
+      text: "🖥️ *Mesa Gamer S1-Y (con luces LED)*\nPrecio: *$90.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Luces LED, estructura de acero, superficie antideslizante.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)",
+      delay: 1000, _mesa: true,
     };
   }
 
-  if (lower.includes("r5-7") || lower.includes("r5 7") || lower.includes("r57")) {
+  if (lower.includes("r5-7") || lower.includes("r5 7") || lower.includes("r57") || lower === "r5") {
     return {
-      text: "🖥️ *Mesa Gamer R5-7*\nPrecio: *$95.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Estructura de acero reforzado, superficie amplia, diseno ergonomico.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $95.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.",
-      delay: 1000,
+      text: "🖥️ *Mesa Gamer R5-7*\nPrecio: *$95.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Estructura de acero reforzado, superficie amplia, diseno ergonomico.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)",
+      delay: 1000, _mesa: true,
     };
   }
 
-  if (lower.includes("z5-6") || lower.includes("z5 6") || lower.includes("z56")) {
+  if (lower.includes("z5-6") || lower.includes("z5 6") || lower.includes("z56") || lower === "z5") {
     return {
-      text: "🖥️ *Mesa Gamer Z5-6*\nPrecio: *$95.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Diseno en Z estilizado, estructura de acero, superficie antideslizante.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $95.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.",
-      delay: 1000,
+      text: "🖥️ *Mesa Gamer Z5-6*\nPrecio: *$95.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Diseno en Z estilizado, estructura de acero, superficie antideslizante.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)",
+      delay: 1000, _mesa: true,
     };
   }
 
   if (lower.includes("h2")) {
     return {
-      text: "🖥️ *Mesa Gamer H2 (con luces LED)*\nPrecio: *$110.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Luces LED integradas, estructura de acero, superficie antideslizante.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $110.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.",
-      delay: 1000,
+      text: "🖥️ *Mesa Gamer H2 (con luces LED)*\nPrecio: *$110.00*\nDimensiones: 140 x 60 x 73 cm\n\nIncluye: Luces LED integradas, estructura de acero, superficie antideslizante.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)",
+      delay: 1000, _mesa: true,
     };
   }
 
   if (lower.includes("s2") || lower.includes("forma l") || lower.includes("reversible")) {
     return {
-      text: '🖥️ *Mesa Gamer S2 Reversible (forma "L" o recta)*\nPrecio: *$125.00*\nDimensiones: 190 x 60 x 73 cm\n\nLa mas grande! Configuracion en "L" o recta. Ideal para multiples monitores.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $125.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.',
-      delay: 1000,
+      text: '🖥️ *Mesa Gamer S2 Reversible (forma "L" o recta)*\nPrecio: *$125.00*\nDimensiones: 190 x 60 x 73 cm\n\nLa mas grande! Configuracion en "L" o recta. Ideal para multiples monitores.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)',
+      delay: 1000, _mesa: true,
     };
   }
 
-  if (lower.includes("electrica negra") || lower.includes("ajustable negra")) {
+  if (lower.includes("electrica negra") || lower.includes("ajustable negra") || lower.includes("negra")) {
     return {
-      text: "🖥️ *Mesa Electrica Ajustable - Negra*\nPrecio: *$130.00*\nDimensiones: 140 x 60 x 81-118 cm (ajustable)\n\nMotor electrico de ajuste de altura. Trabaja sentado o de pie.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $130.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.",
-      delay: 1000,
+      text: "🖥️ *Mesa Electrica Ajustable - Negra*\nPrecio: *$130.00*\nDimensiones: 140 x 60 x 81-118 cm (ajustable)\n\nMotor electrico de ajuste de altura. Trabaja sentado o de pie.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)",
+      delay: 1000, _mesa: true,
     };
   }
 
-  if (lower.includes("electrica blanca") || lower.includes("ajustable blanca")) {
+  if (lower.includes("electrica blanca") || lower.includes("ajustable blanca") || lower.includes("blanca")) {
     return {
-      text: "🖥️ *Mesa Electrica Ajustable - Blanca*\nPrecio: *$130.00*\nDimensiones: 140 x 60 x 81-118 cm (ajustable)\n\nMotor electrico de ajuste de altura. Elegante y funcional.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $130.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.",
-      delay: 1000,
+      text: "🖥️ *Mesa Electrica Ajustable - Blanca*\nPrecio: *$130.00*\nDimensiones: 140 x 60 x 81-118 cm (ajustable)\n\nMotor electrico de ajuste de altura. Elegante y funcional.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)",
+      delay: 1000, _mesa: true,
     };
   }
 
-  if (lower.includes("s60") || (lower.includes("electrica") && lower.includes("led"))) {
+  if (lower.includes("s60") || (lower.includes("electrica") && lower.includes("led")) || lower.includes("motor")) {
     return {
-      text: "🖥️ *Mesa Electrica S60 (Motor + Luces LED)*\nPrecio: *$145.00*\nDimensiones: 140 x 60 x 81-118 cm (ajustable)\n\nLa mas completa! Motor electrico + luces LED.\n🚚 *Envio GRATIS* a todo Panama por Red Servi.\n\n💳 *Para comprar, paga $145.00 a:*\n📱 Yappy: 6043-4542 (Jorge Choy)\n🏦 ACH: Banco General - Cuenta Ahorros - Jorge Choy - 0472984345786\n\n📩 Envianos el comprobante por aqui y coordinamos el envio.",
-      delay: 1000,
+      text: "🖥️ *Mesa Electrica S60 (Motor + Luces LED)*\nPrecio: *$145.00*\nDimensiones: 140 x 60 x 81-118 cm (ajustable)\n\nLa mas completa! Motor electrico + luces LED.\n🚚 Envio GRATIS a todo Panama.\n\n¿Como deseas recibirla?\n\n1️⃣ *Pago contra entrega* (pagas al recibir)\n2️⃣ *Pago anticipado + envio* (pagas y te la enviamos)\n3️⃣ *Retiro en bodega* (El Dorado, pagas alla)",
+      delay: 1000, _mesa: true,
     };
   }
 
@@ -437,14 +437,11 @@ export default function SynovaTechBotDemo() {
     setTimeout(() => {
       setIsTyping(false);
       setMessages((prev) => [...prev, { role: "bot", text: response.text, time: getTime() }]);
-      // Detectar si mostro producto con datos de pago
-      if (response.text.includes("Para comprar, paga") || response.text.includes("Envianos el comprobante")) {
-        // Determinar si es mesa o software
-        if (response.text.includes("coordinamos el envio")) {
-          setBotState("mesa_payment");
-        } else {
-          setBotState("software_payment");
-        }
+      // Detectar tipo de respuesta para activar estado
+      if (response._mesa) {
+        setBotState("mesa_delivery_choice");
+      } else if (response.text.includes("Para comprar, paga") || response.text.includes("Envianos el comprobante")) {
+        setBotState("software_payment");
       }
     }, response.delay);
   }
