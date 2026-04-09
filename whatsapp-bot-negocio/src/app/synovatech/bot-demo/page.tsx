@@ -102,7 +102,7 @@ function getResponse(input: string): { text: string; delay: number; _mesa?: bool
   // Instalacion Windows -> transferir a asesor
   if ((lower.includes("instalar") || lower.includes("instalacion") || lower.includes("descargar") || lower.includes("descarga")) && (lower.includes("windows") || lower.includes("win 10") || lower.includes("win 11"))) {
     return {
-      text: "La instalacion de Windows requiere atención personalizada para asegurarnos de que todo quede perfecto. 💻\n\nTe voy a conectar con un asesor que te guiara paso a paso o se conectara remotamente a tu PC para hacerlo por ti. *Sin costo adicional.*\n\nEn un momento te atenderá. 👤\n\n[TRANSFERIR]",
+      text: "La instalación de Windows requiere atención personalizada. 💻\n\nTe voy a conectar con un asesor que te guiará paso a paso o se conectará remotamente a tu PC. *Sin costo adicional.*\n\nEn un momento te atenderá. 👤\n\n[TRANSFERIR]",
       delay: 900,
     };
   }
@@ -343,7 +343,7 @@ export default function SynovaTechBotDemo() {
         return;
       }
       if (lower === "5") {
-        sendBotMessage("Te conecto con un asesor de nuestro equipo. 👤\n\nEn un momento te atenderáá. Gracias por tu paciencia.\n\n[TRANSFERIR]", 800);
+        sendBotMessage("Te conecto con un asesor de nuestro equipo. 👤\n\nEn un momento te atenderá. Gracias por tu paciencia.\n\n[TRANSFERIR]", 800);
         return;
       }
     }
