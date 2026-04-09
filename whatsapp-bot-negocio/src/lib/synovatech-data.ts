@@ -7,8 +7,8 @@ export const BUSINESS = {
   instagramUrl: "https://www.instagram.com/synovatechpty/",
   linktree: "https://linktr.ee/synovatechpty",
   email: "innovastyle@in-novasolution.com",
-  whatsapp: "50760434542",
-  whatsappDisplay: "6043-4542",
+  whatsapp: "50768989372",
+  whatsappDisplay: "6898-9372",
   services: [
     "Software 100% original: Windows | Office",
     "Configuracion de correos con dominio en GoDaddy",
