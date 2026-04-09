@@ -97,12 +97,32 @@ GUIA DE INSTALACION RAPIDA - WINDOWS:
 4. Activar con la clave que te enviamos
 5. Si necesitas ayuda, ofrecemos instalacion remota gratuita
 
-GUIA DE INSTALACION RAPIDA - OFFICE:
-1. Ir a setup.office.com
-2. Iniciar sesion con tu cuenta Microsoft (o crear una)
-3. Ingresar la clave del producto
-4. Descargar e instalar
+IMPORTANTE: Los Office son SOLO para PC (no compatibles con MAC).
+
+GUIA DE INSTALACION - OFFICE 2024:
+1. Descargar: https://softkeypc.com/wp-content/uploads/2024/12/Office_2024_ES_64Bits.exe
+2. Ejecutar el archivo descargado
+3. Seguir instrucciones de instalacion
+4. Activar con la clave al abrir Word/Excel/PowerPoint
 5. Si necesitas ayuda, ofrecemos instalacion remota gratuita
+
+GUIA DE INSTALACION - OFFICE 2021:
+1. Descargar .IMG: https://officecdn.microsoft.com/db/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/es-es/ProPlus2021Retail.img
+2. Clic derecho > Montar (o extraer con WinRAR)
+3. Ejecutar setup.exe
+4. Activar con la clave al abrir cualquier app de Office
+
+GUIA DE INSTALACION - OFFICE 2019:
+1. Descargar .IMG: https://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/es-es/ProPlus2019Retail.img
+2. Clic derecho > Montar (o extraer con WinRAR)
+3. Ejecutar setup.exe
+4. Activar con la clave
+
+GUIA DE INSTALACION - OFFICE 2016:
+1. Descargar .IMG: https://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/es-es/ProPlusRetail.img
+2. Clic derecho > Montar (o extraer con WinRAR)
+3. Ejecutar setup.exe
+4. Activar con la clave
 
 FLUJO DE CONVERSACION SUGERIDO:
 - Si el cliente saluda: Saluda, presentate como SynovaTech y pregunta en que puedes ayudar

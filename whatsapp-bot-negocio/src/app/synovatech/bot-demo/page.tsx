@@ -13,7 +13,10 @@ const catalog: Record<string, string> = {
   mesas: `🖥️ *MESAS GAMER Y ELECTRICAS*\n(Envio GRATIS a todo Panama)\n\n🎮 *MESAS GAMER:*\n• Mesa S1-Y (LED) 140x60cm - $90\n• Mesa R5-7 140x60cm - $95\n• Mesa Z5-6 140x60cm - $95\n• Mesa H2 (LED) 140x60cm - $110\n• Mesa S2 Reversible "L" 190x60cm - $125\n\n⚡ *MESAS ELECTRICAS AJUSTABLES:*\n• Electrica Negra 140x60cm - $130\n• Electrica Blanca 140x60cm - $130\n• S60 Motor+LED 140x60cm - $145\n\n📦 Envio gratis por Red Servi a todo Panama\n\n¿Cual te interesa?`,
   pago: `💳 *METODOS DE PAGO:*\n\n📱 *Yappy:*\n• 6043-4542 (Jorge Choy)\n• 6537-0196 (Daysi Torres)\n\n🏦 *ACH / Transferencia:*\n• Banco General\n• Cuenta de Ahorros\n• Jorge Choy\n• Cuenta: 0472984345786\n\nDespues de pagar, envianos el comprobante por aqui y procesamos tu pedido de inmediato. ✅`,
   instalacion_windows: `🔧 *GUIA DE INSTALACION - WINDOWS:*\n\n1️⃣ Descargar la herramienta de creacion de medios de Microsoft\n2️⃣ Crear USB booteable\n3️⃣ Instalar Windows desde el USB\n4️⃣ Activar con la clave que te enviamos\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*. Solo dinos y nos conectamos a tu PC para ayudarte.`,
-  instalacion_office: `🔧 *GUIA DE INSTALACION - OFFICE:*\n\n1️⃣ Ir a setup.office.com\n2️⃣ Iniciar sesion con tu cuenta Microsoft\n3️⃣ Ingresar la clave del producto\n4️⃣ Descargar e instalar\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*. Solo dinos y nos conectamos a tu PC.`,
+  instalacion_office_2024: `🔧 *GUIA DE INSTALACION - OFFICE 2024:*\n⚠️ *Solo para PC (no compatible con MAC)*\n\n1️⃣ Descarga el instalador:\n👉 https://softkeypc.com/wp-content/uploads/2024/12/Office_2024_ES_64Bits.exe\n2️⃣ Ejecuta el archivo descargado\n3️⃣ Sigue las instrucciones de instalacion\n4️⃣ Activa con tu clave al abrir Word, Excel o PowerPoint\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*.`,
+  instalacion_office_2021: `🔧 *GUIA DE INSTALACION - OFFICE 2021:*\n⚠️ *Solo para PC (no compatible con MAC)*\n\n1️⃣ Descarga el archivo .IMG:\n👉 https://officecdn.microsoft.com/db/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/es-es/ProPlus2021Retail.img\n2️⃣ Clic derecho > Montar (o extraer con WinRAR)\n3️⃣ Ejecuta setup.exe\n4️⃣ Activa con tu clave al abrir cualquier app de Office\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*.`,
+  instalacion_office_2019: `🔧 *GUIA DE INSTALACION - OFFICE 2019:*\n⚠️ *Solo para PC (no compatible con MAC)*\n\n1️⃣ Descarga el archivo .IMG:\n👉 https://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/es-es/ProPlus2019Retail.img\n2️⃣ Clic derecho > Montar (o extraer con WinRAR)\n3️⃣ Ejecuta setup.exe\n4️⃣ Activa con tu clave al abrir cualquier app de Office\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*.`,
+  instalacion_office_2016: `🔧 *GUIA DE INSTALACION - OFFICE 2016:*\n⚠️ *Solo para PC (no compatible con MAC)*\n\n1️⃣ Descarga el archivo .IMG:\n👉 https://officecdn.microsoft.com/pr/492350f6-3a01-4f97-b9c0-c7c6ddf67d60/media/es-es/ProPlusRetail.img\n2️⃣ Clic derecho > Montar (o extraer con WinRAR)\n3️⃣ Ejecuta setup.exe\n4️⃣ Activa con tu clave al abrir cualquier app de Office\n\n💡 Si necesitas ayuda, ofrecemos *instalacion remota gratuita*.`,
   oem_retail: `📋 *DIFERENCIA OEM vs RETAIL:*\n\n🔹 *OEM:* Licencia vinculada a 1 PC. No se puede transferir a otro equipo. Es mas economica.\n\n🔹 *Retail:* Licencia transferible. Si cambias de PC, puedes mover tu licencia al nuevo equipo.\n\n💡 Si tu PC es fijo y no piensas cambiarlo pronto, OEM es la mejor opcion. Si cambias de equipo seguido, Retail es mejor inversion.\n\n¿Te ayudo a elegir?`,
 };
 
@@ -43,10 +46,24 @@ function getResponse(input: string): { text: string; delay: number } {
     return { text: catalog.pago, delay: 800 };
   }
 
-  // Instalacion
-  if (lower === "4" || lower.includes("instalacion") || lower.includes("instalar") || lower.includes("activar") || lower.includes("guia")) {
+  // Instalacion Office especifica
+  if ((lower.includes("instalar") || lower.includes("instalacion") || lower.includes("descargar") || lower.includes("descarga")) && lower.includes("2024")) {
+    return { text: catalog.instalacion_office_2024, delay: 900 };
+  }
+  if ((lower.includes("instalar") || lower.includes("instalacion") || lower.includes("descargar") || lower.includes("descarga")) && lower.includes("2021")) {
+    return { text: catalog.instalacion_office_2021, delay: 900 };
+  }
+  if ((lower.includes("instalar") || lower.includes("instalacion") || lower.includes("descargar") || lower.includes("descarga")) && lower.includes("2019")) {
+    return { text: catalog.instalacion_office_2019, delay: 900 };
+  }
+  if ((lower.includes("instalar") || lower.includes("instalacion") || lower.includes("descargar") || lower.includes("descarga")) && lower.includes("2016")) {
+    return { text: catalog.instalacion_office_2016, delay: 900 };
+  }
+
+  // Instalacion general
+  if (lower === "4" || lower.includes("instalacion") || lower.includes("instalar") || lower.includes("activar") || lower.includes("guia") || lower.includes("descargar") || lower.includes("descarga")) {
     return {
-      text: "¿Para que producto necesitas la guia?\n\n1️⃣ Windows (10 u 11)\n2️⃣ Office (2016-2024)\n\nTambien ofrecemos *instalacion remota gratuita* si prefieres que te ayudemos directamente.",
+      text: "¿Para que producto necesitas la guia de instalacion?\n\n1️⃣ Windows (10 u 11)\n2️⃣ Office 2016\n3️⃣ Office 2019\n4️⃣ Office 2021\n5️⃣ Office 2024\n\n⚠️ Los Office son *solo para PC* (no compatibles con MAC).\n\n💡 Tambien ofrecemos *instalacion remota gratuita* si prefieres que te ayudemos directamente.",
       delay: 800,
     };
   }
@@ -67,14 +84,28 @@ function getResponse(input: string): { text: string; delay: number } {
   // Precio especifico
   if (lower.includes("office 2024") || lower.includes("2024")) {
     return {
-      text: "📦 *Office Profesional Pro Plus 2024*\nPrecio: *$45.00*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher, Teams.\nFunciones de IA incluidas.\nLicencia permanente - 1 PC.\n\n⚡ Entrega inmediata por email y WhatsApp.\n\n¿Lo quieres comprar? Te paso los datos de pago. 😊",
+      text: "📦 *Office Profesional Pro Plus 2024*\nPrecio: *$45.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher, Teams.\nFunciones de IA incluidas.\nLicencia permanente - 1 PC.\n\n⚡ Entrega inmediata por email y WhatsApp.\n\n¿Lo quieres comprar? Te paso los datos de pago. 😊",
       delay: 900,
     };
   }
 
   if (lower.includes("office 2021") || lower.includes("2021")) {
     return {
-      text: "📦 *Office Profesional Pro Plus 2021*\nPrecio: *$25.00*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher, Teams.\nLicencia permanente - 1 PC.\n\n⚡ Entrega inmediata por email y WhatsApp.\n\n¿Lo quieres comprar? Te paso los datos de pago.",
+      text: "📦 *Office Profesional Pro Plus 2021*\nPrecio: *$25.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher, Teams.\nLicencia permanente - 1 PC.\n\n⚡ Entrega inmediata por email y WhatsApp.\n\n¿Lo quieres comprar? Te paso los datos de pago.",
+      delay: 900,
+    };
+  }
+
+  if (lower.includes("office 2019") || lower.includes("2019")) {
+    return {
+      text: "📦 *Office Profesional Pro Plus 2019*\nPrecio: *$15.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher.\nLicencia permanente - 1 PC.\n\n⚡ Entrega inmediata por email y WhatsApp.\n\n¿Lo quieres comprar?",
+      delay: 900,
+    };
+  }
+
+  if (lower.includes("office 2016") || lower.includes("2016")) {
+    return {
+      text: "📦 *Office Profesional Pro Plus 2016*\nPrecio: *$10.00*\n⚠️ *Solo para PC (no compatible con MAC)*\n\nIncluye: Word, Excel, PowerPoint, Outlook, Access, Publisher.\nLicencia permanente - 1 PC.\n\n⚡ Entrega inmediata por email y WhatsApp.\n\n¿Lo quieres comprar?",
       delay: 900,
     };
   }
