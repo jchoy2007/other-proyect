@@ -298,6 +298,29 @@ export default function SynovaTechBotDemo() {
       return;
     }
 
+    // === ESTADO: Menú de instalación ===
+    if (botState === "install_menu") {
+      setBotState("idle");
+      if (lower === "1" || lower.includes("windows")) {
+        sendBotMessage("La instalación de Windows requiere atención personalizada. 💻\n\nTe conecto con un asesor que te guiará o se conectará a tu PC remotamente. *Sin costo adicional.*\n\nEn un momento te atenderá. 👤\n\n[TRANSFERIR]", 900);
+      } else if (lower === "2" || lower.includes("2016")) {
+        sendBotMessage(catalog.instalacion_office_2016, 900);
+      } else if (lower === "3" || lower.includes("2019")) {
+        sendBotMessage(catalog.instalacion_office_2019, 900);
+      } else if (lower === "4" || lower.includes("2021")) {
+        sendBotMessage(catalog.instalacion_office_2021, 900);
+      } else if (lower === "5" || lower.includes("2024")) {
+        sendBotMessage(catalog.instalacion_office_2024, 900);
+      } else if (lower === "0" || lower.includes("menu") || lower.includes("menú") || lower.includes("volver")) {
+        setBotState("menu");
+        sendBotMessage("Sin problema. 👍 ¿En qué más te puedo ayudar?\n\n1️⃣ Ver software (Windows, Office)\n2️⃣ Ver mesas gamer\n3️⃣ Métodos de pago\n4️⃣ Guía de instalación\n5️⃣ Hablar con un asesor\n\n👉 Escoge el número.", 800);
+      } else {
+        setBotState("install_menu");
+        sendBotMessage("No reconocí esa opción. Escoge el número:\n\n1️⃣ Windows → Asesor\n2️⃣ Office 2016\n3️⃣ Office 2019\n4️⃣ Office 2021\n5️⃣ Office 2024\n0️⃣ Volver al menú\n\n👉 Solo escribe el número.", 600);
+      }
+      return;
+    }
+
     // === ESTADO: Menu principal - números 1-5 navegan ===
     if (botState === "menu" || botState === "idle") {
       if (lower === "1") {
@@ -315,6 +338,7 @@ export default function SynovaTechBotDemo() {
         return;
       }
       if (lower === "4") {
+        setBotState("install_menu");
         sendBotMessage("¿Para qué producto necesitas la guía? Escoge un número:\n\n1️⃣ Windows (10 u 11) → Te conectamos con un asesor\n2️⃣ Office 2016\n3️⃣ Office 2019\n4️⃣ Office 2021\n5️⃣ Office 2024\n\n⚠️ Los Office son *solo para PC* (no MAC).\n💡 Para Windows, un asesor te ayuda o se conecta a tu PC sin costo.", 800);
         return;
       }
