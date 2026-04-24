@@ -21,8 +21,8 @@ La barra de progreso del perfil **afecta directamente tu posicionamiento**. Los 
 | Fecha de nacimiento | Tu fecha real |
 | Nacionalidad | Panameña |
 | Documento | **NO pongas cédula completa** — si es obligatorio, pon. Pero no destaques |
-| Teléfono | +507 8043-4542 |
-| Correo | jorge.choy.caballero@gmail.com (el personal, no el corporativo) |
+| Teléfono | +507 6043-4542 |
+| Correo | jorgechoy@innovasolution.com |
 | Ubicación | Ciudad de Panamá, Panamá |
 | Licencia de conducir | Sí / No (si tienes, ponlo — muchos puestos la piden) |
 | Vehículo propio | Sí / No |
@@ -137,7 +137,7 @@ CV_Jorge_Choy_Caballero_2026.pdf
 | Minuto | Acción |
 |--------|--------|
 | 0-5 | Revisar alertas de nuevas vacantes en el correo |
-| 5-10 | Postular a 3-5 vacantes afines (usar script `generar-postulacion.py` para personalizar) |
+| 5-10 | Postular a 3-5 vacantes afines (adaptar el CV base a cada una) |
 | 10-15 | Revisar mensajes de reclutadores y responder |
 
 **Postular TODOS los días** (incluso fines de semana) porque el algoritmo de Konzerta premia actividad reciente.

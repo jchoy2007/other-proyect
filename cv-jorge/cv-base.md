@@ -3,8 +3,8 @@
 **Ejecutivo de Ventas y Servicio al Cliente | Lic. en Mercadeo y Negocios Internacionales (en titulación) | Técnico en Gestión de Ventas**
 
 📍 Ciudad de Panamá, Panamá
-📱 +507 8043-4542
-✉️ [tu-correo-personal]@gmail.com
+📱 +507 6043-4542
+✉️ jorgechoy@innovasolution.com
 🔗 linkedin.com/in/jorgechoy
 
 ---

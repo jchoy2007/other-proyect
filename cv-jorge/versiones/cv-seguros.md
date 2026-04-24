@@ -2,7 +2,7 @@
 
 **Especialista en Atención al Cliente y Cabina de Emergencia | Seguros · Asistencia 24/7**
 
-📍 Ciudad de Panamá · 📱 +507 8043-4542 · ✉️ [tu-correo]@gmail.com · 🔗 linkedin.com/in/jorgechoy
+📍 Ciudad de Panamá · 📱 +507 6043-4542 · ✉️ jorgechoy@innovasolution.com · 🔗 linkedin.com/in/jorgechoy
 
 ---
 

@@ -21,7 +21,7 @@ Hola [Nombre], vi tu perfil y me llamó la atención que reclutas para [empresa/
 ```
 ¡Gracias por aceptar, [Nombre]! Te cuento brevemente: actualmente soy Agente de Cabina de Emergencia en ASSA Seguros, donde recibí reconocimiento formal por aportar al cumplimiento de un OKR clave del departamento. Tengo formación en Mercadeo y Negocios Internacionales (UTP) y busco activamente oportunidades en ventas, servicio al cliente premium o comercio internacional.
 
-Si en este momento tienes alguna vacante que encaje con mi perfil, me encantaría que la consideráramos. Te dejo mi correo: jorge.choy.caballero@gmail.com
+Si en este momento tienes alguna vacante que encaje con mi perfil, me encantaría que la consideráramos. Te dejo mi correo: jorgechoy@innovasolution.com
 
 Quedo atento a cualquier oportunidad. ¡Saludos!
 ```

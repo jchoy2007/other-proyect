@@ -20,7 +20,7 @@ Me interesa especialmente [EMPRESA] porque [MENCIONAR ALGO CONCRETO: liderazgo e
 Atentamente,
 
 Jorge Augusto Choy Caballero
-+507 8043-4542
-jorge.choy.caballero@gmail.com
++507 6043-4542
+jorgechoy@innovasolution.com
 linkedin.com/in/jorgechoy
 ```

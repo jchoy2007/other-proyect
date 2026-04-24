@@ -22,8 +22,8 @@ Considero que encajo en esta posición por [1 FRASE DE CIERRE CON LA RAZÓN PRIN
 Atentamente,
 
 Jorge Augusto Choy Caballero
-+507 8043-4542
-jorge.choy.caballero@gmail.com
++507 6043-4542
+jorgechoy@innovasolution.com
 linkedin.com/in/jorgechoy
 ```
 

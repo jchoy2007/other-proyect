@@ -2,7 +2,7 @@
 
 **Licenciado en Mercadeo y Negocios Internacionales (en titulación) | Experiencia en Compras y Negociación con Proveedores Internacionales**
 
-📍 Ciudad de Panamá · 📱 +507 8043-4542 · ✉️ [tu-correo]@gmail.com · 🔗 linkedin.com/in/jorgechoy
+📍 Ciudad de Panamá · 📱 +507 6043-4542 · ✉️ jorgechoy@innovasolution.com · 🔗 linkedin.com/in/jorgechoy
 
 ---
 

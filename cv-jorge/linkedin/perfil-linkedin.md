@@ -68,7 +68,7 @@ Busco activamente oportunidades en Panamá donde pueda seguir creciendo profesio
 
 Idiomas: Español nativo | Inglés B1 lectura/escritura (con planes de formación intensiva en el extranjero para alcanzar fluidez)
 
-Si tienes una vacante que pueda interesarme o quieres conectar, escríbeme a jorge.choy.caballero@gmail.com o por mensaje directo.
+Si tienes una vacante que pueda interesarme o quieres conectar, escríbeme a jorgechoy@innovasolution.com o por mensaje directo.
 ```
 
 ---
@@ -163,7 +163,7 @@ Perfil → "Abierto a" → "Buscar un empleo nuevo" → Configura:
 | Lunes | Publicar un post (ver plantillas en `mensajes-networking.md`) | 15 min |
 | Martes | Comentar 5 publicaciones de líderes del sector en Panamá | 10 min |
 | Miércoles | Enviar 10 solicitudes de conexión con mensaje personalizado | 15 min |
-| Jueves | Postular a 3-5 vacantes con `generar-postulacion.py` | 30 min |
+| Jueves | Postular a 3-5 vacantes adaptando el CV base a cada una | 30 min |
 | Viernes | Escribir a 2 reclutadoras de empresas objetivo | 15 min |
 
 ---

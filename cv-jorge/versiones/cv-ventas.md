@@ -2,7 +2,7 @@
 
 **Ejecutivo de Ventas | Gestión Comercial | Prospección y Cierre B2B/B2C**
 
-📍 Ciudad de Panamá, Panamá · 📱 +507 8043-4542 · ✉️ [tu-correo]@gmail.com · 🔗 linkedin.com/in/jorgechoy
+📍 Ciudad de Panamá, Panamá · 📱 +507 6043-4542 · ✉️ jorgechoy@innovasolution.com · 🔗 linkedin.com/in/jorgechoy
 
 ---
 

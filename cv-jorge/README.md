@@ -28,15 +28,11 @@ cv-jorge/
 ├── konzerta/
 │   ├── perfil-konzerta.md        → Cómo llenar cada campo
 │   └── palabras-clave.md         → Keywords que más buscan reclutadores en Panamá
-├── cartas-presentacion/
-│   ├── plantilla-base.md
-│   ├── carta-ventas.md
-│   ├── carta-seguros.md
-│   └── carta-comercio.md
-└── automatizacion/
-    ├── README.md                 → Cómo usar el sistema automatizado
-    ├── generar-postulacion.py    → Script con Claude API que personaliza TODO
-    └── tracker-postulaciones.md  → Control de tus aplicaciones
+└── cartas-presentacion/
+    ├── plantilla-base.md
+    ├── carta-ventas.md
+    ├── carta-seguros.md
+    └── carta-comercio.md
 ```
 
 ## Plan de acción esta semana
@@ -47,15 +43,14 @@ cv-jorge/
 | 1 | Actualizar LinkedIn con `linkedin/perfil-linkedin.md` | 30 min |
 | 2 | Completar Konzerta al 100% | 30 min |
 | 2 | Tomar cursos gratis (HubSpot + Google) | 3 h |
-| 3 | Configurar `generar-postulacion.py` (necesitas API key de Anthropic) | 20 min |
-| 3-7 | Postular 3-5 vacantes/día con el sistema | 1 h/día |
+| 3-7 | Postular 3-5 vacantes/día manualmente usando las plantillas | 1 h/día |
 
 ## Información real de Jorge (para los documentos)
 
 - **Nombre:** Jorge Augusto Choy Caballero
 - **Edad:** 25 años
 - **Ubicación:** Ciudad de Panamá, Panamá
-- **Teléfono:** +507 8043-4542
+- **Teléfono:** +507 6043-4542
 - **Estudios:**
   - Licenciatura en Mercadeo y Negocios Internacionales — Universidad Tecnológica de Panamá (UTP) — *Titulándose en julio 2026 con materias de maestría*
   - Técnico en Gestión de Ventas — UTP — *Finalizando julio 2026*
@@ -68,5 +63,5 @@ cv-jorge/
 ## Consideraciones importantes
 
 - **APC (crédito):** Actualmente con reporte negativo. Evitar puestos operativos en bancos y algunas aseguradoras que validan historial crediticio. Priorizar ventas, comercio, BPO y empresas que no validan APC.
-- **Correo personal profesional:** Crear uno tipo `jorge.choy.caballero@gmail.com`. NO usar el correo corporativo actual (`@innovasolution.com`) para postulaciones.
+- **Correo de contacto:** `jorgechoy@innovasolution.com` (correo personal).
 - **Datos sensibles:** En perfiles online (LinkedIn/Konzerta) NO poner cédula ni dirección exacta.
