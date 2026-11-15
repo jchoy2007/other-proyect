@@ -1,0 +1,173 @@
+{
+  "fps": 30,
+  "total": 2250,
+  "escenas": [
+    {
+      "id": "Familia",
+      "d": 183,
+      "desde": 0,
+      "voces": [
+        {
+          "archivo": "audio/voz/01-Familia-1.wav",
+          "inicio": 24,
+          "duracion": 131,
+          "texto": "Una familia en Panamá… por fin encontró su apartamento."
+        }
+      ]
+    },
+    {
+      "id": "Tramite",
+      "d": 102,
+      "desde": 171,
+      "voces": [
+        {
+          "archivo": "audio/voz/02-Tramite-1.wav",
+          "inicio": 10,
+          "duracion": 64,
+          "texto": "Y entonces, empezó el trámite."
+        }
+      ]
+    },
+    {
+      "id": "Puertas",
+      "d": 417,
+      "desde": 261,
+      "voces": [
+        {
+          "archivo": "audio/voz/03-Puertas-1.wav",
+          "inicio": 16,
+          "duracion": 129,
+          "texto": "Promotora, corredor, banco, afianzadora, abogado."
+        },
+        {
+          "archivo": "audio/voz/03-Puertas-2.wav",
+          "inicio": 155,
+          "duracion": 94,
+          "texto": "Cinco puertas… y el cliente es quien las camina."
+        },
+        {
+          "archivo": "audio/voz/03-Puertas-3.wav",
+          "inicio": 263,
+          "duracion": 126,
+          "texto": "Un papel vencido, una carta incompleta… y la venta se cae."
+        }
+      ]
+    },
+    {
+      "id": "Llave",
+      "d": 112,
+      "desde": 666,
+      "voces": [
+        {
+          "archivo": "audio/voz/04-Llave-1.wav",
+          "inicio": 8,
+          "duracion": 76,
+          "texto": "Cinco puertas. Una sola llave."
+        }
+      ]
+    },
+    {
+      "id": "Equipo",
+      "d": 463,
+      "desde": 766,
+      "voces": [
+        {
+          "archivo": "audio/voz/05-Equipo-1.wav",
+          "inicio": 14,
+          "duracion": 252,
+          "texto": "Detrás de nosotros, un equipo de liderazgo con más de veinticinco años de experiencia en el sector bancario, financiero e inmobiliario."
+        },
+        {
+          "archivo": "audio/voz/05-Equipo-2.wav",
+          "inicio": 280,
+          "duracion": 155,
+          "texto": "Cuando decimos que entendemos al banco, no es un eslogan. Es nuestra historia."
+        }
+      ]
+    },
+    {
+      "id": "Nace",
+      "d": 121,
+      "desde": 1217,
+      "voces": [
+        {
+          "archivo": "audio/voz/06-Nace-1.wav",
+          "inicio": 22,
+          "duracion": 71,
+          "texto": "Por eso nació Holding Realty Properties."
+        }
+      ]
+    },
+    {
+      "id": "DosEmpresas",
+      "d": 206,
+      "desde": 1326,
+      "voces": [
+        {
+          "archivo": "audio/voz/07-DosEmpresas-1.wav",
+          "inicio": 8,
+          "duracion": 40,
+          "texto": "Vendemos el inmueble."
+        },
+        {
+          "archivo": "audio/voz/07-DosEmpresas-2.wav",
+          "inicio": 56,
+          "duracion": 122,
+          "texto": "Y con Corporate Holding Solutions, lo llevamos hasta el desembolso."
+        }
+      ]
+    },
+    {
+      "id": "Recorrido",
+      "d": 150,
+      "desde": 1520,
+      "voces": [
+        {
+          "archivo": "audio/voz/08-Recorrido-1.wav",
+          "inicio": 14,
+          "duracion": 102,
+          "texto": "Un solo acompañante, de la búsqueda… a las llaves."
+        }
+      ]
+    },
+    {
+      "id": "Casa",
+      "d": 140,
+      "desde": 1658,
+      "voces": [
+        {
+          "archivo": "audio/voz/09-Casa-1.wav",
+          "inicio": 14,
+          "duracion": 97,
+          "texto": "Desde la Torre BICSA, frente a la bahía de Panamá."
+        }
+      ]
+    },
+    {
+      "id": "PaginaWeb",
+      "d": 170,
+      "desde": 1786,
+      "voces": [
+        {
+          "archivo": "audio/voz/10-PaginaWeb-1.wav",
+          "inicio": 18,
+          "duracion": 108,
+          "texto": "Conoce todos nuestros servicios en holdingrealty punto com."
+        }
+      ]
+    },
+    {
+      "id": "Cierre",
+      "d": 306,
+      "desde": 1944,
+      "voces": [
+        {
+          "archivo": "audio/voz/11-Cierre-1.wav",
+          "inicio": 34,
+          "duracion": 140,
+          "texto": "Holding Realty Properties. Construyendo juntos un futuro de oportunidades."
+        }
+      ]
+    }
+  ]
+}

@@ -84,13 +84,13 @@ export const Tramite: React.FC<{ d: number }> = ({ d }) => {
 };
 
 // ------------------------------------------------ 3. Cinco puertas
-const Puerta: React.FC<{ nombre: string; inicio: number; cerrada: boolean; i: number }> = ({ nombre, inicio, cerrada, i }) => {
+const Puerta: React.FC<{ nombre: string; inicio: number; cerrada: boolean; i: number; tc: number }> = ({ nombre, inicio, cerrada, i, tc }) => {
   const u = useU() * (useVertical() ? 0.95 : 1.15);
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const p = spring({ frame: f - inicio, fps, config: { damping: 16, stiffness: 120 } });
-  const cierre = cerrada ? interpolate(f, [150, 165], [0, 1], cl) : 0;
-  const temblor = cerrada ? Math.sin(f * 1.6) * interpolate(f, [150, 158, 175], [0, 6, 0], cl) : 0;
+  const cierre = cerrada ? interpolate(f, [tc, tc + 15], [0, 1], cl) : 0;
+  const temblor = cerrada ? Math.sin(f * 1.6) * interpolate(f, [tc, tc + 8, tc + 25], [0, 6, 0], cl) : 0;
   const color = cierre > 0.5 ? colores.rojo : colores.doradoClaro;
   return (
     <div
@@ -134,11 +134,12 @@ const Puerta: React.FC<{ nombre: string; inicio: number; cerrada: boolean; i: nu
   );
 };
 
-export const Puertas: React.FC<{ d: number }> = ({ d }) => {
+export const Puertas: React.FC<{ d: number; voz?: number[] }> = ({ d, voz = [20, 150, 255] }) => {
   const u = useU();
   const vertical = useVertical();
   const f = useCurrentFrame();
-  const fase2 = interpolate(f, [145, 160], [0, 1], cl);
+  const fase2 = interpolate(f, [voz[2] - 8, voz[2] + 6], [0, 1], cl);
+  const tCae = voz[2] + 62; // "…y la venta se cae" (coincide con el golpe grave de la música)
   return (
     <Escena duracion={d}>
       <Foto src="balboa-noche.jpg" duracion={d} zoom={[1.2, 1.3]} gris={1} oscuro={0.85} desenfoque={6} />
@@ -158,20 +159,20 @@ export const Puertas: React.FC<{ d: number }> = ({ d }) => {
           }}
         >
           {marca.puertas.map((n, i) => (
-            <Puerta key={n} nombre={n} inicio={30 + i * 14} cerrada={n === "Banco"} i={i} />
+            <Puerta key={n} nombre={n} inicio={voz[0] + 4 + i * 24} cerrada={n === "Banco"} i={i} tc={tCae - 10} />
           ))}
         </div>
         <div style={{ position: "relative", height: 140 * u, width: "100%", marginTop: 50 * u }}>
           <div style={{ position: "absolute", inset: 0, opacity: 1 - fase2 }}>
-            <TextoEntra inicio={105} style={cuerpo(u, 38)}>
-              Y el cliente es quien las camina.
+            <TextoEntra inicio={voz[1]} style={cuerpo(u, 38)}>
+              Cinco puertas… y el cliente es quien las camina.
             </TextoEntra>
           </div>
           <div style={{ position: "absolute", inset: 0, opacity: fase2 }}>
-            <TextoEntra inicio={158} style={{ ...cuerpo(u, 38) }}>
+            <TextoEntra inicio={voz[2]} style={{ ...cuerpo(u, 38) }}>
               Un papel vencido, una carta incompleta…
             </TextoEntra>
-            <TextoEntra inicio={185} style={{ ...titulo(u, 64), color: colores.rojo, marginTop: 8 * u }}>
+            <TextoEntra inicio={tCae} style={{ ...titulo(u, 64), color: colores.rojo, marginTop: 8 * u }}>
               y la venta se cae.
             </TextoEntra>
           </div>
@@ -204,72 +205,53 @@ export const Llave: React.FC<{ d: number }> = ({ d }) => {
   );
 };
 
-// ------------------------------------------------ 5. La fundadora
-export const Fundadora: React.FC<{ d: number }> = ({ d }) => {
+// ------------------------------------------------ 5. Equipo de liderazgo
+export const Equipo: React.FC<{ d: number; voz?: number[] }> = ({ d, voz = [14, 250] }) => {
   const u = useU();
   const vertical = useVertical();
   const f = useCurrentFrame();
-  const corte = 115;
+  const corte = voz[1] - 4;
   const op1 = interpolate(f, [corte - 10, corte], [1, 0], cl);
   const op2 = interpolate(f, [corte, corte + 10], [0, 1], cl);
-  const z = interpolate(f, [0, d], [1.04, 1.14]);
   return (
     <Escena duracion={d}>
-      <AbsoluteFill style={{ background: colores.negroProfundo }} />
-      <AbsoluteFill
-        style={{
-          justifyContent: vertical ? "flex-start" : "center",
-          alignItems: vertical ? "center" : "flex-end",
-        }}
-      >
-        <Img
-          src={staticFile("marca/irisbel.jpg")}
-          style={{
-            height: vertical ? "62%" : "100%",
-            objectFit: "cover",
-            transform: `scale(${z})`,
-            transformOrigin: "50% 30%",
-            marginRight: vertical ? 0 : 40 * u,
-            maskImage: vertical
-              ? "linear-gradient(180deg, #000 70%, transparent 100%)"
-              : "linear-gradient(90deg, transparent 0%, #000 25%, #000 80%, transparent 100%)",
-            WebkitMaskImage: vertical
-              ? "linear-gradient(180deg, #000 70%, transparent 100%)"
-              : "linear-gradient(90deg, transparent 0%, #000 25%, #000 80%, transparent 100%)",
-          }}
-        />
+      <Foto src="manos-oficina.jpg" duracion={d} zoom={[1.08, 1.22]} mover={[2, -1]} oscuro={0.3} origen="35% 40%" />
+      <AbsoluteFill style={{ opacity: op2 }}>
+        <Foto src="manos-acuerdo.jpg" duracion={d} zoom={[1.15, 1.05]} oscuro={0.3} origen="55% 50%" />
       </AbsoluteFill>
-      <AbsoluteFill
-        style={{
-          justifyContent: vertical ? "flex-end" : "center",
-          alignItems: vertical ? "center" : "flex-start",
-          textAlign: vertical ? "center" : "left",
-          padding: vertical ? `0 ${70 * u}px ${150 * u}px` : `0 0 0 ${130 * u}px`,
-        }}
-      >
-        <div style={{ width: (vertical ? 940 : 700) * u }}>
-          <TextoEntra inicio={10} style={kicker(u)}>{marca.fundadora.toUpperCase()}</TextoEntra>
-          <TextoEntra inicio={16} style={{ ...cuerpo(u, 30), color: "#cfc6b4", marginTop: 6 * u }}>
-            {marca.cargo}
-          </TextoEntra>
-          <div style={{ position: "relative", minHeight: 330 * u, marginTop: 30 * u }}>
-            <div style={{ position: "absolute", inset: 0, opacity: op1 }}>
-              <TextoEntra inicio={26} style={titulo(u, 64)}>
-                Más de {marca.anosExperiencia} años en banca y finanzas,
-                <span style={{ color: colores.doradoClaro, fontStyle: "italic" }}> del otro lado del escritorio.</span>
+      {/* tono cálido dorado */}
+      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(200,160,80,0.35), rgba(120,95,60,0.6) 80%)", mixBlendMode: "multiply" }} />
+      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(20,18,19,0) 30%, rgba(20,18,19,0.88))" }} />
+      <Centro style={{ justifyContent: "flex-end", paddingBottom: (vertical ? 230 : 120) * u }}>
+        <TextoEntra inicio={voz[0] - 4} style={kicker(u)}>NUESTRO EQUIPO</TextoEntra>
+        <div style={{ position: "relative", width: "100%", minHeight: (vertical ? 520 : 330) * u, marginTop: 20 * u }}>
+          <div style={{ position: "absolute", inset: 0, opacity: op1 }}>
+            <TextoEntra inicio={voz[0] + 4} style={titulo(u, vertical ? 64 : 56)}>
+              Un equipo de liderazgo con
+              <br />
+              <span style={{ color: colores.doradoClaro, fontStyle: "italic" }}>
+                más de {marca.anosExperiencia} años de experiencia
+              </span>
+              <br />
+              en el sector bancario,
+              {vertical ? <br /> : " "}
+              financiero e inmobiliario.
+            </TextoEntra>
+          </div>
+          {f >= corte - 2 ? (
+            <div style={{ position: "absolute", inset: 0, opacity: op2 }}>
+              <TextoEntra inicio={corte + 4} style={{ ...titulo(u, vertical ? 62 : 56), fontStyle: "italic" }}>
+                “Cuando decimos que entendemos al banco,
+                <br />
+                no es un eslogan.
+                <br />
+                <span style={{ color: colores.doradoClaro }}>Es nuestra historia.”</span>
               </TextoEntra>
             </div>
-            {f >= corte - 2 ? (
-              <div style={{ position: "absolute", inset: 0, opacity: op2 }}>
-                <TextoEntra inicio={corte + 4} style={{ ...titulo(u, 56), fontStyle: "italic" }}>
-                  “Cuando decimos que entendemos al banco, no es un eslogan.{" "}
-                  <span style={{ color: colores.doradoClaro }}>Es nuestra historia.”</span>
-                </TextoEntra>
-              </div>
-            ) : null}
-          </div>
+          ) : null}
         </div>
-      </AbsoluteFill>
+      </Centro>
+      <Vineta />
     </Escena>
   );
 };
@@ -298,14 +280,14 @@ export const Nace: React.FC<{ d: number }> = ({ d }) => {
 };
 
 // ------------------------------------------------ 7. Dos empresas, un solo recorrido
-export const DosEmpresas: React.FC<{ d: number }> = ({ d }) => {
+export const DosEmpresas: React.FC<{ d: number; voz?: number[] }> = ({ d, voz = [8, 50] }) => {
   const u = useU();
   const vertical = useVertical();
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const a = spring({ frame: f - 4, fps, config: { damping: 16 } });
-  const b = spring({ frame: f - 50, fps, config: { damping: 16 } });
-  const linea = interpolate(f, [40, 60], [0, 1], cl);
+  const b = spring({ frame: f - (voz[1] - 2), fps, config: { damping: 16 } });
+  const linea = interpolate(f, [voz[1] - 12, voz[1] + 8], [0, 1], cl);
   const bloque = (p: number, logo: string, alto: number, texto: React.ReactNode) => (
     <div
       style={{

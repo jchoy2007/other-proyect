@@ -7,16 +7,11 @@ export const marca = {
   aliada: "Corporate Holding Solutions",
   slogan: "Construyendo juntos un futuro de oportunidades",
   propuesta: "Vendemos el inmueble y gestionamos su financiamiento.",
-  fundadora: "Irisbel Tapia",
-  cargo: "Fundadora y CEO",
   anosExperiencia: 25,
   web: "www.holdingrealty.com",
   direccion: "Torre BICSA Financial Center · Piso 36, Oficina 3611",
   licencia: "Licencia de corredor PJ-1601-2026",
 
-  // Música de fondo (en public/). null = sin música.
-  // PROVISIONAL: pista del video anterior, confirmar licencia antes de publicar.
-  musica: "audio/musica-provisional.mp3" as string | null,
 
   puertas: ["Promotora", "Corredor", "Banco", "Afianzadora", "Abogado"],
 
