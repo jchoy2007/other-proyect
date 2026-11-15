@@ -152,7 +152,7 @@ def tic(vel=1.0):
     return hp(rng.standard_normal(n), 6000) * np.exp(-t * 120) * vel * 0.15
 
 
-def subida(dur):
+def subida(dur, tono=True):
     n = int(dur * SR)
     t = np.arange(n) / SR
     x = t / dur
@@ -161,8 +161,8 @@ def subida(dur):
     bloque = SR // 20
     for i in range(0, n, bloque):
         out[i : i + bloque] = sosfilt(butter(2, 300 + 9000 * x[i] ** 2, "low", fs=SR, output="sos"), ruido[i : i + bloque])
-    tono = np.sin(2 * np.pi * np.cumsum(200 + 900 * x**2) / SR) * 0.25
-    return (out * 0.6 + tono) * x**2.2
+    ton = np.sin(2 * np.pi * np.cumsum(200 + 900 * x**2) / SR) * 0.25 if tono else 0
+    return (lp(out, 6000) * 0.6 + ton) * x**2.2
 
 
 def timbal(vel=1.0):
@@ -257,7 +257,7 @@ def comp_cine():
 def clap(vel=1.0):
     n = int(0.25 * SR)
     t = np.arange(n) / SR
-    ruido = sosfilt(butter(2, [900, 3500], "band", fs=SR, output="sos"), rng.standard_normal(n))
+    ruido = sosfilt(butter(2, [600, 2200], "band", fs=SR, output="sos"), rng.standard_normal(n))
     env = np.exp(-t * 30) + 0.6 * np.exp(-np.maximum(t - 0.012, 0) * 40) * (t > 0.012)
     return ruido * env * vel * 0.5
 
@@ -337,6 +337,24 @@ def comp_lujo():
         poner(piano(m, 5.0, 0.55), T_CIERRE + 3.0 + j * 0.9, 1.0, pan=0.2 * (j - 1.5))
 
 
+def teclado(m, dur=0.6, vel=1.0):
+    """Piano eléctrico suave: seno + 2.º armónico, ataque redondo, sin brillo agudo."""
+    n = int(dur * SR)
+    t = np.arange(n) / SR
+    f = hz(m)
+    s = np.sin(2 * np.pi * f * t) + 0.25 * np.sin(4 * np.pi * f * t) * np.exp(-t * 6)
+    s += 0.06 * np.sin(2 * np.pi * f * 3 * t) * np.exp(-t * 20)
+    s *= np.exp(-t * 3.2) * env_adsr(n, 0.012, 0.12)
+    return lp(s, 1800) * vel * 0.32
+
+
+def hat_suave(vel=1.0):
+    n = int(0.05 * SR)
+    t = np.arange(n) / SR
+    x = sosfilt(butter(2, [5000, 9000], "band", fs=SR, output="sos"), rng.standard_normal(n))
+    return x * np.exp(-t * 90) * vel * 0.06
+
+
 def comp_moderno():
     """C · Moderno corporativo: pulso electrónico, arpegios y drop en la revelación de la marca."""
     bpm = 100
@@ -350,19 +368,19 @@ def comp_moderno():
         crec = min(1.0, t / max(T_CAE, 1))
         poner(pad(ac[:3], d + 0.8, ataque=0.6, rel=0.8, corte=700 + 900 * crec), t, 0.4)
         poner(pad([ac[0] - 24], d, ataque=0.05, rel=0.3, corte=180), t, 0.55)
-        sub = b / 2 if t < T_PUERTAS else b / 4
+        sub = b / 2
         for j in range(int(d / sub)):
             tt = t + j * sub
             if tt >= T_CAE - 0.1:
                 break
-            poner(pluck([ac[0] + 12, ac[1] + 12, ac[2] + 12, ac[3] + 12][j % 4], 0.35, 0.45 + 0.3 * crec), tt, 1.0, pan=-0.35 if j % 2 else 0.35)
+            poner(teclado([ac[0], ac[1], ac[2], ac[3]][j % 4], 0.7, 0.5 + 0.3 * crec), tt, 1.0, pan=-0.35 if j % 2 else 0.35)
         if t >= T_PUERTAS - 0.1:
             for j in range(8):
                 tt = t + j * b
                 if tt >= T_CAE - 0.1:
                     break
                 poner(bombo(0.55), tt, 1.0)
-                poner(hat(0.6), tt + b / 2, 1.0, pan=0.3)
+                poner(hat_suave(0.6), tt + b / 2, 1.0, pan=0.3)
         t += d
         k += 1
     # Corte seco y golpe en "la venta se cae"
@@ -379,28 +397,28 @@ def comp_moderno():
         for j in range(int(d / (b / 2))):
             tt = t + j * b / 2
             poner(pad(ac, b / 2 + 0.05, ataque=0.02, rel=0.25, corte=1200 + 2200 * crec), tt, 0.38 + 0.22 * crec)
-            poner(pluck([ac[1] + 24, ac[2] + 12, ac[3] + 12, ac[2] + 24][j % 4], 0.3, 0.4 + 0.4 * crec), tt, 1.0, pan=-0.3 if j % 2 else 0.3)
+            poner(teclado([ac[1] + 24, ac[2] + 12, ac[3] + 12, ac[2] + 24][j % 4], 0.3, 0.4 + 0.4 * crec), tt, 1.0, pan=-0.3 if j % 2 else 0.3)
         poner(pad([ac[0] - 12], d, ataque=0.05, rel=0.2, corte=200), t, 0.55)
         if t >= T_EQUIPO - 0.1:
             for j in range(int(d / b)):
                 poner(bombo(0.5 + 0.3 * crec), t + j * b, 1.0)
-                poner(hat(0.5 + 0.4 * crec), t + j * b + b / 2, 1.0, pan=0.3)
+                poner(hat_suave(0.5 + 0.3 * crec), t + j * b + b / 2, 1.0, pan=0.3)
                 if t >= T_REC - 0.1 and j % 2 == 1:
-                    poner(clap(0.6 + 0.3 * crec), t + j * b, 1.0)
+                    poner(clap(0.25 + 0.1 * crec), t + j * b, 1.0)
         t += 8 * b
         k += 1
     # Subida, silencio breve y drop
-    poner(subida(2.4), T_CIERRE - 2.4, 0.6)
+    poner(subida(2.4, tono=False), T_CIERRE - 2.4, 0.5)
     for j in range(8):
-        poner(clap(0.3 + 0.08 * j), T_CIERRE - 1.0 + j * 0.125, 1.0)
+        poner(clap(0.2 + 0.05 * j), T_CIERRE - 1.0 + j * 0.125, 1.0)
     poner(boom(5.0, 1.0), T_CIERRE, 1.5)
     poner(bombo(1.0), T_CIERRE, 1.2)
     dur_final = TOTAL - T_CIERRE + 0.3
-    poner(pad([29, 41, 48, 53, 57, 60, 65, 69, 72], dur_final, ataque=0.02, rel=4.0, corte=3000, brillo=-0.5), T_CIERRE, 1.8)
+    poner(pad([29, 41, 48, 53, 57, 60, 65, 69, 72], dur_final, ataque=0.02, rel=4.0, corte=1900, brillo=-0.5), T_CIERRE, 2.0)
     t = T_CIERRE
     j = 0
     while t < TOTAL - 3.0:
-        poner(pluck([65, 69, 72, 77][j % 4], 0.4, 0.45 * (1 - (t - T_CIERRE) / dur_final)), t, 1.0, pan=-0.3 if j % 2 else 0.3)
+        poner(teclado([53, 57, 60, 65][j % 4], 0.7, 0.45 * (1 - (t - T_CIERRE) / dur_final)), t, 1.0, pan=-0.3 if j % 2 else 0.3)
         t += b / 2
         j += 1
 
@@ -457,6 +475,6 @@ wavfile.write(dest / f"musica{sufijo}.wav", SR, (mus.T * 32767).astype(np.int16)
 wavfile.write(dest / "mezcla-cruda.wav", SR, (mezcla.T * 32767).astype(np.int16))
 subprocess.run(
     ["ffmpeg", "-loglevel", "error", "-y", "-i", str(dest / "mezcla-cruda.wav"),
-     "-af", "loudnorm=I=-15:TP=-1:LRA=11", "-ar", "48000", str(dest / f"mezcla{sufijo}.wav")], check=True)
+     "-af", "highpass=f=35,treble=g=-3:f=7000,loudnorm=I=-15:TP=-1:LRA=11", "-ar", "48000", str(dest / f"mezcla{sufijo}.wav")], check=True)
 (dest / "mezcla-cruda.wav").unlink()
 print(f"[{ESTILO}] Música y mezcla listas ({TOTAL:.1f} s). Impacto en {T_CIERRE:.2f} s, golpe grave en {T_CAE:.2f} s")
