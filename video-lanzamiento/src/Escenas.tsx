@@ -333,9 +333,9 @@ export const DosEmpresas: React.FC<{ d: number; voz?: number[] }> = ({ d, voz = 
           "CHS_logo_color",
           vertical ? 250 : 230,
           <>
-            Y lo llevamos
+            Y lo llevamos hasta el desembolso
             <br />
-            <span style={{ color: colores.dorado }}>hasta el desembolso.</span>
+            <span style={{ color: colores.dorado }}>y la entrega de llaves.</span>
           </>
         )}
       </AbsoluteFill>
@@ -343,29 +343,40 @@ export const DosEmpresas: React.FC<{ d: number; voz?: number[] }> = ({ d, voz = 
   );
 };
 
-// ------------------------------------------------ 8. Un solo acompañante (recorrido de 6 pasos)
+// ------------------------------------------------ 8. Un solo acompañante (recorrido hasta la entrega de llaves)
+const IconoLlave: React.FC<{ size: number; color: string }> = ({ size, color }) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none">
+    <circle cx="20" cy="32" r="12" stroke={color} strokeWidth="5" />
+    <circle cx="20" cy="32" r="4" fill={color} />
+    <path d="M32 32h26M50 32v9M42 32v6" stroke={color} strokeWidth="5" strokeLinecap="round" />
+  </svg>
+);
+
 export const Recorrido: React.FC<{ d: number }> = ({ d }) => {
   const u = useU();
   const vertical = useVertical();
   const f = useCurrentFrame();
   const n = marca.pasos.length;
   const avance = interpolate(f, [20, 20 + n * 14], [0, 1], { ...cl, easing: Easing.inOut(Easing.quad) });
-  const largo = (vertical ? 860 : 1500) * u;
+  const largo = (vertical ? 760 : 1500) * u;
+  const { fps } = useVideoConfig();
+  const tLlave = 20 + n * 14 + 4;
+  const llave = spring({ frame: f - tLlave, fps, config: { damping: 11, stiffness: 90 } });
   return (
     <Escena duracion={d}>
       <Foto src="tornillo-ciudad.jpg" duracion={d} zoom={[1.15, 1.25]} oscuro={0.8} desenfoque={4} />
       <AbsoluteFill style={{ background: "rgba(20,18,19,0.55)" }} />
       <Centro>
         <TextoEntra inicio={4} style={kicker(u)}>DE LA BÚSQUEDA A LAS LLAVES</TextoEntra>
-        <TextoEntra inicio={10} style={{ ...titulo(u, vertical ? 84 : 76), marginTop: 16 * u }}>
+        <TextoEntra inicio={10} style={{ ...titulo(u, vertical ? 78 : 64), marginTop: 16 * u }}>
           Un solo acompañante.
         </TextoEntra>
         <div
           style={{
             position: "relative",
             width: vertical ? 760 * u : largo,
-            height: vertical ? largo * 0.82 : 200 * u,
-            marginTop: 70 * u,
+            height: vertical ? largo * 0.82 : 130 * u,
+            marginTop: (vertical ? 60 : 50) * u,
           }}
         >
           {/* línea */}
@@ -423,7 +434,7 @@ export const Recorrido: React.FC<{ d: number }> = ({ d }) => {
                     transform: `scale(${1 + on * 0.08})`,
                   }}
                 >
-                  {i + 1}
+                  {ultimo ? <IconoLlave size={46 * u} color={on > 0.5 ? colores.negro : colores.doradoClaro} /> : i + 1}
                 </div>
                 <div
                   style={{
@@ -441,6 +452,22 @@ export const Recorrido: React.FC<{ d: number }> = ({ d }) => {
               </div>
             );
           })}
+        </div>
+        <div style={{ marginTop: (vertical ? 70 : 40) * u, display: "flex", alignItems: "center", gap: 26 * u, flexDirection: vertical ? "column" : "row" }}>
+          <div
+            style={{
+              opacity: llave,
+              transform: `scale(${interpolate(llave, [0, 1], [0.4, 1])}) rotate(${interpolate(llave, [0, 1], [-35, 0])}deg)`,
+              filter: `drop-shadow(0 0 ${24 * u * llave}px rgba(217,188,110,0.6))`,
+            }}
+          >
+            <IconoLlave size={(vertical ? 150 : 110) * u} color={colores.doradoClaro} />
+          </div>
+          <TextoEntra inicio={tLlave + 8} style={{ ...titulo(u, vertical ? 56 : 50), textAlign: vertical ? "center" : "left" }}>
+            Hasta la entrega de las llaves
+            <br />
+            <span style={{ color: colores.doradoClaro, fontStyle: "italic" }}>de tu nuevo hogar.</span>
+          </TextoEntra>
         </div>
       </Centro>
       <Vineta />

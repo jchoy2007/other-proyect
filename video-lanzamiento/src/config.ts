@@ -15,7 +15,7 @@ export const marca = {
 
   puertas: ["Promotora", "Corredor", "Banco", "Afianzadora", "Abogado"],
 
-  pasos: ["Captación", "Pre-calificación", "Expediente", "Evaluación", "Formalización", "Desembolso"],
+  pasos: ["Captación", "Pre-calificación", "Expediente", "Evaluación", "Formalización", "Desembolso", "Entrega de llaves"],
 
   // Servicios que aparecen en la maqueta de la página web
   servicios: [

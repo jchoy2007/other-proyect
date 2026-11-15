@@ -13,8 +13,8 @@ Video de ~75 s con narrador y música original, en dos formatos:
 | Llave | Cinco puertas. Una sola llave. |
 | Equipo (manos) | Detrás de nosotros, un equipo de liderazgo con más de 25 años de experiencia en el sector bancario, financiero e inmobiliario. Cuando decimos que entendemos al banco, no es un eslogan. Es nuestra historia. |
 | Nace | Por eso nació Holding Realty Properties. |
-| Dos empresas | Vendemos el inmueble. Y con Corporate Holding Solutions, lo llevamos hasta el desembolso. |
-| Recorrido | Un solo acompañante, de la búsqueda… a las llaves. |
+| Dos empresas | Vendemos el inmueble. Y con Corporate Holding Solutions, lo llevamos hasta el desembolso y la entrega de llaves. |
+| Recorrido (7 pasos + llave) | Un solo acompañante, de la búsqueda… hasta la entrega de las llaves de tu nuevo hogar. |
 | Torre BICSA | Desde la Torre BICSA, frente a la bahía de Panamá. |
 | Web | Conoce todos nuestros servicios en holdingrealty punto com. |
 | Cierre | Holding Realty Properties. Construyendo juntos un futuro de oportunidades. |

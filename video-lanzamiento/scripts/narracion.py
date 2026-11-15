@@ -54,9 +54,9 @@ GUION = [
     ("Nace", 110, [("Por eso nació Holding Realty Properties.", 22)]),
     ("DosEmpresas", 160, [
         ("Vendemos el inmueble.", 8),
-        ("Y con Corporate Holding Solutions, lo llevamos hasta el desembolso.", 8),
+        ("Y con Corporate Holding Solutions, lo llevamos hasta el desembolso y la entrega de llaves.", 8),
     ]),
-    ("Recorrido", 150, [("Un solo acompañante, de la búsqueda… a las llaves.", 14)]),
+    ("Recorrido", 215, [("Un solo acompañante, de la búsqueda… hasta la entrega de las llaves de tu nuevo hogar.", 14)]),
     ("Casa", 140, [("Desde la Torre BICSA, frente a la bahía de Panamá.", 14)]),
     ("PaginaWeb", 170, [("Conoce todos nuestros servicios en holdingrealty punto com.", 18)]),
     ("Cierre", 300, [("Holding Realty Properties. Construyendo juntos un futuro de oportunidades.", 34)]),

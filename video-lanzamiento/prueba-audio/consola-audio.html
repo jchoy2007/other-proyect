@@ -110,7 +110,7 @@ h1 { font-family: var(--font-display); font-size: clamp(28px, 5vw, 40px); line-h
 
   <section class="panel" aria-label="Reproductor">
     <div class="modos" role="group" aria-label="Qué escuchar">
-      <button class="modo" id="modo-anterior" data-modo="anterior" aria-pressed="false">Mezcla anterior (con “bip”)</button>
+      <button class="modo" id="modo-anterior" data-modo="anterior" aria-pressed="false">Mezcla anterior (con pitido)</button>
       <button class="modo" id="modo-corregida" data-modo="corregida" aria-pressed="true">Mezcla corregida (sin clics)</button>
       <button class="modo" id="modo-pistas" data-modo="pistas" aria-pressed="false">Por instrumentos</button>
     </div>
@@ -120,13 +120,13 @@ h1 { font-family: var(--font-display); font-size: clamp(28px, 5vw, 40px); line-h
         <svg viewBox="0 0 24 24" id="icono"><path d="M7 4.5v15l13-7.5z"/></svg>
       </button>
       <div>
-        <div class="tiempo"><span id="actual">0:00.0</span> / <span id="total">1:07.0</span></div>
+        <div class="tiempo"><span id="actual">0:00.0</span> / <span id="total">1:09.8</span></div>
         <div class="estado" id="estado">Pulsa reproducir. La primera vez tarda unos segundos en cargar.</div>
       </div>
     </div>
 
     <div class="linea">
-      <input type="range" id="barra" min="0" max="67" step="0.1" value="0" aria-label="Posición">
+      <input type="range" id="barra" min="0" max="69.8" step="0.1" value="0" aria-label="Posición">
       <div class="escenas-scroll"><div class="escenas" id="escenas"></div></div>
       <span class="nota">Toca el nombre de una escena para saltar a ese momento. En dorado, los momentos clave de la música.</span>
     </div>
@@ -149,13 +149,13 @@ h1 { font-family: var(--font-display); font-size: clamp(28px, 5vw, 40px); line-h
 </div>
 
 <script>
-const DURACION = 67.0;
+const DURACION = 69.8;
 const ESCENAS = [
-  { t: 0.0, n: "Familia" }, { t: 5.87, n: "Trámite" }, { t: 8.8, n: "Cinco puertas", clave: true },
+  { t: 0.0, n: "Familia" }, { t: 5.87, n: "Trámite" }, { t: 8.80, n: "Cinco puertas", clave: true },
   { t: 17.94, n: "La venta se cae", clave: true }, { t: 19.77, n: "Una sola llave", clave: true },
-  { t: 22.33, n: "Equipo" }, { t: 33.0, n: "Nace HRP" }, { t: 36.63, n: "HRP + CHS" },
-  { t: 42.87, n: "Recorrido" }, { t: 47.47, n: "Torre BICSA" }, { t: 51.73, n: "Web" },
-  { t: 57.13, n: "Revelación de marca", clave: true },
+  { t: 22.33, n: "Equipo" }, { t: 33.00, n: "Nace HRP" }, { t: 36.63, n: "HRP + CHS" },
+  { t: 43.53, n: "Recorrido y llaves" }, { t: 50.30, n: "Torre BICSA" }, { t: 54.57, n: "Web" },
+  { t: 59.97, n: "Revelación de marca", clave: true },
 ];
 const PISTAS = [
   { id: "acordes", n: "Acordes", d: "Colchón de acordes sostenido" },

@@ -1,6 +1,6 @@
 {
   "fps": 30,
-  "total": 2010,
+  "total": 2095,
   "conVoz": false,
   "escenas": [
     {
@@ -101,7 +101,7 @@
     },
     {
       "id": "DosEmpresas",
-      "d": 199,
+      "d": 219,
       "desde": 1099,
       "voces": [
         {
@@ -113,28 +113,28 @@
         {
           "archivo": "audio/voz/07-DosEmpresas-2.wav",
           "inicio": 53,
-          "duracion": 118,
-          "texto": "Y con Corporate Holding Solutions, lo llevamos hasta el desembolso."
+          "duracion": 138,
+          "texto": "Y con Corporate Holding Solutions, lo llevamos hasta el desembolso y la entrega de llaves."
         }
       ]
     },
     {
       "id": "Recorrido",
-      "d": 150,
-      "desde": 1286,
+      "d": 215,
+      "desde": 1306,
       "voces": [
         {
           "archivo": "audio/voz/08-Recorrido-1.wav",
           "inicio": 14,
-          "duracion": 88,
-          "texto": "Un solo acompañante, de la búsqueda… a las llaves."
+          "duracion": 138,
+          "texto": "Un solo acompañante, de la búsqueda… hasta la entrega de las llaves de tu nuevo hogar."
         }
       ]
     },
     {
       "id": "Casa",
       "d": 140,
-      "desde": 1424,
+      "desde": 1509,
       "voces": [
         {
           "archivo": "audio/voz/09-Casa-1.wav",
@@ -147,7 +147,7 @@
     {
       "id": "PaginaWeb",
       "d": 170,
-      "desde": 1552,
+      "desde": 1637,
       "voces": [
         {
           "archivo": "audio/voz/10-PaginaWeb-1.wav",
@@ -160,7 +160,7 @@
     {
       "id": "Cierre",
       "d": 300,
-      "desde": 1710,
+      "desde": 1795,
       "voces": [
         {
           "archivo": "audio/voz/11-Cierre-1.wav",

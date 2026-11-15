@@ -49,7 +49,7 @@ export const Lanzamiento: React.FC = () => {
         );
       })}
       {/* Música + narración, generadas por scripts/narracion.py y scripts/musica.py */}
-      <Audio src={staticFile("audio/mezcla.wav")} />
+      <Audio src={staticFile("audio/mezcla-moderno.wav")} />
     </AbsoluteFill>
   );
 };
