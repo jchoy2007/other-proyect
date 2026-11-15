@@ -60,11 +60,30 @@ def hp(x, fc, orden=2):
 PISTAS = {}
 
 
+def lp_variable(x, cortes, bloque):
+    """Pasa-bajos cuyo corte cambia por bloques SIN reiniciar el filtro (evita clics)."""
+    out = np.zeros_like(x)
+    zi = np.zeros((1, 2))
+    for b, i in enumerate(range(0, len(x), bloque)):
+        sos = butter(2, float(cortes[min(b, len(cortes) - 1)]), "low", fs=SR, output="sos")
+        out[i : i + bloque], zi = sosfilt(sos, x[i : i + bloque], zi=zi)
+    return out
+
+
+def final_suave(sig, ms=40):
+    """Desvanece el final de un sonido para que no termine en seco (clic)."""
+    n = min(len(sig), int(ms / 1000 * SR))
+    if n > 1:
+        sig = sig.copy()
+        sig[-n:] *= np.linspace(1, 0, n)
+    return sig
+
+
 def poner(sig, t, gan=1.0, pan=0.0, pista="otros"):
     i = int(t * SR)
     if i >= N:
         return
-    sig = sig[: N - i]
+    sig = final_suave(sig[: N - i], 15)
     l, r = np.cos((pan + 1) * np.pi / 4), np.sin((pan + 1) * np.pi / 4)
     if pista not in PISTAS:
         PISTAS[pista] = np.zeros((2, N))
@@ -116,10 +135,8 @@ def pad(notas, dur, ataque=1.8, rel=1.8, corte=1400, brillo=0.0):
             s += sierra(hz(m + det), n, 10)
     fc = corte * (1 + brillo * np.linspace(0, 1, n))
     # filtro de corte variable aproximado por bloques
-    out = np.zeros(n)
-    bloque = SR // 4
-    for i in range(0, n, bloque):
-        out[i : i + bloque] = lp(s[i : i + bloque + 0], float(fc[min(i, n - 1)]), 2)
+    bloque = SR // 50
+    out = lp_variable(s, fc[::bloque], bloque)
     out *= env_adsr(n, ataque, rel)
     return out / (len(notas) * 3) * 0.9
 
@@ -136,7 +153,7 @@ def bombo(vel=1.0, f0=95, f1=42, dur=0.7):
     t = np.arange(n) / SR
     f = f1 + (f0 - f1) * np.exp(-t * 18)
     s = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t * 5.5)
-    return s * vel
+    return final_suave(s * vel, 120)
 
 
 def boom(dur=4.0, vel=1.0):
@@ -163,10 +180,8 @@ def subida(dur, tono=True):
     t = np.arange(n) / SR
     x = t / dur
     ruido = rng.standard_normal(n)
-    out = np.zeros(n)
-    bloque = SR // 20
-    for i in range(0, n, bloque):
-        out[i : i + bloque] = sosfilt(butter(2, 300 + 9000 * x[i] ** 2, "low", fs=SR, output="sos"), ruido[i : i + bloque])
+    bloque = SR // 100
+    out = lp_variable(ruido, 300 + 9000 * x[::bloque] ** 2, bloque)
     ton = np.sin(2 * np.pi * np.cumsum(200 + 900 * x**2) / SR) * 0.25 if tono else 0
     return (lp(out, 6000) * 0.6 + ton) * x**2.2
 
