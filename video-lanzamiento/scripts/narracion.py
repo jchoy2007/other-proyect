@@ -13,6 +13,7 @@ El modelo se descarga en voces/ (no se sube al repositorio):
 """
 import json
 import subprocess
+import sys
 import wave
 from pathlib import Path
 
@@ -21,6 +22,11 @@ MODELO = RAIZ / "voces" / "es_MX-claude-high.onnx"
 SALIDA = RAIZ / "public" / "audio" / "voz"
 FPS = 30
 FADE = 12  # solapamiento entre escenas (igual que en src/ui.tsx)
+
+# Sin narrador (por defecto): los tiempos se calculan por velocidad de lectura
+# de los textos y el video lleva solo música. Con --con-voz se genera la voz.
+CON_VOZ = "--con-voz" in sys.argv
+LECTURA = 17  # caracteres por segundo
 
 # Pronunciación fonética de los nombres en inglés
 FON = {
@@ -56,7 +62,7 @@ GUION = [
     ("Cierre", 300, [("Holding Realty Properties. Construyendo juntos un futuro de oportunidades.", 34)]),
 ]
 COLA = 16  # fotogramas de aire después de la última frase de cada escena
-COLA_CIERRE = 120  # tiempo para leer el contacto después de la última frase
+COLA_CIERRE = 110  # tiempo para leer el contacto después de la última frase
 
 
 def fonetico(t: str) -> str:
@@ -91,7 +97,7 @@ def main():
         t, voces = 0, []
         for j, (texto, pausa) in enumerate(frases):
             archivo = f"{i + 1:02d}-{sid}-{j + 1}.wav"
-            seg = sintetizar(texto, SALIDA / archivo)
+            seg = sintetizar(texto, SALIDA / archivo) if CON_VOZ else min(4.6, max(1.2, len(texto) / LECTURA))
             t += pausa
             dur = int(round(seg * FPS))
             voces.append({"archivo": f"audio/voz/{archivo}", "inicio": t, "duracion": dur, "texto": texto})
@@ -102,7 +108,7 @@ def main():
         inicio_global += d - FADE
     total = inicio_global + FADE
     (RAIZ / "src" / "linea-tiempo.json").write_text(
-        json.dumps({"fps": FPS, "total": total, "escenas": escenas}, ensure_ascii=False, indent=2))
+        json.dumps({"fps": FPS, "total": total, "conVoz": CON_VOZ, "escenas": escenas}, ensure_ascii=False, indent=2))
     for e in escenas:
         print(f"{e['id']:<12} {e['desde'] / FPS:5.1f}s  dura {e['d'] / FPS:4.1f}s  voces {[v['duracion'] for v in e['voces']]}")
     print(f"TOTAL {total / FPS:.1f} s")

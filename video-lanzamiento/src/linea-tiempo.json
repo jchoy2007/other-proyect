@@ -1,86 +1,87 @@
 {
   "fps": 30,
-  "total": 2250,
+  "total": 1972,
+  "conVoz": false,
   "escenas": [
     {
       "id": "Familia",
-      "d": 183,
+      "d": 150,
       "desde": 0,
       "voces": [
         {
           "archivo": "audio/voz/01-Familia-1.wav",
           "inicio": 24,
-          "duracion": 131,
+          "duracion": 97,
           "texto": "Una familia en Panamá… por fin encontró su apartamento."
         }
       ]
     },
     {
       "id": "Tramite",
-      "d": 102,
-      "desde": 171,
+      "d": 100,
+      "desde": 138,
       "voces": [
         {
           "archivo": "audio/voz/02-Tramite-1.wav",
           "inicio": 10,
-          "duracion": 64,
+          "duracion": 53,
           "texto": "Y entonces, empezó el trámite."
         }
       ]
     },
     {
       "id": "Puertas",
-      "d": 417,
-      "desde": 261,
+      "d": 341,
+      "desde": 226,
       "voces": [
         {
           "archivo": "audio/voz/03-Puertas-1.wav",
           "inicio": 16,
-          "duracion": 129,
+          "duracion": 86,
           "texto": "Promotora, corredor, banco, afianzadora, abogado."
         },
         {
           "archivo": "audio/voz/03-Puertas-2.wav",
-          "inicio": 155,
-          "duracion": 94,
+          "inicio": 112,
+          "duracion": 85,
           "texto": "Cinco puertas… y el cliente es quien las camina."
         },
         {
           "archivo": "audio/voz/03-Puertas-3.wav",
-          "inicio": 263,
-          "duracion": 126,
+          "inicio": 211,
+          "duracion": 102,
           "texto": "Un papel vencido, una carta incompleta… y la venta se cae."
         }
       ]
     },
     {
       "id": "Llave",
-      "d": 112,
-      "desde": 666,
+      "d": 89,
+      "desde": 555,
       "voces": [
         {
           "archivo": "audio/voz/04-Llave-1.wav",
           "inicio": 8,
-          "duracion": 76,
+          "duracion": 53,
           "texto": "Cinco puertas. Una sola llave."
         }
       ]
     },
     {
       "id": "Equipo",
-      "d": 463,
-      "desde": 766,
+      "d": 332,
+      "desde": 632,
       "voces": [
         {
           "archivo": "audio/voz/05-Equipo-1.wav",
           "inicio": 14,
-          "duracion": 252,
+          "duracion": 138,
           "texto": "Detrás de nosotros, un equipo de liderazgo con más de veinticinco años de experiencia en el sector bancario, financiero e inmobiliario."
         },
         {
           "archivo": "audio/voz/05-Equipo-2.wav",
-          "inicio": 280,
-          "duracion": 155,
+          "inicio": 166,
+          "duracion": 138,
           "texto": "Cuando decimos que entendemos al banco, no es un eslogan. Es nuestra historia."
         }
       ]
@@ -88,7 +89,7 @@
     {
       "id": "Nace",
       "d": 121,
-      "desde": 1217,
+      "desde": 952,
       "voces": [
         {
           "archivo": "audio/voz/06-Nace-1.wav",
@@ -100,19 +101,19 @@
     },
     {
       "id": "DosEmpresas",
-      "d": 206,
-      "desde": 1326,
+      "d": 199,
+      "desde": 1061,
       "voces": [
         {
           "archivo": "audio/voz/07-DosEmpresas-1.wav",
           "inicio": 8,
-          "duracion": 40,
+          "duracion": 37,
           "texto": "Vendemos el inmueble."
         },
         {
           "archivo": "audio/voz/07-DosEmpresas-2.wav",
-          "inicio": 56,
-          "duracion": 122,
+          "inicio": 53,
+          "duracion": 118,
           "texto": "Y con Corporate Holding Solutions, lo llevamos hasta el desembolso."
         }
       ]
@@ -120,12 +121,12 @@
     {
       "id": "Recorrido",
       "d": 150,
-      "desde": 1520,
+      "desde": 1248,
       "voces": [
         {
           "archivo": "audio/voz/08-Recorrido-1.wav",
           "inicio": 14,
-          "duracion": 102,
+          "duracion": 88,
           "texto": "Un solo acompañante, de la búsqueda… a las llaves."
         }
       ]
@@ -133,12 +134,12 @@
     {
       "id": "Casa",
       "d": 140,
-      "desde": 1658,
+      "desde": 1386,
       "voces": [
         {
           "archivo": "audio/voz/09-Casa-1.wav",
           "inicio": 14,
-          "duracion": 97,
+          "duracion": 88,
           "texto": "Desde la Torre BICSA, frente a la bahía de Panamá."
         }
       ]
@@ -146,25 +147,25 @@
     {
       "id": "PaginaWeb",
       "d": 170,
-      "desde": 1786,
+      "desde": 1514,
       "voces": [
         {
           "archivo": "audio/voz/10-PaginaWeb-1.wav",
           "inicio": 18,
-          "duracion": 108,
+          "duracion": 104,
           "texto": "Conoce todos nuestros servicios en holdingrealty punto com."
         }
       ]
     },
     {
       "id": "Cierre",
-      "d": 306,
-      "desde": 1944,
+      "d": 300,
+      "desde": 1672,
       "voces": [
         {
           "archivo": "audio/voz/11-Cierre-1.wav",
           "inicio": 34,
-          "duracion": 140,
+          "duracion": 131,
           "texto": "Holding Realty Properties. Construyendo juntos un futuro de oportunidades."
         }
       ]

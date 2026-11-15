@@ -274,7 +274,7 @@ mus = 0.92 * np.tanh(mus / 0.92)
 
 # ---------------------------------------------------------------- narración y "ducking"
 voz = np.zeros(N)
-for e in tl["escenas"]:
+for e in (tl["escenas"] if tl.get("conVoz") else []):
     for v in e["voces"]:
         sr, x = wavfile.read(RAIZ / "public" / v["archivo"])
         x = x.astype(np.float64) / 32768
@@ -286,7 +286,7 @@ ventana = int(0.35 * SR)
 act = np.convolve(act, np.ones(ventana) / ventana, mode="same")
 act = np.clip(act * 4, 0, 1)
 act = lp(act, 3)
-duck = 1 - 0.6 * np.clip(act, 0, 1)
+duck = 1 - 0.6 * np.clip(act, 0, 1) if tl.get("conVoz") else np.ones(N)
 mus_duck = mus * duck
 
 mezcla = mus_duck + np.stack([voz, voz]) * 0.9
