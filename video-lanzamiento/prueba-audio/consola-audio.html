@@ -1,0 +1,305 @@
+<title>Consola de audio HRP</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: consola de mezcla — transporte arriba, línea de tiempo con escenas, canales en tiras verticales */
+:root {
+  --bg: #F6F2EA;
+  --panel: #FFFFFF;
+  --ink: #231F20;
+  --muted: #6E665C;
+  --line: #E2DACB;
+  --gold: #A8842F;
+  --gold-soft: #EADFC2;
+  --on-gold: #FFFFFF;
+  --mute: #B5473A;
+  --meter: #A8842F;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Poppins", system-ui, sans-serif;
+  --font-data: "JetBrains Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161314; --panel: #221E1F; --ink: #F3EEE4; --muted: #A79E90; --line: #3A3335;
+    --gold: #D9BC6E; --gold-soft: #3B321F; --on-gold: #1A1617; --mute: #E07A6C; --meter: #D9BC6E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161314; --panel: #221E1F; --ink: #F3EEE4; --muted: #A79E90; --line: #3A3335;
+  --gold: #D9BC6E; --gold-soft: #3B321F; --on-gold: #1A1617; --mute: #E07A6C; --meter: #D9BC6E;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 48px;
+}
+.wrap { max-width: 980px; margin: 0 auto; display: grid; gap: 22px; }
+header { display: grid; gap: 6px; }
+.eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+h1 { font-family: var(--font-display); font-size: clamp(28px, 5vw, 40px); line-height: 1.1; margin: 0; text-wrap: balance; }
+.lead { color: var(--muted); max-width: 64ch; margin: 0; }
+
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 16px; }
+
+.modos { display: flex; flex-wrap: wrap; gap: 8px; }
+.modo {
+  font: 500 14px var(--font-body); color: var(--ink); background: transparent; border: 1px solid var(--line);
+  border-radius: 999px; padding: 8px 16px; cursor: pointer;
+}
+.modo[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.modo:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.transporte { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.play {
+  width: 56px; height: 56px; border-radius: 50%; border: none; background: var(--gold); color: var(--on-gold);
+  display: grid; place-items: center; cursor: pointer; flex-shrink: 0;
+}
+.play svg { width: 22px; height: 22px; fill: currentColor; }
+.tiempo { font-family: var(--font-data); font-size: 18px; font-variant-numeric: tabular-nums; }
+.estado { color: var(--muted); font-size: 13px; }
+
+.linea { display: grid; gap: 8px; min-width: 0; }
+#barra { width: 100%; accent-color: var(--gold); margin: 0; }
+.escenas { position: relative; height: 34px; }
+.escena {
+  position: absolute; top: 0; transform: translateX(-1px); border-left: 2px solid var(--line);
+  padding-left: 5px; font-size: 11px; color: var(--muted); white-space: nowrap; background: none; border-top: 0;
+  border-right: 0; border-bottom: 0; cursor: pointer; font-family: var(--font-body); line-height: 1.2; text-align: left;
+}
+.escena.clave { border-left-color: var(--gold); color: var(--ink); font-weight: 600; }
+.escena:hover { color: var(--gold); }
+.escenas-scroll { overflow-x: auto; }
+.escenas-scroll .escenas { min-width: 640px; }
+
+.canales { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+.canal {
+  border: 1px solid var(--line); border-radius: 10px; padding: 12px 10px; display: grid; gap: 10px;
+  justify-items: center; text-align: center; min-width: 0;
+}
+.canal.silenciado { opacity: .45; }
+.canal h3 { margin: 0; font-size: 14px; font-weight: 600; }
+.canal p { margin: 0; font-size: 11.5px; color: var(--muted); line-height: 1.35; min-height: 3.9em; }
+.medidor { width: 10px; height: 90px; border-radius: 5px; background: var(--gold-soft); position: relative; overflow: hidden; }
+.medidor i { position: absolute; left: 0; right: 0; bottom: 0; height: 0%; background: var(--meter); border-radius: 5px; }
+.botones { display: flex; gap: 6px; }
+.btn {
+  font: 600 12px var(--font-data); width: 34px; height: 30px; border-radius: 6px; border: 1px solid var(--line);
+  background: transparent; color: var(--ink); cursor: pointer;
+}
+.btn.m[aria-pressed="true"] { background: var(--mute); border-color: var(--mute); color: #fff; }
+.btn.s[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.canal input[type="range"] { width: 100%; accent-color: var(--gold); }
+
+.guia { display: grid; gap: 10px; }
+.guia h2 { font-family: var(--font-display); font-size: 22px; margin: 0; }
+.guia ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; max-width: 70ch; }
+.nota { font-size: 13px; color: var(--muted); }
+[data-solo-pistas] { display: grid; gap: 12px; }
+@media (prefers-reduced-motion: reduce) { .medidor i { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Holding Realty Properties · Opción C</span>
+    <h1>Consola de prueba de audio</h1>
+    <p class="lead">Escucha la música del lanzamiento sin el video. Compara la mezcla anterior con la corregida, o abre los instrumentos por separado para encontrar de dónde viene cualquier sonido que moleste.</p>
+  </header>
+
+  <section class="panel" aria-label="Reproductor">
+    <div class="modos" role="group" aria-label="Qué escuchar">
+      <button class="modo" id="modo-anterior" data-modo="anterior" aria-pressed="false">Mezcla anterior (con “bip”)</button>
+      <button class="modo" id="modo-corregida" data-modo="corregida" aria-pressed="true">Mezcla corregida</button>
+      <button class="modo" id="modo-pistas" data-modo="pistas" aria-pressed="false">Por instrumentos</button>
+    </div>
+
+    <div class="transporte">
+      <button class="play" id="play" aria-label="Reproducir">
+        <svg viewBox="0 0 24 24" id="icono"><path d="M7 4.5v15l13-7.5z"/></svg>
+      </button>
+      <div>
+        <div class="tiempo"><span id="actual">0:00.0</span> / <span id="total">1:07.0</span></div>
+        <div class="estado" id="estado">Pulsa reproducir. La primera vez tarda unos segundos en cargar.</div>
+      </div>
+    </div>
+
+    <div class="linea">
+      <input type="range" id="barra" min="0" max="67" step="0.1" value="0" aria-label="Posición">
+      <div class="escenas-scroll"><div class="escenas" id="escenas"></div></div>
+      <span class="nota">Toca el nombre de una escena para saltar a ese momento. En dorado, los momentos clave de la música.</span>
+    </div>
+
+    <div data-solo-pistas hidden id="zona-pistas">
+      <div class="canales" id="canales"></div>
+      <span class="nota"><b>M</b> silencia el instrumento. <b>S</b> lo deja sonar solo. El deslizador ajusta su volumen.</span>
+    </div>
+  </section>
+
+  <section class="guia">
+    <h2>Cómo probarlo</h2>
+    <ol>
+      <li>Usa audífonos o, mejor aún, los altavoces del salón a unos dos tercios del volumen.</li>
+      <li>Escucha la <b>mezcla anterior</b> desde el segundo 22 (“Una sola llave”) y ubica el “bip bip”.</li>
+      <li>Cambia a la <b>mezcla corregida</b> en el mismo punto y compara.</li>
+      <li>Si algo todavía molesta, entra a <b>Por instrumentos</b> y silencia uno por uno hasta que desaparezca. Dime cuál era y en qué segundo, y lo ajusto.</li>
+    </ol>
+  </section>
+</div>
+
+<script>
+const DURACION = 67.0;
+const ESCENAS = [
+  { t: 0.0, n: "Familia" }, { t: 5.87, n: "Trámite" }, { t: 8.8, n: "Cinco puertas", clave: true },
+  { t: 17.94, n: "La venta se cae", clave: true }, { t: 19.77, n: "Una sola llave", clave: true },
+  { t: 22.33, n: "Equipo" }, { t: 33.0, n: "Nace HRP" }, { t: 36.63, n: "HRP + CHS" },
+  { t: 42.87, n: "Recorrido" }, { t: 47.47, n: "Torre BICSA" }, { t: 51.73, n: "Web" },
+  { t: 57.13, n: "Revelación de marca", clave: true },
+];
+const PISTAS = [
+  { id: "acordes", n: "Acordes", d: "Colchón de acordes sostenido" },
+  { id: "bajo", n: "Bajo", d: "Nota grave de fondo" },
+  { id: "arpegio", n: "Arpegio", d: "Notas de piano eléctrico" },
+  { id: "bombo", n: "Bombo", d: "Pulso rítmico grave" },
+  { id: "platillos", n: "Platillos", d: "Brillo rítmico agudo" },
+  { id: "palmas", n: "Palmas", d: "Desde el recorrido y antes del cierre" },
+  { id: "efectos", n: "Efectos", d: "Golpes graves y subida al cierre" },
+];
+const MEZCLAS = { anterior: "mezcla-anterior.mp3", corregida: "mezcla-corregida.mp3" };
+
+let ctx = null, master = null, buffers = {}, nodos = [], inicioCtx = 0, posicion = 0, sonando = false;
+let modo = "corregida";
+const estadoPista = Object.fromEntries(PISTAS.map(p => [p.id, { mute: false, solo: false, vol: 1, gain: null, analyser: null }]));
+
+const $ = s => document.querySelector(s);
+const fmt = t => { const m = Math.floor(t / 60), s = (t % 60); return `${m}:${s.toFixed(1).padStart(4, "0")}`; };
+
+// Escenas en la línea de tiempo
+const cont = $("#escenas");
+ESCENAS.forEach(e => {
+  const b = document.createElement("button");
+  b.className = "escena" + (e.clave ? " clave" : "");
+  b.style.left = (e.t / DURACION * 100) + "%";
+  b.style.top = (ESCENAS.indexOf(e) % 2 ? 17 : 0) + "px";
+  b.textContent = e.n;
+  b.addEventListener("click", () => saltar(e.t));
+  cont.appendChild(b);
+});
+
+// Tiras de canal
+const canales = $("#canales");
+PISTAS.forEach(p => {
+  const el = document.createElement("div");
+  el.className = "canal"; el.id = "canal-" + p.id;
+  el.innerHTML = `<h3>${p.n}</h3><p>${p.d}</p><div class="medidor"><i></i></div>
+    <div class="botones"><button class="btn m" id="m-${p.id}" aria-pressed="false" aria-label="Silenciar ${p.n}">M</button>
+    <button class="btn s" id="s-${p.id}" aria-pressed="false" aria-label="Solo ${p.n}">S</button></div>
+    <input type="range" id="v-${p.id}" min="0" max="1.5" step="0.05" value="1" aria-label="Volumen ${p.n}">`;
+  canales.appendChild(el);
+  el.querySelector(".m").addEventListener("click", e => { estadoPista[p.id].mute = !estadoPista[p.id].mute; e.currentTarget.setAttribute("aria-pressed", estadoPista[p.id].mute); aplicarGanancias(); });
+  el.querySelector(".s").addEventListener("click", e => { estadoPista[p.id].solo = !estadoPista[p.id].solo; e.currentTarget.setAttribute("aria-pressed", estadoPista[p.id].solo); aplicarGanancias(); });
+  el.querySelector("input").addEventListener("input", e => { estadoPista[p.id].vol = +e.target.value; aplicarGanancias(); });
+});
+
+function aplicarGanancias() {
+  const haySolo = PISTAS.some(p => estadoPista[p.id].solo);
+  PISTAS.forEach(p => {
+    const s = estadoPista[p.id];
+    const activo = haySolo ? s.solo : !s.mute;
+    document.getElementById("canal-" + p.id).classList.toggle("silenciado", !activo);
+    if (s.gain) s.gain.gain.setTargetAtTime(activo ? s.vol : 0, ctx.currentTime, 0.02);
+  });
+}
+
+async function cargar(nombre) {
+  if (buffers[nombre]) return buffers[nombre];
+  const r = await fetch(nombre);
+  if (!r.ok) throw new Error("No se pudo cargar " + nombre);
+  buffers[nombre] = await ctx.decodeAudioData(await r.arrayBuffer());
+  return buffers[nombre];
+}
+
+async function prepararModo() {
+  const lista = modo === "pistas" ? PISTAS.map(p => "pistas/" + p.id + ".mp3") : [MEZCLAS[modo]];
+  const faltan = lista.filter(n => !buffers[n]);
+  if (faltan.length) $("#estado").textContent = `Cargando ${faltan.length === 1 ? "audio" : faltan.length + " pistas"}…`;
+  await Promise.all(lista.map(cargar));
+}
+
+function detener() {
+  nodos.forEach(n => { try { n.stop(); } catch (e) {} });
+  nodos = [];
+}
+
+async function reproducir() {
+  if (!ctx) {
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    master = ctx.createGain(); master.connect(ctx.destination);
+  }
+  await ctx.resume();
+  try { await prepararModo(); } catch (e) { $("#estado").textContent = e.message + ". Recarga la página e inténtalo de nuevo."; return; }
+  detener();
+  const t0 = ctx.currentTime + 0.05;
+  if (modo === "pistas") {
+    PISTAS.forEach(p => {
+      const s = estadoPista[p.id];
+      const src = ctx.createBufferSource(); src.buffer = buffers["pistas/" + p.id + ".mp3"];
+      s.gain = ctx.createGain(); s.analyser = ctx.createAnalyser(); s.analyser.fftSize = 512;
+      src.connect(s.gain).connect(s.analyser).connect(master);
+      src.start(t0, posicion); nodos.push(src);
+    });
+    aplicarGanancias();
+  } else {
+    const src = ctx.createBufferSource(); src.buffer = buffers[MEZCLAS[modo]];
+    src.connect(master); src.start(t0, posicion); nodos.push(src);
+  }
+  inicioCtx = t0 - posicion; sonando = true;
+  $("#estado").textContent = modo === "pistas" ? "Sonando por instrumentos" : (modo === "anterior" ? "Sonando: mezcla anterior" : "Sonando: mezcla corregida");
+  $("#play").setAttribute("aria-label", "Pausar");
+  $("#icono").innerHTML = '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
+  requestAnimationFrame(tick);
+}
+
+function pausar() {
+  if (!sonando) return;
+  posicion = Math.min(DURACION, ctx.currentTime - inicioCtx);
+  detener(); sonando = false;
+  $("#estado").textContent = "En pausa";
+  $("#play").setAttribute("aria-label", "Reproducir");
+  $("#icono").innerHTML = '<path d="M7 4.5v15l13-7.5z"/>';
+}
+
+function saltar(t) {
+  posicion = Math.max(0, Math.min(DURACION - 0.1, t));
+  $("#barra").value = posicion; $("#actual").textContent = fmt(posicion);
+  if (sonando) reproducir();
+}
+
+const datos = new Uint8Array(512);
+function tick() {
+  if (!sonando) return;
+  const t = ctx.currentTime - inicioCtx;
+  if (t >= DURACION) { pausar(); posicion = 0; $("#barra").value = 0; $("#actual").textContent = fmt(0); return; }
+  $("#barra").value = t; $("#actual").textContent = fmt(Math.max(0, t));
+  if (modo === "pistas") {
+    PISTAS.forEach(p => {
+      const a = estadoPista[p.id].analyser; if (!a) return;
+      a.getByteTimeDomainData(datos);
+      let pico = 0; for (let i = 0; i < a.fftSize; i++) pico = Math.max(pico, Math.abs(datos[i] - 128));
+      document.querySelector(`#canal-${p.id} .medidor i`).style.height = Math.min(100, pico / 128 * 160) + "%";
+    });
+  }
+  requestAnimationFrame(tick);
+}
+
+$("#play").addEventListener("click", () => sonando ? pausar() : reproducir());
+$("#barra").addEventListener("input", e => saltar(+e.target.value));
+document.querySelectorAll(".modo").forEach(b => b.addEventListener("click", () => {
+  modo = b.dataset.modo;
+  document.querySelectorAll(".modo").forEach(x => x.setAttribute("aria-pressed", x === b));
+  $("#zona-pistas").hidden = modo !== "pistas";
+  if (sonando) { posicion = ctx.currentTime - inicioCtx; reproducir(); }
+}));
+$("#total").textContent = fmt(DURACION);
+</script>

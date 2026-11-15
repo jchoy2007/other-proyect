@@ -57,14 +57,20 @@ def hp(x, fc, orden=2):
     return sosfilt(butter(orden, fc, "high", fs=SR, output="sos"), x)
 
 
-def poner(sig, t, gan=1.0, pan=0.0):
+PISTAS = {}
+
+
+def poner(sig, t, gan=1.0, pan=0.0, pista="otros"):
     i = int(t * SR)
     if i >= N:
         return
     sig = sig[: N - i]
     l, r = np.cos((pan + 1) * np.pi / 4), np.sin((pan + 1) * np.pi / 4)
-    mus[0, i : i + len(sig)] += sig * gan * l * 1.41
-    mus[1, i : i + len(sig)] += sig * gan * r * 1.41
+    if pista not in PISTAS:
+        PISTAS[pista] = np.zeros((2, N))
+    for destino in (mus, PISTAS[pista]):
+        destino[0, i : i + len(sig)] += sig * gan * l * 1.41
+        destino[1, i : i + len(sig)] += sig * gan * r * 1.41
 
 
 def env_adsr(n, a, r):
@@ -366,25 +372,25 @@ def comp_moderno():
         ac = prog_a[k % 4]
         d = 8 * b
         crec = min(1.0, t / max(T_CAE, 1))
-        poner(pad(ac[:3], d + 0.8, ataque=0.6, rel=0.8, corte=700 + 900 * crec), t, 0.4)
-        poner(pad([ac[0] - 24], d, ataque=0.05, rel=0.3, corte=180), t, 0.55)
+        poner(pad(ac[:3], d + 0.8, ataque=0.6, rel=0.8, corte=700 + 900 * crec), t, 0.4, pista="acordes")
+        poner(pad([ac[0] - 24], d, ataque=0.05, rel=0.3, corte=180), t, 0.55, pista="bajo")
         sub = b / 2
         for j in range(int(d / sub)):
             tt = t + j * sub
             if tt >= T_CAE - 0.1:
                 break
-            poner(teclado([ac[0], ac[1], ac[2], ac[3]][j % 4], 0.7, 0.5 + 0.3 * crec), tt, 1.0, pan=-0.35 if j % 2 else 0.35)
+            poner(teclado([ac[0], ac[1], ac[2], ac[3]][j % 4], 0.7, 0.5 + 0.3 * crec), tt, 1.0, pan=-0.35 if j % 2 else 0.35, pista="arpegio")
         if t >= T_PUERTAS - 0.1:
             for j in range(8):
                 tt = t + j * b
                 if tt >= T_CAE - 0.1:
                     break
-                poner(bombo(0.55), tt, 1.0)
-                poner(hat_suave(0.6), tt + b / 2, 1.0, pan=0.3)
+                poner(bombo(0.55), tt, 1.0, pista="bombo")
+                poner(hat_suave(0.6), tt + b / 2, 1.0, pan=0.3, pista="platillos")
         t += d
         k += 1
     # Corte seco y golpe en "la venta se cae"
-    poner(boom(3.5, 0.9), T_CAE, 1.0)
+    poner(boom(3.5, 0.9), T_CAE, 1.0, pista="efectos")
     # Esperanza: Fa mayor con bombeo rítmico, palmas desde el recorrido
     prog_c = [[46, 53, 58, 62], [41, 53, 57, 60], [48, 52, 55, 60], [50, 53, 57, 62]]
     t, k = T_LLAVE, 0
@@ -396,34 +402,39 @@ def comp_moderno():
         ac = prog_c[k % 4]
         for j in range(int(d / (b / 2))):
             tt = t + j * b / 2
-            poner(pad(ac, b / 2 + 0.05, ataque=0.02, rel=0.25, corte=1200 + 2200 * crec), tt, 0.38 + 0.22 * crec)
-            poner(teclado([ac[1] + 24, ac[2] + 12, ac[3] + 12, ac[2] + 24][j % 4], 0.3, 0.4 + 0.4 * crec), tt, 1.0, pan=-0.3 if j % 2 else 0.3)
-        poner(pad([ac[0] - 12], d, ataque=0.05, rel=0.2, corte=200), t, 0.55)
+            poner(teclado([ac[1], ac[2], ac[3], ac[2]][j % 4], 0.7, 0.45 + 0.35 * crec), tt, 1.0, pan=-0.3 if j % 2 else 0.3, pista="arpegio")
+        # acorde sostenido con pulso suave de volumen (sin ataques repetidos)
+        sost = pad(ac, d + 0.6, ataque=0.3, rel=0.6, corte=1100 + 900 * crec)
+        tt_ = np.arange(len(sost)) / SR
+        sost *= 0.75 + 0.25 * np.cos(2 * np.pi * tt_ / (b / 2))
+        poner(sost, t, 0.42 + 0.2 * crec, pista="acordes")
+        poner(pad([ac[0] - 12], d, ataque=0.05, rel=0.2, corte=200), t, 0.55, pista="bajo")
         if t >= T_EQUIPO - 0.1:
             for j in range(int(d / b)):
-                poner(bombo(0.5 + 0.3 * crec), t + j * b, 1.0)
-                poner(hat_suave(0.5 + 0.3 * crec), t + j * b + b / 2, 1.0, pan=0.3)
+                poner(bombo(0.5 + 0.3 * crec), t + j * b, 1.0, pista="bombo")
+                poner(hat_suave(0.5 + 0.3 * crec), t + j * b + b / 2, 1.0, pan=0.3, pista="platillos")
                 if t >= T_REC - 0.1 and j % 2 == 1:
-                    poner(clap(0.25 + 0.1 * crec), t + j * b, 1.0)
+                    poner(clap(0.25 + 0.1 * crec), t + j * b, 1.0, pista="palmas")
         t += 8 * b
         k += 1
     # Subida, silencio breve y drop
-    poner(subida(2.4, tono=False), T_CIERRE - 2.4, 0.5)
+    poner(subida(2.4, tono=False), T_CIERRE - 2.4, 0.5, pista="efectos")
     for j in range(8):
-        poner(clap(0.2 + 0.05 * j), T_CIERRE - 1.0 + j * 0.125, 1.0)
-    poner(boom(5.0, 1.0), T_CIERRE, 1.5)
-    poner(bombo(1.0), T_CIERRE, 1.2)
+        poner(clap(0.2 + 0.05 * j), T_CIERRE - 1.0 + j * 0.125, 1.0, pista="palmas")
+    poner(boom(5.0, 1.0), T_CIERRE, 1.5, pista="efectos")
+    poner(bombo(1.0), T_CIERRE, 1.2, pista="bombo")
     dur_final = TOTAL - T_CIERRE + 0.3
-    poner(pad([29, 41, 48, 53, 57, 60, 65, 69, 72], dur_final, ataque=0.02, rel=4.0, corte=1900, brillo=-0.5), T_CIERRE, 2.0)
+    poner(pad([29, 41, 48, 53, 57, 60, 65, 69, 72], dur_final, ataque=0.02, rel=4.0, corte=1900, brillo=-0.5), T_CIERRE, 2.0, pista="acordes")
     t = T_CIERRE
     j = 0
     while t < TOTAL - 3.0:
-        poner(teclado([53, 57, 60, 65][j % 4], 0.7, 0.45 * (1 - (t - T_CIERRE) / dur_final)), t, 1.0, pan=-0.3 if j % 2 else 0.3)
+        poner(teclado([53, 57, 60, 65][j % 4], 0.7, 0.45 * (1 - (t - T_CIERRE) / dur_final)), t, 1.0, pan=-0.3 if j % 2 else 0.3, pista="arpegio")
         t += b / 2
         j += 1
 
 
 import sys as _sys
+EXPORTAR_PISTAS = "--pistas" in _sys.argv
 ESTILO = next((a.split("=")[1] for a in _sys.argv if a.startswith("--estilo=")), "cine")
 {"cine": comp_cine, "lujo": comp_lujo, "moderno": comp_moderno}[ESTILO]()
 
@@ -446,8 +457,26 @@ mus[:, fin:] = 0
 # nivel por energía (RMS) y limitador suave, para que los golpes no aplasten el resto
 activo = np.abs(mus).mean(axis=0) > 1e-4
 rms = np.sqrt((mus[:, activo] ** 2).mean())
-mus *= 0.11 / (rms + 1e-9)
+GANANCIA = 0.11 / (rms + 1e-9)
+mus *= GANANCIA
 mus = 0.92 * np.tanh(mus / 0.92)
+
+if EXPORTAR_PISTAS:
+    # Cada instrumento por separado, con la misma reverberación y nivel (para el reproductor de prueba)
+    dir_p = RAIZ / "prueba-audio" / "pistas"
+    dir_p.mkdir(parents=True, exist_ok=True)
+    for nombre, x in PISTAS.items():
+        x = x * 0.75 + np.stack([fftconvolve(x[c], ir[c])[:N] for c in range(2)]) * 0.6
+        x = np.stack([hp(x[c], 35) for c in range(2)])
+        x[:, fin - nf : fin] *= np.linspace(1, 0, nf)
+        x[:, fin:] = 0
+        x *= GANANCIA * 0.8
+        tmp = dir_p / f"{nombre}.wav"
+        wavfile.write(tmp, SR, (np.clip(x, -1, 1).T * 32767).astype(np.int16))
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(tmp), "-c:a", "libmp3lame", "-b:a", "160k",
+                        str(dir_p / f"{nombre}.mp3")], check=True)
+        tmp.unlink()
+    print("Pistas:", ", ".join(PISTAS))
 
 # ---------------------------------------------------------------- narración y "ducking"
 voz = np.zeros(N)

@@ -1,3 +1,5 @@
 node_modules
 out
 voces
+prueba-audio/*.mp3
+prueba-audio/pistas/
