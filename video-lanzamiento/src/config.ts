@@ -3,42 +3,54 @@
 // ============================================================
 
 export const marca = {
-  nombre: "TU MARCA",
-  slogan: "Tu propiedad en Panamá, sin complicaciones.",
-  anosExperiencia: 15,
-  web: "www.tumarca.com",
+  nombre: "Holding Realty Properties",
+  aliada: "Corporate Holding Solutions",
+  slogan: "Construyendo juntos un futuro de oportunidades",
+  propuesta: "Vendemos el inmueble y gestionamos su financiamiento.",
+  fundadora: "Irisbel Tapia",
+  cargo: "Fundadora y CEO",
+  anosExperiencia: 25,
+  web: "www.holdingrealty.com",
+  direccion: "Torre BICSA Financial Center · Piso 36, Oficina 3611",
+  licencia: "Licencia de corredor PJ-1601-2026",
 
-  // Si tienes el logo, ponlo en public/logo.png y escribe "logo.png".
-  // Si lo dejas en null, se muestra un logo provisional.
-  logo: null as string | null,
+  // Música de fondo (en public/). null = sin música.
+  // PROVISIONAL: pista del video anterior, confirmar licencia antes de publicar.
+  musica: "audio/musica-provisional.mp3" as string | null,
 
-  // Música de fondo: pon un .mp3 en public/ y escribe su nombre, ej. "musica.mp3".
-  musica: null as string | null,
+  puertas: ["Promotora", "Corredor", "Banco", "Afianzadora", "Abogado"],
+
+  pasos: ["Captación", "Pre-calificación", "Expediente", "Evaluación", "Formalización", "Desembolso"],
 
   // Servicios que aparecen en la maqueta de la página web
   servicios: [
-    "Trámites de compraventa",
-    "Gestión de financiamiento bancario",
-    "Asesoría legal inmobiliaria",
-    "Avalúos y documentación",
+    { t: "Venta y alquiler", d: "Residencial y comercial" },
+    { t: "Proyectos de promotoras", d: "Comercialización de proyectos nuevos" },
+    { t: "Pre-calificación bancaria", d: "Conoce tu capacidad de compra" },
+    { t: "Gestión hasta el desembolso", d: "Banco, afianzadora y abogado" },
+    { t: "Inversionistas", d: "Nacionales y extranjeros" },
+    { t: "Administración de propiedades", d: "Tu inversión en buenas manos" },
   ],
 
-  // Redes sociales del cierre (borra las que no uses)
-  redes: [
-    { red: "instagram", usuario: "@tumarca" },
-    { red: "facebook", usuario: "/tumarca" },
-    { red: "tiktok", usuario: "@tumarca" },
-    { red: "whatsapp", usuario: "+507 6000-0000" },
-  ] as { red: Red; usuario: string }[],
+  // Contacto del cierre
+  contacto: [
+    { red: "instagram", texto: "@holdingrealtyproperties" },
+    { red: "whatsapp", texto: "6005-9211" },
+    { red: "telefono", texto: "203-1664" },
+    { red: "correo", texto: "info@holdingrealty.com" },
+  ] as { red: Red; texto: string }[],
 };
 
-export type Red = "instagram" | "facebook" | "tiktok" | "whatsapp" | "linkedin" | "youtube";
+export type Red = "instagram" | "facebook" | "tiktok" | "whatsapp" | "linkedin" | "youtube" | "telefono" | "correo";
 
+// Colores oficiales (hoja de marca)
 export const colores = {
-  azul: "#0A1A33",
-  azulMedio: "#13305C",
-  dorado: "#D9A441",
-  doradoClaro: "#F2CD7A",
-  rojo: "#E5484D",
+  negro: "#231F20",
+  negroProfundo: "#141213",
+  dorado: "#A8842F",
+  doradoClaro: "#D9BC6E", // para texto dorado sobre fondo oscuro
+  gris: "#414143",
+  crema: "#F5EFE3",
   blanco: "#FFFFFF",
+  rojo: "#B5473A",
 };

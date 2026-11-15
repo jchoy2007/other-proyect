@@ -11,7 +11,9 @@ import {
 } from "remotion";
 import { colores } from "./config";
 
-export const FUENTE = "'Montserrat', sans-serif";
+export const FUENTE = "'Playfair Display', Georgia, serif";
+export const SANS = "'Poppins', sans-serif";
+export const CINZEL = "'Cinzel', serif";
 export const FADE = 12;
 
 /** Unidad de escala: 1 = 1px en un lienzo de 1080 de lado corto. */
@@ -73,7 +75,7 @@ export const Foto: React.FC<{
   return (
     <AbsoluteFill style={{ overflow: "hidden", backgroundColor: "#000" }}>
       <Img
-        src={staticFile(`fotos/${src}`)}
+        src={staticFile(src.includes("/") ? src : `fotos/${src}`)}
         style={{
           width: "100%",
           height: "100%",

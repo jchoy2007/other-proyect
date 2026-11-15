@@ -50,6 +50,19 @@ export const IconoRed: React.FC<{ red: Red; size: number; color?: string }> = ({
           <path d="M8 10.5V17M8 7.5v.01M11.5 17v-6.5M11.5 13c0-1.6 1-2.6 2.4-2.6 1.4 0 2.1 1 2.1 2.6V17" {...st} />
         </svg>
       );
+    case "telefono":
+      return (
+        <svg {...p}>
+          <path d="M5 4h3.5l1.5 4-2 1.5a11 11 0 0 0 6.5 6.5l1.5-2 4 1.5V19a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" {...st} />
+        </svg>
+      );
+    case "correo":
+      return (
+        <svg {...p}>
+          <rect x="3" y="5" width="18" height="14" rx="2.5" {...st} />
+          <path d="M3.5 6.5l8.5 6.5 8.5-6.5" {...st} />
+        </svg>
+      );
     case "youtube":
       return (
         <svg {...p}>
