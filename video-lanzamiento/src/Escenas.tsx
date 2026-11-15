@@ -40,27 +40,86 @@ const Logo: React.FC<{ archivo: string; alto: number; style?: React.CSSPropertie
   <Img src={staticFile(`logos/${archivo}.png`)} style={{ height: alto, objectFit: "contain", ...style }} />
 );
 
-// ------------------------------------------------ 1. Una familia encontró su apartamento, casa o casa de playa
-export const Familia: React.FC<{ d: number }> = ({ d }) => {
+// ------------------------------------------------ 1. Familias e inversionistas encuentran su propiedad
+export const Familia: React.FC<{ d: number; voz?: number[] }> = ({ d, voz = [20, 140, 260] }) => {
   const u = useU();
+  const vertical = useVertical();
+  const f = useCurrentFrame();
+  const fase = (a: number, b: number) =>
+    Math.min(interpolate(f, [a - 10, a + 4], [0, 1], cl), interpolate(f, [b - 10, b + 2], [1, 0], cl));
+  const f1 = fase(-20, voz[1]);
+  const f2 = fase(voz[1], voz[2]);
+  const f3 = interpolate(f, [voz[2] - 10, voz[2] + 4], [0, 1], cl);
+  const tipos = ["Apartamento", "Casa", "Casa de playa", "Local comercial"];
+  const bloque = (op: number, children: React.ReactNode) => (
+    <AbsoluteFill style={{ opacity: op }}>
+      <Centro style={{ justifyContent: "flex-end", paddingBottom: (vertical ? 260 : 150) * u }}>{children}</Centro>
+    </AbsoluteFill>
+  );
   return (
     <Escena duracion={d} fadeIn={false}>
       <Foto src="skyline-balboa.jpg" duracion={d} zoom={[1.3, 1.08]} mover={[3, 0]} oscuro={0.3} />
-      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(35,31,32,0) 35%, rgba(35,31,32,0.85))" }} />
-      <Centro style={{ justifyContent: "flex-end", paddingBottom: 260 * u }}>
-        <TextoEntra inicio={10} style={kicker(u)}>CIUDAD DE PANAMÁ</TextoEntra>
-        <Barra inicio={20} ancho={90} />
-        <TextoEntra inicio={26} style={titulo(u, 78)}>
-          Una familia en Panamá
-          <br />
-          por fin encontró
-          <br />
-          <span style={{ color: colores.doradoClaro, fontStyle: "italic" }}>
-            su apartamento, casa
-            <br />o casa de playa.
-          </span>
-        </TextoEntra>
-      </Centro>
+      <AbsoluteFill style={{ opacity: Math.max(f2, f3) }}>
+        <Foto src="bahia-noche.jpg" duracion={d} zoom={[1.1, 1.25]} oscuro={0.3} />
+      </AbsoluteFill>
+      <AbsoluteFill style={{ opacity: f3 }}>
+        <Foto src="tornillo.jpg" duracion={d} zoom={[1.05, 1.15]} oscuro={0.35} origen="60% 40%" />
+      </AbsoluteFill>
+      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(35,31,32,0) 35%, rgba(35,31,32,0.88))" }} />
+      {bloque(
+        f1,
+        <>
+          <TextoEntra inicio={voz[0] - 10} style={kicker(u)}>CIUDAD DE PANAMÁ</TextoEntra>
+          <Barra inicio={voz[0]} ancho={90} />
+          <TextoEntra inicio={voz[0] + 4} style={titulo(u, vertical ? 80 : 74)}>
+            Una familia que busca
+            <br />
+            <span style={{ color: colores.doradoClaro, fontStyle: "italic" }}>su hogar en Panamá.</span>
+          </TextoEntra>
+        </>
+      )}
+      {bloque(
+        f2,
+        <>
+          <TextoEntra inicio={voz[1]} style={kicker(u)}>DESDE EL EXTRANJERO</TextoEntra>
+          <Barra inicio={voz[1] + 6} ancho={90} />
+          <TextoEntra inicio={voz[1] + 8} style={titulo(u, vertical ? 80 : 74)}>
+            Un inversionista que
+            <br />
+            <span style={{ color: colores.doradoClaro, fontStyle: "italic" }}>apuesta por Panamá.</span>
+          </TextoEntra>
+        </>
+      )}
+      {bloque(
+        f3,
+        <>
+          <TextoEntra inicio={voz[2]} style={titulo(u, vertical ? 80 : 74)}>
+            Todos encontraron
+            <br />
+            <span style={{ color: colores.doradoClaro, fontStyle: "italic" }}>la propiedad ideal.</span>
+          </TextoEntra>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 14 * u, marginTop: 34 * u, maxWidth: (vertical ? 900 : 1300) * u }}>
+            {tipos.map((t, i) => (
+              <TextoEntra
+                key={t}
+                inicio={voz[2] + 16 + i * 8}
+                desde={24}
+                style={{
+                  fontFamily: SANS,
+                  fontSize: (vertical ? 32 : 28) * u,
+                  fontWeight: 500,
+                  padding: `${10 * u}px ${26 * u}px`,
+                  border: `${2 * u}px solid ${colores.doradoClaro}`,
+                  borderRadius: 40 * u,
+                  background: "rgba(20,18,19,0.45)",
+                }}
+              >
+                {t}
+              </TextoEntra>
+            ))}
+          </div>
+        </>
+      )}
       <Vineta />
     </Escena>
   );
@@ -510,7 +569,8 @@ export const PaginaWeb: React.FC<{ d: number }> = ({ d }) => {
   const entra = spring({ frame: f - 4, fps, config: { damping: 16, stiffness: 90 } });
   const anchoM = vertical ? 900 : 1240;
   const altoM = vertical ? 1240 : 680;
-  const scroll = interpolate(f, [45, d - 25], [0, vertical ? 400 : 330], { ...cl, easing: Easing.inOut(Easing.cubic) });
+  // portada ~2 s, baja despacio a los servicios y se queda quieta para leerlos
+  const scroll = interpolate(f, [70, 130], [0, vertical ? 470 : 545], { ...cl, easing: Easing.inOut(Easing.cubic) });
 
   return (
     <Escena duracion={d}>
@@ -630,9 +690,9 @@ export const PaginaWeb: React.FC<{ d: number }> = ({ d }) => {
                         boxShadow: `0 ${6 * u}px ${20 * u}px rgba(35,31,32,0.08)`,
                       }}
                     >
-                      <div style={{ fontFamily: FUENTE, fontSize: 30 * u, fontWeight: 700, color: colores.dorado }}>0{i + 1}</div>
-                      <div style={{ fontSize: 23 * u, fontWeight: 600, color: colores.negro, marginTop: 6 * u, lineHeight: 1.25 }}>{s.t}</div>
-                      <div style={{ fontSize: 17 * u, color: "#6b6460", marginTop: 6 * u }}>{s.d}</div>
+                      <div style={{ fontFamily: FUENTE, fontSize: 32 * u, fontWeight: 700, color: colores.dorado }}>0{i + 1}</div>
+                      <div style={{ fontSize: 27 * u, fontWeight: 600, color: colores.negro, marginTop: 6 * u, lineHeight: 1.25 }}>{s.t}</div>
+                      <div style={{ fontSize: 20 * u, color: "#6b6460", marginTop: 6 * u }}>{s.d}</div>
                     </div>
                   ))}
                 </div>

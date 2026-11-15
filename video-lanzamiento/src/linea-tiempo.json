@@ -1,25 +1,37 @@
 {
   "fps": 30,
-  "total": 2095,
+  "total": 2454,
   "conVoz": false,
   "escenas": [
     {
       "id": "Familia",
-      "d": 188,
+      "d": 387,
       "desde": 0,
       "voces": [
         {
           "archivo": "audio/voz/01-Familia-1.wav",
-          "inicio": 24,
-          "duracion": 136,
-          "texto": "Una familia en Panamá… por fin encontró su apartamento, casa o casa de playa."
+          "inicio": 20,
+          "duracion": 72,
+          "texto": "Una familia que busca su hogar en Panamá."
+        },
+        {
+          "archivo": "audio/voz/01-Familia-2.wav",
+          "inicio": 102,
+          "duracion": 109,
+          "texto": "Un inversionista que, desde el extranjero, apuesta por Panamá."
+        },
+        {
+          "archivo": "audio/voz/01-Familia-3.wav",
+          "inicio": 221,
+          "duracion": 138,
+          "texto": "Todos encontraron la propiedad ideal: apartamento, casa, casa de playa o local comercial."
         }
       ]
     },
     {
       "id": "Tramite",
       "d": 100,
-      "desde": 176,
+      "desde": 375,
       "voces": [
         {
           "archivo": "audio/voz/02-Tramite-1.wav",
@@ -32,7 +44,7 @@
     {
       "id": "Puertas",
       "d": 341,
-      "desde": 264,
+      "desde": 463,
       "voces": [
         {
           "archivo": "audio/voz/03-Puertas-1.wav",
@@ -57,7 +69,7 @@
     {
       "id": "Llave",
       "d": 89,
-      "desde": 593,
+      "desde": 792,
       "voces": [
         {
           "archivo": "audio/voz/04-Llave-1.wav",
@@ -70,7 +82,7 @@
     {
       "id": "Equipo",
       "d": 332,
-      "desde": 670,
+      "desde": 869,
       "voces": [
         {
           "archivo": "audio/voz/05-Equipo-1.wav",
@@ -89,7 +101,7 @@
     {
       "id": "Nace",
       "d": 121,
-      "desde": 990,
+      "desde": 1189,
       "voces": [
         {
           "archivo": "audio/voz/06-Nace-1.wav",
@@ -102,7 +114,7 @@
     {
       "id": "DosEmpresas",
       "d": 219,
-      "desde": 1099,
+      "desde": 1298,
       "voces": [
         {
           "archivo": "audio/voz/07-DosEmpresas-1.wav",
@@ -121,7 +133,7 @@
     {
       "id": "Recorrido",
       "d": 215,
-      "desde": 1306,
+      "desde": 1505,
       "voces": [
         {
           "archivo": "audio/voz/08-Recorrido-1.wav",
@@ -134,7 +146,7 @@
     {
       "id": "Casa",
       "d": 140,
-      "desde": 1509,
+      "desde": 1708,
       "voces": [
         {
           "archivo": "audio/voz/09-Casa-1.wav",
@@ -146,8 +158,8 @@
     },
     {
       "id": "PaginaWeb",
-      "d": 170,
-      "desde": 1637,
+      "d": 330,
+      "desde": 1836,
       "voces": [
         {
           "archivo": "audio/voz/10-PaginaWeb-1.wav",
@@ -160,7 +172,7 @@
     {
       "id": "Cierre",
       "d": 300,
-      "desde": 1795,
+      "desde": 2154,
       "voces": [
         {
           "archivo": "audio/voz/11-Cierre-1.wav",

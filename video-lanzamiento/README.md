@@ -7,7 +7,7 @@ Video de ~75 s con narrador y música original, en dos formatos:
 ## Estructura (v3)
 | Escena | Narración |
 |---|---|
-| Familia | Una familia en Panamá… por fin encontró su apartamento, casa o casa de playa. |
+| Apertura | Una familia que busca su hogar en Panamá. Un inversionista que, desde el extranjero, apuesta por Panamá. Todos encontraron la propiedad ideal: apartamento, casa, casa de playa o local comercial. |
 | Trámite | Y entonces, empezó el trámite. |
 | Cinco puertas | Promotora, corredor, banco, afianzadora, abogado. Cinco puertas… y el cliente es quien las camina. Un papel vencido, una carta incompleta… y la venta se cae. |
 | Llave | Cinco puertas. Una sola llave. |

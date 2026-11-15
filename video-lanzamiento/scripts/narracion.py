@@ -39,7 +39,11 @@ FON = {
 # (id de escena, duración visual mínima en fotogramas, frases)
 # Cada frase: (texto, pausa antes en fotogramas)
 GUION = [
-    ("Familia", 150, [("Una familia en Panamá… por fin encontró su apartamento, casa o casa de playa.", 24)]),
+    ("Familia", 150, [
+        ("Una familia que busca su hogar en Panamá.", 20),
+        ("Un inversionista que, desde el extranjero, apuesta por Panamá.", 10),
+        ("Todos encontraron la propiedad ideal: apartamento, casa, casa de playa o local comercial.", 10),
+    ]),
     ("Tramite", 100, [("Y entonces, empezó el trámite.", 10)]),
     ("Puertas", 240, [
         ("Promotora, corredor, banco, afianzadora, abogado.", 16),
@@ -58,7 +62,7 @@ GUION = [
     ]),
     ("Recorrido", 215, [("Un solo acompañante, de la búsqueda… hasta la entrega de las llaves de tu nuevo hogar.", 14)]),
     ("Casa", 140, [("Desde la Torre BICSA, frente a la bahía de Panamá.", 14)]),
-    ("PaginaWeb", 170, [("Conoce todos nuestros servicios en holdingrealty punto com.", 18)]),
+    ("PaginaWeb", 330, [("Conoce todos nuestros servicios en holdingrealty punto com.", 18)]),
     ("Cierre", 300, [("Holding Realty Properties. Construyendo juntos un futuro de oportunidades.", 34)]),
 ]
 COLA = 16  # fotogramas de aire después de la última frase de cada escena
