@@ -1,25 +1,25 @@
 {
   "fps": 30,
-  "total": 1972,
+  "total": 2010,
   "conVoz": false,
   "escenas": [
     {
       "id": "Familia",
-      "d": 150,
+      "d": 188,
       "desde": 0,
       "voces": [
         {
           "archivo": "audio/voz/01-Familia-1.wav",
           "inicio": 24,
-          "duracion": 97,
-          "texto": "Una familia en Panamá… por fin encontró su apartamento."
+          "duracion": 136,
+          "texto": "Una familia en Panamá… por fin encontró su apartamento, casa o casa de playa."
         }
       ]
     },
     {
       "id": "Tramite",
       "d": 100,
-      "desde": 138,
+      "desde": 176,
       "voces": [
         {
           "archivo": "audio/voz/02-Tramite-1.wav",
@@ -32,7 +32,7 @@
     {
       "id": "Puertas",
       "d": 341,
-      "desde": 226,
+      "desde": 264,
       "voces": [
         {
           "archivo": "audio/voz/03-Puertas-1.wav",
@@ -57,7 +57,7 @@
     {
       "id": "Llave",
       "d": 89,
-      "desde": 555,
+      "desde": 593,
       "voces": [
         {
           "archivo": "audio/voz/04-Llave-1.wav",
@@ -70,7 +70,7 @@
     {
       "id": "Equipo",
       "d": 332,
-      "desde": 632,
+      "desde": 670,
       "voces": [
         {
           "archivo": "audio/voz/05-Equipo-1.wav",
@@ -89,7 +89,7 @@
     {
       "id": "Nace",
       "d": 121,
-      "desde": 952,
+      "desde": 990,
       "voces": [
         {
           "archivo": "audio/voz/06-Nace-1.wav",
@@ -102,7 +102,7 @@
     {
       "id": "DosEmpresas",
       "d": 199,
-      "desde": 1061,
+      "desde": 1099,
       "voces": [
         {
           "archivo": "audio/voz/07-DosEmpresas-1.wav",
@@ -121,7 +121,7 @@
     {
       "id": "Recorrido",
       "d": 150,
-      "desde": 1248,
+      "desde": 1286,
       "voces": [
         {
           "archivo": "audio/voz/08-Recorrido-1.wav",
@@ -134,7 +134,7 @@
     {
       "id": "Casa",
       "d": 140,
-      "desde": 1386,
+      "desde": 1424,
       "voces": [
         {
           "archivo": "audio/voz/09-Casa-1.wav",
@@ -147,7 +147,7 @@
     {
       "id": "PaginaWeb",
       "d": 170,
-      "desde": 1514,
+      "desde": 1552,
       "voces": [
         {
           "archivo": "audio/voz/10-PaginaWeb-1.wav",
@@ -160,7 +160,7 @@
     {
       "id": "Cierre",
       "d": 300,
-      "desde": 1672,
+      "desde": 1710,
       "voces": [
         {
           "archivo": "audio/voz/11-Cierre-1.wav",

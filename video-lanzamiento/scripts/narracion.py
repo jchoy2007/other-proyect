@@ -39,7 +39,7 @@ FON = {
 # (id de escena, duración visual mínima en fotogramas, frases)
 # Cada frase: (texto, pausa antes en fotogramas)
 GUION = [
-    ("Familia", 150, [("Una familia en Panamá… por fin encontró su apartamento.", 24)]),
+    ("Familia", 150, [("Una familia en Panamá… por fin encontró su apartamento, casa o casa de playa.", 24)]),
     ("Tramite", 100, [("Y entonces, empezó el trámite.", 10)]),
     ("Puertas", 240, [
         ("Promotora, corredor, banco, afianzadora, abogado.", 16),

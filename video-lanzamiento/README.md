@@ -7,7 +7,7 @@ Video de ~75 s con narrador y música original, en dos formatos:
 ## Estructura (v3)
 | Escena | Narración |
 |---|---|
-| Familia | Una familia en Panamá… por fin encontró su apartamento. |
+| Familia | Una familia en Panamá… por fin encontró su apartamento, casa o casa de playa. |
 | Trámite | Y entonces, empezó el trámite. |
 | Cinco puertas | Promotora, corredor, banco, afianzadora, abogado. Cinco puertas… y el cliente es quien las camina. Un papel vencido, una carta incompleta… y la venta se cae. |
 | Llave | Cinco puertas. Una sola llave. |
@@ -21,7 +21,7 @@ Video de ~75 s con narrador y música original, en dos formatos:
 
 ## Audio
 1. `python3 scripts/narracion.py`: genera la voz (Piper, `es_MX-claude-high`, en `voces/`) y `src/linea-tiempo.json`; cada escena dura lo que necesita su narración.
-2. `python3 scripts/musica.py`: compone la música (suspenso → tensión → golpe grave → esperanza → impacto en el cierre), baja la música cuando habla el narrador y genera `public/audio/mezcla.wav`.
+2. `python3 scripts/musica.py [--estilo=cine|lujo|moderno]`: tres estilos de música (A cinematográfica = `mezcla.wav`, B elegante = `mezcla-lujo.wav`, C moderno = `mezcla-moderno.wav`). compone la música (suspenso → tensión → golpe grave → esperanza → impacto en el cierre), baja la música cuando habla el narrador y genera `public/audio/mezcla.wav`.
 
 Para cambiar una frase: edita `GUION` en `scripts/narracion.py`, ejecuta los dos scripts y vuelve a renderizar.
 Para usar un locutor real: reemplaza los .wav de `public/audio/voz/` (mismos nombres) y ejecuta solo `musica.py`.

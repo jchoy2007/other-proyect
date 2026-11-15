@@ -122,7 +122,7 @@ def pluck(m, dur=0.6, vel=1.0):
     n = int(dur * SR)
     t = np.arange(n) / SR
     s = sierra(hz(m), n, 8) * np.exp(-t * 7)
-    return lp(s, 2600) * env_adsr(n, 0.003, 0.05) * vel * 0.3
+    return lp(s, 2600) * env_adsr(n, 0.008, 0.05) * vel * 0.3
 
 
 def bombo(vel=1.0, f0=95, f1=42, dur=0.7):
@@ -177,78 +177,237 @@ T_EQUIPO = t_esc("Equipo")
 T_DOS = t_esc("DosEmpresas")
 T_CIERRE = t_esc("Cierre", 4)
 
-# 1) Ambiente y piano en suspenso (re menor)
-poner(pad([38, 45], T_LLAVE + 1.0, ataque=3.0, rel=2.5, corte=500), 0, 0.55)  # dron re-la
-motivo = [69, 65, 62, 64, 65, 64, 62, 57]
-t = 1.2
-i = 0
-while t < T_CAE - 0.5:
-    m = motivo[i % len(motivo)]
-    poner(piano(m, 4.0, 0.8 if i % 4 == 0 else 0.6), t, 1.0, pan=0.25 * np.sin(i))
-    if i % 4 == 0:
-        poner(piano(m - 24, 5.0, 0.5), t, 1.0)
-    t += 1.5 if T_PUERTAS > t else 1.0
-    i += 1
-acordes_tension = [[50, 53, 57], [46, 50, 53], [43, 46, 50], [45, 49, 52]]  # Dm Bb Gm A
-dur_ac = (T_CAE - T_PUERTAS) / 4
-for k, ac in enumerate(acordes_tension):
-    poner(pad(ac, dur_ac + 1.5, ataque=1.0, rel=1.5, corte=900 + 250 * k), T_PUERTAS + k * dur_ac, 0.5)
+def comp_cine():
+    """A · Cinematográfica: suspenso, latido, golpe grave e impacto."""
+    # 1) Ambiente y piano en suspenso (re menor)
+    poner(pad([38, 45], T_LLAVE + 1.0, ataque=3.0, rel=2.5, corte=500), 0, 0.55)  # dron re-la
+    motivo = [69, 65, 62, 64, 65, 64, 62, 57]
+    t = 1.2
+    i = 0
+    while t < T_CAE - 0.5:
+        m = motivo[i % len(motivo)]
+        poner(piano(m, 4.0, 0.8 if i % 4 == 0 else 0.6), t, 1.0, pan=0.25 * np.sin(i))
+        if i % 4 == 0:
+            poner(piano(m - 24, 5.0, 0.5), t, 1.0)
+        t += 1.5 if T_PUERTAS > t else 1.0
+        i += 1
+    acordes_tension = [[50, 53, 57], [46, 50, 53], [43, 46, 50], [45, 49, 52]]  # Dm Bb Gm A
+    dur_ac = (T_CAE - T_PUERTAS) / 4
+    for k, ac in enumerate(acordes_tension):
+        poner(pad(ac, dur_ac + 1.5, ataque=1.0, rel=1.5, corte=900 + 250 * k), T_PUERTAS + k * dur_ac, 0.5)
 
-# 2) Tensión: latido y tic-tac en "Cinco puertas"
-bpm = 72
-paso = 60 / bpm
-t = T_PUERTAS + 0.3
-while t < T_CAE - 0.2:
-    crec = (t - T_PUERTAS) / (T_CAE - T_PUERTAS)
-    poner(latido(0.55 + 0.35 * crec), t, 1.0)
-    poner(latido(0.35 + 0.25 * crec), t + 0.22, 1.0)
-    for s in range(2):
-        poner(tic(0.6 + crec), t + s * paso / 2, 1.0, pan=0.4 if s else -0.4)
-    t += paso
-# golpe grave cuando "la venta se cae"
-poner(boom(4.5, 0.95), T_CAE, 1.0)
-poner(pad([26, 38], 4.5, ataque=0.02, rel=3.5, corte=300), T_CAE, 0.5)
+    # 2) Tensión: latido y tic-tac en "Cinco puertas"
+    bpm = 72
+    paso = 60 / bpm
+    t = T_PUERTAS + 0.3
+    while t < T_CAE - 0.2:
+        crec = (t - T_PUERTAS) / (T_CAE - T_PUERTAS)
+        poner(latido(0.55 + 0.35 * crec), t, 1.0)
+        poner(latido(0.35 + 0.25 * crec), t + 0.22, 1.0)
+        for s in range(2):
+            poner(tic(0.6 + crec), t + s * paso / 2, 1.0, pan=0.4 if s else -0.4)
+        t += paso
+    # golpe grave cuando "la venta se cae"
+    poner(boom(4.5, 0.95), T_CAE, 1.0)
+    poner(pad([26, 38], 4.5, ataque=0.02, rel=3.5, corte=300), T_CAE, 0.5)
 
-# 3) Esperanza desde "Una sola llave": Fa mayor  (Sib - Fa - Do - Rem)
-prog = [[46, 53, 58, 62], [41, 53, 57, 60], [48, 52, 55, 60], [50, 53, 57, 62]]
-bajo = [34, 29, 36, 38]
-dur_c = 3.0
-t = T_LLAVE
-k = 0
-fin_esp = T_CIERRE - 2.6
-while t < fin_esp:
-    d = min(dur_c, fin_esp - t + 0.4)
-    crec = (t - T_LLAVE) / (fin_esp - T_LLAVE)
-    ac = prog[k % 4]
-    poner(pad(ac, d + 1.2, ataque=0.8, rel=1.2, corte=1100 + 1800 * crec), t, 0.42 + 0.25 * crec)
-    poner(pad([bajo[k % 4]], d + 0.6, ataque=0.3, rel=0.6, corte=300), t, 0.5)
-    poner(piano(ac[-1] + 12, 3.5, 0.55), t, 1.0, pan=0.2)
-    # arpegio desde el equipo
-    if t >= T_EQUIPO - 0.1:
-        notas = [ac[1] + 12, ac[2] + 12, ac[3] + 12, ac[2] + 12]
-        corcheas = int(d / 0.375)
-        for j in range(corcheas):
-            poner(pluck(notas[j % 4], 0.5, 0.5 + 0.5 * crec), t + j * 0.375, 1.0, pan=-0.3 if j % 2 else 0.3)
-    # bombo suave desde "dos empresas"
-    if t >= T_DOS - 0.1:
-        for j in range(int(d / 0.75)):
-            poner(bombo(0.45 + 0.35 * crec), t + j * 0.75, 1.0)
-    t += dur_c
-    k += 1
+    # 3) Esperanza desde "Una sola llave": Fa mayor  (Sib - Fa - Do - Rem)
+    prog = [[46, 53, 58, 62], [41, 53, 57, 60], [48, 52, 55, 60], [50, 53, 57, 62]]
+    bajo = [34, 29, 36, 38]
+    dur_c = 3.0
+    t = T_LLAVE
+    k = 0
+    fin_esp = T_CIERRE - 2.6
+    while t < fin_esp:
+        d = min(dur_c, fin_esp - t + 0.4)
+        crec = (t - T_LLAVE) / (fin_esp - T_LLAVE)
+        ac = prog[k % 4]
+        poner(pad(ac, d + 1.2, ataque=0.8, rel=1.2, corte=1100 + 1800 * crec), t, 0.42 + 0.25 * crec)
+        poner(pad([bajo[k % 4]], d + 0.6, ataque=0.3, rel=0.6, corte=300), t, 0.5)
+        poner(piano(ac[-1] + 12, 3.5, 0.55), t, 1.0, pan=0.2)
+        # arpegio desde el equipo
+        if t >= T_EQUIPO - 0.1:
+            notas = [ac[1] + 12, ac[2] + 12, ac[3] + 12, ac[2] + 12]
+            corcheas = int(d / 0.375)
+            for j in range(corcheas):
+                poner(pluck(notas[j % 4], 0.5, 0.5 + 0.5 * crec), t + j * 0.375, 1.0, pan=-0.3 if j % 2 else 0.3)
+        # bombo suave desde "dos empresas"
+        if t >= T_DOS - 0.1:
+            for j in range(int(d / 0.75)):
+                poner(bombo(0.45 + 0.35 * crec), t + j * 0.75, 1.0)
+        t += dur_c
+        k += 1
 
-# 4) Subida e impacto al mostrar la marca
-poner(subida(2.6), T_CIERRE - 2.6, 0.55)
-poner(timbal(0.5), T_CIERRE - 0.75, 1.0)
-poner(timbal(0.6), T_CIERRE - 0.375, 1.0)
-poner(boom(6.0, 1.0), T_CIERRE, 1.5)
-poner(timbal(1.0), T_CIERRE, 1.0)
-final = T_CIERRE
-dur_final = TOTAL - final + 0.3
-poner(pad([41, 48, 53, 57, 60, 65, 69, 72], dur_final, ataque=0.03, rel=4.0, corte=2600, brillo=-0.4), final, 1.35)
-poner(pad([29, 41], dur_final, ataque=0.03, rel=4.0, corte=250), final, 0.7)
-for j, m in enumerate([77, 72, 69, 65]):
-    poner(piano(m, 5.0, 0.7), final + 1.2 + j * 0.75, 1.0, pan=0.2 * (j - 1.5))
-poner(piano(65 + 12, 6.0, 0.6), final + 4.5, 1.0)
+    # 4) Subida e impacto al mostrar la marca
+    poner(subida(2.6), T_CIERRE - 2.6, 0.55)
+    poner(timbal(0.5), T_CIERRE - 0.75, 1.0)
+    poner(timbal(0.6), T_CIERRE - 0.375, 1.0)
+    poner(boom(6.0, 1.0), T_CIERRE, 1.5)
+    poner(timbal(1.0), T_CIERRE, 1.0)
+    final = T_CIERRE
+    dur_final = TOTAL - final + 0.3
+    poner(pad([41, 48, 53, 57, 60, 65, 69, 72], dur_final, ataque=0.03, rel=4.0, corte=2600, brillo=-0.4), final, 1.35)
+    poner(pad([29, 41], dur_final, ataque=0.03, rel=4.0, corte=250), final, 0.7)
+    for j, m in enumerate([77, 72, 69, 65]):
+        poner(piano(m, 5.0, 0.7), final + 1.2 + j * 0.75, 1.0, pan=0.2 * (j - 1.5))
+    poner(piano(65 + 12, 6.0, 0.6), final + 4.5, 1.0)
+
+
+
+def clap(vel=1.0):
+    n = int(0.25 * SR)
+    t = np.arange(n) / SR
+    ruido = sosfilt(butter(2, [900, 3500], "band", fs=SR, output="sos"), rng.standard_normal(n))
+    env = np.exp(-t * 30) + 0.6 * np.exp(-np.maximum(t - 0.012, 0) * 40) * (t > 0.012)
+    return ruido * env * vel * 0.5
+
+
+def hat(vel=1.0, abierto=False):
+    n = int((0.25 if abierto else 0.06) * SR)
+    t = np.arange(n) / SR
+    return hp(rng.standard_normal(n), 7000) * np.exp(-t * (14 if abierto else 70)) * vel * 0.12
+
+
+def cuerdas(notas, dur, ataque=1.2, rel=2.0, corte=1800):
+    """Pad cálido tipo sección de cuerdas (más armónicos pares suaves y vibrato)."""
+    n = int(dur * SR)
+    t = np.arange(n) / SR
+    s = np.zeros(n)
+    for m in notas:
+        for det in (-0.08, 0.0, 0.07):
+            f = hz(m + det) * (1 + 0.003 * np.sin(2 * np.pi * 5.2 * t + rng.uniform(0, 6)))
+            fase = 2 * np.pi * np.cumsum(f) / SR
+            for k in range(1, 9):
+                if hz(m) * k > SR / 2.2:
+                    break
+                s += np.sin(k * fase) / k**1.1
+    s = lp(s, corte) * env_adsr(n, ataque, rel)
+    return s / (len(notas) * 3) * 0.7
+
+
+def comp_lujo():
+    """B · Elegante: piano y cuerdas cálidas, sin golpes duros; final grandioso y suave."""
+    # Inicio: piano íntimo en Fa mayor con cuerdas suaves
+    prog_a = [[41, 48, 53, 57], [38, 45, 50, 53], [46, 50, 53, 58], [48, 52, 55, 60]]  # F Dm Bb C
+    t, k = 0.0, 0
+    while t < T_PUERTAS:
+        ac = prog_a[k % 4]
+        d = min(3.4, T_PUERTAS - t + 0.6)
+        poner(cuerdas(ac[1:], d + 1.5, ataque=1.5, rel=1.8, corte=1500), t, 0.5)
+        for j, m in enumerate([ac[1] + 12, ac[2] + 12, ac[3] + 12, ac[2] + 12]):
+            poner(piano(m, 3.0, 0.5), t + 0.2 + j * 0.85, 1.0, pan=0.25 * (j - 1.5))
+        poner(piano(ac[0] - 12, 4.0, 0.5), t, 1.0)
+        t += 3.4
+        k += 1
+    # Problema: menor, cuerdas graves que se tensan, piano en notas sueltas
+    prog_b = [[38, 45, 50, 53], [34, 46, 50, 53], [43, 46, 50, 55], [45, 49, 52, 57]]  # Dm Bb Gm A
+    dur_b = (T_CAE - T_PUERTAS) / 4
+    for k, ac in enumerate(prog_b):
+        poner(cuerdas(ac, dur_b + 1.4, ataque=0.9, rel=1.4, corte=1100 + 300 * k), T_PUERTAS + k * dur_b, 0.6 + 0.08 * k)
+        poner(piano(ac[-1] + 12, 3.0, 0.45), T_PUERTAS + k * dur_b + 0.4, 1.0, pan=0.2)
+    # "la venta se cae": la música se detiene; queda un acorde grave que se apaga
+    poner(cuerdas([26, 38, 45], 4.5, ataque=0.05, rel=3.5, corte=600), T_CAE, 0.7)
+    poner(bombo(0.35, 70, 38, 2.0), T_CAE, 1.0)
+    # Esperanza: Fa mayor, piano arpegiado y cuerdas que crecen
+    prog_c = [[46, 53, 58, 62], [41, 53, 57, 60], [48, 52, 55, 60], [50, 53, 57, 62]]
+    t, k = T_LLAVE, 0
+    fin_esp = T_CIERRE - 2.0
+    while t < fin_esp:
+        d = min(3.0, fin_esp - t + 0.4)
+        crec = (t - T_LLAVE) / (fin_esp - T_LLAVE)
+        ac = prog_c[k % 4]
+        poner(cuerdas(ac, d + 1.4, ataque=0.9, rel=1.3, corte=1400 + 1600 * crec), t, 0.55 + 0.3 * crec)
+        poner(cuerdas([ac[0] - 12], d + 0.8, ataque=0.4, rel=0.8, corte=500), t, 0.5)
+        paso = 0.375 if crec > 0.35 else 0.75
+        notas = [ac[1] + 12, ac[2] + 12, ac[3] + 12, ac[2] + 24]
+        for j in range(int(d / paso)):
+            poner(piano(notas[j % 4], 2.0, 0.42 + 0.25 * crec), t + j * paso, 1.0, pan=-0.25 if j % 2 else 0.25)
+        t += 3.0
+        k += 1
+    # Final: crescendo de cuerdas y acorde amplio, con campana de piano (sin golpe duro)
+    poner(cuerdas([41, 48, 53, 57, 60], 2.2, ataque=2.0, rel=0.2, corte=2500), T_CIERRE - 2.0, 0.6)
+    poner(timbal(0.3), T_CIERRE - 0.4, 1.0)
+    poner(timbal(0.8), T_CIERRE, 1.0)
+    dur_final = TOTAL - T_CIERRE + 0.3
+    poner(cuerdas([29, 41, 48, 53, 57, 60, 65, 69], dur_final, ataque=0.15, rel=4.5, corte=3200), T_CIERRE, 2.1)
+    poner(boom(4.0, 0.6), T_CIERRE, 1.0)
+    for j, m in enumerate([65, 69, 72, 77, 81]):
+        poner(piano(m, 5.0, 0.6), T_CIERRE + 0.05 + j * 0.12, 1.0, pan=0.15 * (j - 2))
+    for j, m in enumerate([77, 72, 69, 65]):
+        poner(piano(m, 5.0, 0.55), T_CIERRE + 3.0 + j * 0.9, 1.0, pan=0.2 * (j - 1.5))
+
+
+def comp_moderno():
+    """C · Moderno corporativo: pulso electrónico, arpegios y drop en la revelación de la marca."""
+    bpm = 100
+    b = 60 / bpm  # negra
+    # Inicio: arpegio en re menor y pad, entra el pulso suave
+    prog_a = [[50, 53, 57, 62], [46, 50, 53, 58], [43, 46, 50, 55], [45, 49, 52, 57]]
+    t, k = 0.0, 0
+    while t < T_CAE - 0.1:
+        ac = prog_a[k % 4]
+        d = 8 * b
+        crec = min(1.0, t / max(T_CAE, 1))
+        poner(pad(ac[:3], d + 0.8, ataque=0.6, rel=0.8, corte=700 + 900 * crec), t, 0.4)
+        poner(pad([ac[0] - 24], d, ataque=0.05, rel=0.3, corte=180), t, 0.55)
+        sub = b / 2 if t < T_PUERTAS else b / 4
+        for j in range(int(d / sub)):
+            tt = t + j * sub
+            if tt >= T_CAE - 0.1:
+                break
+            poner(pluck([ac[0] + 12, ac[1] + 12, ac[2] + 12, ac[3] + 12][j % 4], 0.35, 0.45 + 0.3 * crec), tt, 1.0, pan=-0.35 if j % 2 else 0.35)
+        if t >= T_PUERTAS - 0.1:
+            for j in range(8):
+                tt = t + j * b
+                if tt >= T_CAE - 0.1:
+                    break
+                poner(bombo(0.55), tt, 1.0)
+                poner(hat(0.6), tt + b / 2, 1.0, pan=0.3)
+        t += d
+        k += 1
+    # Corte seco y golpe en "la venta se cae"
+    poner(boom(3.5, 0.9), T_CAE, 1.0)
+    # Esperanza: Fa mayor con bombeo rítmico, palmas desde el recorrido
+    prog_c = [[46, 53, 58, 62], [41, 53, 57, 60], [48, 52, 55, 60], [50, 53, 57, 62]]
+    t, k = T_LLAVE, 0
+    fin_esp = T_CIERRE - 2.4
+    T_REC = t_esc("Recorrido")
+    while t < fin_esp:
+        d = min(8 * b, fin_esp - t + 0.2)
+        crec = (t - T_LLAVE) / (fin_esp - T_LLAVE)
+        ac = prog_c[k % 4]
+        for j in range(int(d / (b / 2))):
+            tt = t + j * b / 2
+            poner(pad(ac, b / 2 + 0.05, ataque=0.02, rel=0.25, corte=1200 + 2200 * crec), tt, 0.38 + 0.22 * crec)
+            poner(pluck([ac[1] + 24, ac[2] + 12, ac[3] + 12, ac[2] + 24][j % 4], 0.3, 0.4 + 0.4 * crec), tt, 1.0, pan=-0.3 if j % 2 else 0.3)
+        poner(pad([ac[0] - 12], d, ataque=0.05, rel=0.2, corte=200), t, 0.55)
+        if t >= T_EQUIPO - 0.1:
+            for j in range(int(d / b)):
+                poner(bombo(0.5 + 0.3 * crec), t + j * b, 1.0)
+                poner(hat(0.5 + 0.4 * crec), t + j * b + b / 2, 1.0, pan=0.3)
+                if t >= T_REC - 0.1 and j % 2 == 1:
+                    poner(clap(0.6 + 0.3 * crec), t + j * b, 1.0)
+        t += 8 * b
+        k += 1
+    # Subida, silencio breve y drop
+    poner(subida(2.4), T_CIERRE - 2.4, 0.6)
+    for j in range(8):
+        poner(clap(0.3 + 0.08 * j), T_CIERRE - 1.0 + j * 0.125, 1.0)
+    poner(boom(5.0, 1.0), T_CIERRE, 1.5)
+    poner(bombo(1.0), T_CIERRE, 1.2)
+    dur_final = TOTAL - T_CIERRE + 0.3
+    poner(pad([29, 41, 48, 53, 57, 60, 65, 69, 72], dur_final, ataque=0.02, rel=4.0, corte=3000, brillo=-0.5), T_CIERRE, 1.8)
+    t = T_CIERRE
+    j = 0
+    while t < TOTAL - 3.0:
+        poner(pluck([65, 69, 72, 77][j % 4], 0.4, 0.45 * (1 - (t - T_CIERRE) / dur_final)), t, 1.0, pan=-0.3 if j % 2 else 0.3)
+        t += b / 2
+        j += 1
+
+
+import sys as _sys
+ESTILO = next((a.split("=")[1] for a in _sys.argv if a.startswith("--estilo=")), "cine")
+{"cine": comp_cine, "lujo": comp_lujo, "moderno": comp_moderno}[ESTILO]()
 
 # ---------------------------------------------------------------- reverberación
 nir = int(3.2 * SR)
@@ -293,10 +452,11 @@ mezcla = mus_duck + np.stack([voz, voz]) * 0.9
 mezcla /= max(1.0, np.abs(mezcla).max() / 0.95)
 
 dest = RAIZ / "public" / "audio"
-wavfile.write(dest / "musica.wav", SR, (mus.T * 32767).astype(np.int16))
+sufijo = "" if ESTILO == "cine" else f"-{ESTILO}"
+wavfile.write(dest / f"musica{sufijo}.wav", SR, (mus.T * 32767).astype(np.int16))
 wavfile.write(dest / "mezcla-cruda.wav", SR, (mezcla.T * 32767).astype(np.int16))
 subprocess.run(
     ["ffmpeg", "-loglevel", "error", "-y", "-i", str(dest / "mezcla-cruda.wav"),
-     "-af", "loudnorm=I=-15:TP=-1:LRA=11", "-ar", "48000", str(dest / "mezcla.wav")], check=True)
+     "-af", "loudnorm=I=-15:TP=-1:LRA=11", "-ar", "48000", str(dest / f"mezcla{sufijo}.wav")], check=True)
 (dest / "mezcla-cruda.wav").unlink()
-print(f"Música y mezcla listas ({TOTAL:.1f} s). Impacto en {T_CIERRE:.2f} s, golpe grave en {T_CAE:.2f} s")
+print(f"[{ESTILO}] Música y mezcla listas ({TOTAL:.1f} s). Impacto en {T_CIERRE:.2f} s, golpe grave en {T_CAE:.2f} s")

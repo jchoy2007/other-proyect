@@ -40,7 +40,7 @@ const Logo: React.FC<{ archivo: string; alto: number; style?: React.CSSPropertie
   <Img src={staticFile(`logos/${archivo}.png`)} style={{ height: alto, objectFit: "contain", ...style }} />
 );
 
-// ------------------------------------------------ 1. Una familia encontró su apartamento
+// ------------------------------------------------ 1. Una familia encontró su apartamento, casa o casa de playa
 export const Familia: React.FC<{ d: number }> = ({ d }) => {
   const u = useU();
   return (
@@ -55,7 +55,10 @@ export const Familia: React.FC<{ d: number }> = ({ d }) => {
           <br />
           por fin encontró
           <br />
-          <span style={{ color: colores.doradoClaro, fontStyle: "italic" }}>su apartamento.</span>
+          <span style={{ color: colores.doradoClaro, fontStyle: "italic" }}>
+            su apartamento, casa
+            <br />o casa de playa.
+          </span>
         </TextoEntra>
       </Centro>
       <Vineta />
