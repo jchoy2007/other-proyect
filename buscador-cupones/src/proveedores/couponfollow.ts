@@ -51,7 +51,8 @@ export const couponfollow: Proveedor = {
     ofertas.sort((a, b) => b.relevancia - a.relevancia || (a.tipo === 'codigo' ? -1 : 1));
     // Todas las que mencionan el producto + como mucho 6 generales de la tienda
     const especificas = ofertas.filter((o) => o.relevancia >= 40);
-    const generales = ofertas.filter((o) => o.relevancia < 40).slice(0, 6);
+    // Amazon no tiene códigos para toda la tienda: los "X% off your order" que listan son de productos sueltos y no aplican a otro producto
+    const generales = p.tienda === 'amazon' ? ofertas.filter((o) => o.relevancia < 40 && o.tipo !== 'codigo').slice(0, 3) : ofertas.filter((o) => o.relevancia < 40).slice(0, 6);
     return [...especificas, ...generales];
   },
 };
