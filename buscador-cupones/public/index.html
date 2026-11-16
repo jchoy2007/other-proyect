@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buscador de cupones</title>
+<meta name="description" content="Pega un enlace de Amazon, Newegg, Best Buy, Walmart o eBay y encuentra cupones, códigos, ofertas, historial de precios y cashback.">
+<style>
+  :root { --bg:#f6f7f9; --panel:#fff; --texto:#1a1d23; --suave:#5b6472; --borde:#e2e5ea; --acento:#2563eb; --acento-txt:#fff; --ok:#15803d; --warn:#b45309; --err:#b91c1c; --chip:#eef2f7; --codigo:#fef3c7; --codigo-txt:#78350f; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0f1115; --panel:#171a21; --texto:#e8eaf0; --suave:#9aa3b2; --borde:#2a2f3a; --acento:#3b82f6; --ok:#4ade80; --warn:#fbbf24; --err:#f87171; --chip:#232834; --codigo:#3b2f0b; --codigo-txt:#fde68a; } }
+  :root[data-theme="dark"] { --bg:#0f1115; --panel:#171a21; --texto:#e8eaf0; --suave:#9aa3b2; --borde:#2a2f3a; --acento:#3b82f6; --ok:#4ade80; --warn:#fbbf24; --err:#f87171; --chip:#232834; --codigo:#3b2f0b; --codigo-txt:#fde68a; }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--texto); font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  main { max-width:860px; margin:0 auto; padding:32px 16px 64px; }
+  h1 { font-size:1.6rem; margin:0 0 4px }
+  .sub { color:var(--suave); margin:0 0 20px }
+  form { display:flex; flex-direction:column; gap:10px; background:var(--panel); border:1px solid var(--borde); border-radius:12px; padding:16px; }
+  .fila { display:flex; gap:8px; flex-wrap:wrap }
+  input[type=text] { flex:1 1 320px; min-width:0; padding:12px 14px; font-size:1rem; border:1px solid var(--borde); border-radius:8px; background:var(--bg); color:var(--texto); }
+  button { padding:12px 18px; font-size:1rem; border:0; border-radius:8px; background:var(--acento); color:var(--acento-txt); cursor:pointer; font-weight:600 }
+  button:disabled { opacity:.6; cursor:wait }
+  details { font-size:.9rem; color:var(--suave) }
+  details input { width:100%; margin-top:6px }
+  .producto { margin:20px 0 12px; padding:14px 16px; background:var(--panel); border:1px solid var(--borde); border-radius:12px; }
+  .producto h2 { font-size:1.05rem; margin:0 0 4px }
+  .meta { color:var(--suave); font-size:.9rem; word-break:break-all }
+  .aviso { margin:12px 0; padding:10px 14px; border-left:4px solid var(--warn); background:var(--panel); border-radius:6px; font-size:.95rem }
+  .error { border-left-color:var(--err) }
+  h3 { font-size:1rem; margin:22px 0 8px; display:flex; align-items:center; gap:8px }
+  h3 .n { background:var(--chip); color:var(--suave); font-size:.8rem; padding:1px 8px; border-radius:999px }
+  .oferta { display:grid; grid-template-columns:1fr auto; gap:6px 12px; align-items:start; padding:12px 14px; margin-bottom:8px; background:var(--panel); border:1px solid var(--borde); border-radius:10px; }
+  .oferta a.t { color:var(--texto); font-weight:600; text-decoration:none }
+  .oferta a.t:hover { text-decoration:underline }
+  .oferta .d { color:var(--suave); font-size:.88rem; grid-column:1 / -1 }
+  .oferta .f { color:var(--suave); font-size:.8rem; grid-column:1 / -1 }
+  .codigo { display:inline-flex; align-items:center; gap:8px; font-family:ui-monospace,Menlo,Consolas,monospace; font-weight:700; background:var(--codigo); color:var(--codigo-txt); padding:6px 10px; border-radius:6px; white-space:nowrap }
+  .codigo button { padding:4px 8px; font-size:.8rem; background:transparent; color:inherit; border:1px solid currentColor }
+  .rel { font-size:.75rem; color:var(--suave); white-space:nowrap }
+  .fuentes { margin-top:28px; font-size:.85rem; color:var(--suave) }
+  .fuentes span { display:inline-block; margin:3px 6px 3px 0; padding:2px 10px; border-radius:999px; background:var(--chip) }
+  .fuentes .ok { color:var(--ok) } .fuentes .bloqueada, .fuentes .error { color:var(--err) }
+  .bookmarklet { margin-top:36px; padding:16px; background:var(--panel); border:1px dashed var(--borde); border-radius:12px; font-size:.92rem }
+  .bookmarklet a { display:inline-block; padding:8px 14px; background:var(--chip); color:var(--texto); border-radius:8px; text-decoration:none; font-weight:600; border:1px solid var(--borde); cursor:grab }
+  .cargando { color:var(--suave); margin:16px 0 }
+  @media (max-width:600px) { .oferta { grid-template-columns:1fr } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Buscador de cupones</h1>
+  <p class="sub">Pega el enlace de un producto de Amazon, Newegg, Best Buy, Walmart o eBay. Busca códigos, cupones, ofertas de la comunidad, historial de precios y cashback en fuentes que ya existen.</p>
+
+  <form id="form">
+    <div class="fila">
+      <input type="text" id="url" placeholder="https://www.amazon.com/dp/B0..." required autocomplete="off" inputmode="url">
+      <button id="btn" type="submit">Buscar descuentos</button>
+    </div>
+    <details id="det">
+      <summary>Nombre del producto (opcional, mejora la búsqueda si la tienda bloquea al servidor)</summary>
+      <input type="text" id="titulo" placeholder="Ej. MSI GeForce RTX 4070 Ventus 2X 12G">
+    </details>
+  </form>
+
+  <div id="salida"></div>
+
+  <div class="bookmarklet">
+    <strong>Hazlo automático:</strong> arrastra este botón a tu barra de marcadores. Cuando estés viendo un producto en Amazon o Newegg, haz clic en él y se abrirá aquí con el título y el precio ya leídos de la página.
+    <p><a id="bm" href="#">🔖 Buscar cupones</a></p>
+    <span id="bm-ayuda">En el móvil: guarda esta página como marcador y luego edita su dirección pegando el código que aparece al pulsar el botón.</span>
+  </div>
+</main>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const ETIQUETAS = { codigo: 'Códigos promocionales', cupon: 'Cupones de la tienda', oferta: 'Ofertas publicadas', truco: 'Atajos de la tienda', historial: 'Historial y comparación de precios', cashback: 'Cashback y extensiones' };
+const ORDEN = ['codigo', 'cupon', 'oferta', 'truco', 'historial', 'cashback'];
+
+function esc(s) { return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+function fecha(iso) { if (!iso) return ''; const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' }); }
+
+async function buscar(url, titulo, precio) {
+  const salida = $('#salida'); const btn = $('#btn');
+  btn.disabled = true; salida.innerHTML = '<p class="cargando">Consultando fuentes… (unos 5-15 segundos)</p>';
+  const params = new URLSearchParams({ url }); if (titulo) params.set('titulo', titulo); if (precio) params.set('precio', precio);
+  history.replaceState(null, '', '?' + params.toString());
+  try {
+    const r = await fetch('/api/buscar?' + params.toString());
+    const datos = await r.json();
+    if (!r.ok) throw new Error(datos.error || 'Error');
+    pintar(datos);
+  } catch (e) {
+    salida.innerHTML = '<div class="aviso error">' + esc(e.message) + '</div>';
+  } finally { btn.disabled = false; }
+}
+
+function pintar(r) {
+  const p = r.producto; let h = '';
+  h += '<div class="producto"><h2>' + esc(p.titulo || 'Producto sin título identificado') + '</h2>';
+  h += '<div class="meta">' + esc(p.tienda) + (p.id ? ' · ' + esc(p.id) : '') + (p.precio ? ' · ' + esc(p.precio) + ' ' + esc(p.moneda || '') : '') + ' · <a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.url) + '</a></div></div>';
+  for (const a of r.avisos) h += '<div class="aviso">' + esc(a) + '</div>';
+  if (!r.ofertas.length) h += '<div class="aviso">No se encontró nada para este producto en las fuentes consultadas.</div>';
+  for (const tipo of ORDEN) {
+    const lista = r.ofertas.filter((o) => o.tipo === tipo); if (!lista.length) continue;
+    h += '<h3>' + ETIQUETAS[tipo] + ' <span class="n">' + lista.length + '</span></h3>';
+    for (const o of lista) {
+      h += '<div class="oferta">';
+      h += '<div><a class="t" href="' + esc(o.url) + '" target="_blank" rel="noopener">' + esc(o.titulo) + '</a>' + (o.precio ? ' <span class="rel">' + esc(o.precio) + '</span>' : '') + '</div>';
+      if (o.codigo) h += '<span class="codigo">' + esc(o.codigo) + ' <button type="button" data-copiar="' + esc(o.codigo) + '">Copiar</button></span>';
+      else if (o.pistaCodigo) h += '<span class="codigo" title="La fuente oculta el código hasta hacer clic">' + esc(o.pistaCodigo) + '</span>';
+      else h += '<span class="rel">' + (o.relevancia >= 95 ? 'este producto' : o.relevancia >= 50 ? 'relacionado' : 'toda la tienda') + '</span>';
+      if (o.descripcion) h += '<div class="d">' + esc(o.descripcion) + '</div>';
+      h += '<div class="f">' + esc(o.fuente) + (o.fecha ? ' · ' + fecha(o.fecha) : '') + '</div>';
+      h += '</div>';
+    }
+  }
+  h += '<div class="fuentes">Fuentes: ' + r.fuentes.map((f) => '<span class="' + f.estado + '" title="' + esc(f.detalle || '') + '">' + esc(f.nombre) + ': ' + f.estado + (f.estado === 'ok' ? ' (' + f.ofertas + ')' : '') + '</span>').join('') + (r.desdeCache ? ' · resultado en caché' : '') + '</div>';
+  $('#salida').innerHTML = h;
+}
+
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-copiar]'); if (!b) return;
+  navigator.clipboard.writeText(b.dataset.copiar).then(() => { b.textContent = 'Copiado'; setTimeout(() => (b.textContent = 'Copiar'), 1500); });
+});
+
+$('#form').addEventListener('submit', (e) => { e.preventDefault(); buscar($('#url').value.trim(), $('#titulo').value.trim()); });
+
+// Bookmarklet con la dirección real de este servidor
+fetch('/bookmarklet.js').then((r) => r.text()).then((js) => { $('#bm').href = 'javascript:' + encodeURIComponent(js); });
+$('#bm').addEventListener('click', (e) => { e.preventDefault(); prompt('Copia este código y pégalo como dirección de un marcador:', $('#bm').href); });
+
+// Si llega con ?url= (desde el bookmarklet), busca directamente
+const q = new URLSearchParams(location.search);
+if (q.get('url')) { $('#url').value = q.get('url'); if (q.get('titulo')) { $('#titulo').value = q.get('titulo'); $('#det').open = true; } buscar(q.get('url'), q.get('titulo') || '', q.get('precio') || ''); }
+</script>
+</body>
+</html>

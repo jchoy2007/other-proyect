@@ -1,0 +1,25 @@
+{
+  "name": "buscador-cupones",
+  "version": "1.0.0",
+  "description": "Le pasas un enlace de Amazon, Newegg, Best Buy, Walmart o eBay y busca automáticamente cupones, códigos, ofertas, historial de precios y cashback en fuentes que ya existen.",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "buscar": "tsx src/cli.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test src/**/*.test.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
