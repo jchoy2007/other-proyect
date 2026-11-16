@@ -764,6 +764,14 @@ export const Cierre: React.FC<{ d: number }> = ({ d }) => {
             }}
           />
         </div>
+        {/* Licencia debajo del logo de Holding Realty Properties */}
+        <TextoEntra
+          inicio={18}
+          desde={16}
+          style={{ ...cuerpo(u, vertical ? 24 : 21), color: "#cfc6b4", letterSpacing: 2 * u, marginTop: 6 * u, textShadow: "none" }}
+        >
+          {marca.licencia}
+        </TextoEntra>
         <TextoEntra inicio={30} style={{ ...titulo(u, vertical ? 50 : 44), fontStyle: "italic", marginTop: 26 * u }}>
           {marca.slogan}
         </TextoEntra>
@@ -813,10 +821,10 @@ export const Cierre: React.FC<{ d: number }> = ({ d }) => {
         </TextoEntra>
         <TextoEntra
           inicio={110}
-          style={{ display: "flex", alignItems: "center", gap: 28 * u, marginTop: 36 * u, ...cuerpo(u, 18), color: "#8f887c" }}
+          style={{ marginTop: 36 * u }}
         >
-          <Logo archivo="CHS_logo_negativo_fondo_oscuro" alto={70 * u} />
-          <span style={{ borderLeft: `${2 * u}px solid #555`, paddingLeft: 28 * u }}>{marca.licencia}</span>
+          {/* Corporate Holding Solutions, solo */}
+          <Logo archivo="CHS_logo_negativo_fondo_oscuro" alto={(vertical ? 100 : 85) * u} />
         </TextoEntra>
       </AbsoluteFill>
     </Escena>
