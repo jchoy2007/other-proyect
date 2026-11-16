@@ -1,0 +1,11 @@
+{
+  "name": "Calibrador de mandos PlayStation",
+  "short_name": "Calibrador PS",
+  "description": "Mide y corrige el drift de DualShock 4 y DualSense desde el navegador.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0f1115",
+  "theme_color": "#1d4ed8",
+  "lang": "es",
+  "icons": [{ "src": "icono.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

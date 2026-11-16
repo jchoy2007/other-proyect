@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calibrador de mandos PS</title>
+<meta name="description" content="Mide y corrige el drift de los sticks de DualShock 4 y DualSense desde el navegador, sin instalar nada.">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1d4ed8">
+<style>
+  :root { --bg:#f5f6f8; --panel:#fff; --texto:#171a20; --suave:#5d6673; --borde:#e1e4ea; --acento:#1d4ed8; --ok:#15803d; --err:#b91c1c; --warn:#b45309; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#0f1115; --panel:#181b22; --texto:#e8eaf0; --suave:#9aa3b2; --borde:#2b303b; --acento:#3b82f6; --ok:#4ade80; --err:#f87171; --warn:#fbbf24; } }
+  :root[data-theme="dark"] { --bg:#0f1115; --panel:#181b22; --texto:#e8eaf0; --suave:#9aa3b2; --borde:#2b303b; --acento:#3b82f6; --ok:#4ade80; --err:#f87171; --warn:#fbbf24; }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--texto); font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif }
+  main { max-width:820px; margin:0 auto; padding:28px 16px 60px }
+  h1 { font-size:1.5rem; margin:0 0 4px } .sub { color:var(--suave); margin:0 0 18px }
+  section { background:var(--panel); border:1px solid var(--borde); border-radius:12px; padding:16px; margin-bottom:14px }
+  h2 { font-size:1.05rem; margin:0 0 10px }
+  button { padding:10px 16px; font-size:.95rem; border:0; border-radius:8px; background:var(--acento); color:#fff; cursor:pointer; font-weight:600; margin:4px 6px 4px 0 }
+  button:disabled { opacity:.45; cursor:not-allowed }
+  button.sec { background:transparent; color:var(--texto); border:1px solid var(--borde) }
+  .oculto { display:none !important }
+  .aviso { padding:10px 14px; border-left:4px solid var(--warn); background:var(--bg); border-radius:6px; margin:10px 0; font-size:.95rem }
+  .sticks { display:flex; gap:24px; flex-wrap:wrap; justify-content:center; margin:10px 0 }
+  .stick { text-align:center } canvas { width:160px; height:160px; background:var(--bg); border-radius:50% } .stick div { font-family:ui-monospace,Menlo,monospace; color:var(--suave); font-size:.9rem }
+  .meta { color:var(--suave); font-size:.9rem }
+  #resultado-drift { margin-top:8px; font-size:.95rem }
+  #pasos { padding:12px; background:var(--bg); border-radius:8px; margin:8px 0 }
+  .barra { height:10px; background:var(--bg); border-radius:999px; overflow:hidden; border:1px solid var(--borde) } .barra div { height:100%; width:0; background:var(--ok); transition:width .2s }
+  #registro { max-height:180px; overflow:auto; font-family:ui-monospace,Menlo,monospace; font-size:.8rem; color:var(--suave) }
+  .log.ok { color:var(--ok) } .log.error { color:var(--err) }
+  details { color:var(--suave); font-size:.92rem } details p { margin:6px 0 }
+</style>
+</head>
+<body>
+<main>
+  <h1>Calibrador de mandos PlayStation</h1>
+  <p class="sub">Mide el drift de los sticks y recalibra el centro y el rango directamente en la memoria del mando. Compatible: <span id="modelos"></span>.</p>
+
+  <section id="sin-webhid" class="oculto">
+    <h2>Este navegador no puede hablar con el mando</h2>
+    <p>Hace falta WebHID: Chrome, Edge u Opera en Windows, macOS, Linux o ChromeOS. En Android, Chrome añadirá WebHID en la versión 157; hasta entonces abre esta misma página desde una PC. Safari, Firefox e iPhone no lo soportan.</p>
+  </section>
+
+  <section id="panel-conectar">
+    <h2>1. Conecta el mando</h2>
+    <p class="meta">Para <strong>calibrar</strong> conéctalo <strong>por cable USB</strong> (el mando no acepta comandos de calibración por Bluetooth; es una limitación del firmware de Sony). Por Bluetooth solo se puede medir el drift.</p>
+    <button id="btn-conectar">Conectar mando</button>
+  </section>
+
+  <section id="panel-mando" class="oculto">
+    <h2><span id="nombre-mando"></span> · <span id="conexion"></span></h2>
+    <div class="meta" id="info-mando"></div>
+    <div class="meta" id="nvs"></div>
+    <div id="aviso-bt" class="aviso oculto">Conectado por Bluetooth: puedes medir el drift, pero para calibrar desconéctalo y vuelve a conectarlo con cable USB.</div>
+
+    <div class="sticks">
+      <div class="stick"><canvas id="stick-izq" width="160" height="160"></canvas><div id="val-izq">+0.00, +0.00</div></div>
+      <div class="stick"><canvas id="stick-der" width="160" height="160"></canvas><div id="val-der">+0.00, +0.00</div></div>
+    </div>
+
+    <h2>2. Mide el drift</h2>
+    <p class="meta">Suelta los sticks y pulsa. Durante 3 segundos se registra cuánto se alejan del centro sin tocarlos.</p>
+    <button id="btn-medir">Medir drift (3 s)</button>
+    <div id="resultado-drift"></div>
+
+    <h2>3. Calibra</h2>
+    <button id="btn-centro" disabled>Calibrar centro</button>
+    <button id="btn-rango" disabled>Calibrar rango</button>
+    <button id="btn-guardar" disabled>Guardar permanente</button>
+    <button id="btn-reiniciar" class="sec" disabled>Deshacer (reiniciar mando)</button>
+    <div id="asistente" class="oculto">
+      <div id="pasos"></div>
+      <div id="barra-rango" class="oculto"><div class="barra"><div id="progreso-rango"></div></div><div class="meta" id="texto-rango"></div></div>
+      <button id="btn-continuar" class="oculto">Continuar</button>
+    </div>
+    <p class="meta">La calibración queda en modo temporal hasta que pulses "Guardar permanente"; si algo sale mal, "Deshacer" reinicia el mando y vuelve a lo anterior.</p>
+    <button id="btn-desconectar" class="sec">Desconectar</button>
+  </section>
+
+  <section>
+    <h2>Registro</h2>
+    <div id="registro"></div>
+  </section>
+
+  <details>
+    <summary>Cuándo sirve y cuándo no</summary>
+    <p><strong>Sirve</strong> cuando el stick marca un pequeño desvío constante en reposo (drift leve) o no llega al borde del círculo: la calibración de centro y rango lo corrige y queda guardada en el mando, para PS4, PS5, PC o lo que sea.</p>
+    <p><strong>No sirve</strong> si el drift cambia cada rato, salta solo o vuelve a los pocos días: el potenciómetro está desgastado y hay que cambiar el módulo del stick (o pasarse a sticks Hall). Tampoco funciona con mandos clon.</p>
+    <p>Protocolo de calibración basado en <a href="https://github.com/dualshock-tools/dualshock-tools.github.io" target="_blank" rel="noopener">dualshock-tools</a> (MIT). Esta herramienta escribe en la memoria del mando: úsala bajo tu responsabilidad.</p>
+  </details>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
