@@ -1,0 +1,48 @@
+name: Fábrica de videos diaria
+
+on:
+  schedule:
+    - cron: "17 13 * * *"   # 13:17 UTC = 07:17 Ciudad de México
+  workflow_dispatch:
+
+jobs:
+  producir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: fabrica-videos-gta6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Instalar ffmpeg y edge-tts
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+          python -m venv .venv-tts && .venv-tts/bin/pip install -q edge-tts
+      - run: npm ci
+      - name: Descargar media propia (opcional, desde un release o bucket)
+        if: ${{ vars.MEDIA_URL != '' }}
+        run: curl -sSL "${{ vars.MEDIA_URL }}" -o media.tar.gz && tar -xzf media.tar.gz -C media
+      - name: Producir y publicar
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          YT_PRIVACIDAD: ${{ vars.YT_PRIVACIDAD || 'private' }}
+          TIKTOK_ACCESS_TOKEN: ${{ secrets.TIKTOK_ACCESS_TOKEN }}
+          TEMA: ${{ vars.TEMA || 'GTA 6' }}
+          VIDEOS_POR_DIA: ${{ vars.VIDEOS_POR_DIA || '3' }}
+          FORMATOS: ${{ vars.FORMATOS || 'short,short,largo' }}
+        run: npm run pipeline
+      - name: Guardar videos del día como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: videos-${{ github.run_id }}
+          path: fabrica-videos-gta6/salida/**/*.mp4
+          retention-days: 7

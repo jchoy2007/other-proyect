@@ -1,0 +1,9 @@
+node_modules/
+.env
+salida/
+media/gameplay/*
+media/imagenes/*
+media/musica/*
+!media/*/.gitkeep
+.venv-tts/
+youtube-token.json

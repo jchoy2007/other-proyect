@@ -1,0 +1,29 @@
+{
+  "name": "fabrica-videos-gta6",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Pipeline diario: tendencias → guiones con Claude → voz → montaje con ffmpeg → publicación en YouTube/TikTok.",
+  "scripts": {
+    "pipeline": "tsx src/pipeline.ts",
+    "tendencias": "tsx src/pasos/tendencias.ts",
+    "guiones": "tsx src/pasos/guiones.ts",
+    "voz": "tsx src/pasos/voz.ts",
+    "render": "tsx src/pasos/render.ts",
+    "publicar": "tsx src/pasos/publicar.ts",
+    "youtube:auth": "tsx src/pasos/youtube-auth.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test src/**/*.test.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "dotenv": "^16.4.5",
+    "googleapis": "^190.0.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
