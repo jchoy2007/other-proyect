@@ -45,7 +45,7 @@ MIN_OPS = {"1min": 60, "5min": 50, "15min": 40, "1h": 30, "4h": 20}
 
 # ---------------------------------------------------------------- simulador (compilado)
 @nb.njit(cache=True)
-def simular_nb(o, h, l, c, atrp, entrada, ini, fin, d, tpm, slm, maxb, guardar):
+def simular_nb(o, h, l, c, atrp, entrada, ini, fin, d, tpm, slm, maxb, guardar, com_ent, com_tp, com_sal, desliz):
     n_ops = 0
     gan = 0
     suma_log = 0.0
@@ -60,30 +60,30 @@ def simular_nb(o, h, l, c, atrp, entrada, ini, fin, d, tpm, slm, maxb, guardar):
             i += 1
             continue
         e = i + 1
-        p0 = o[e] * (1.0 + DESLIZ * d)
+        p0 = o[e] * (1.0 + desliz * d)
         tp = p0 * (1.0 + tpm * atrp[i] * d)
         sl = p0 * (1.0 - slm * atrp[i] * d)
         limite = min(fin, e + maxb)
         salida = 0.0
-        com = COM_SALIDA
+        com = com_sal
         k = e
         cerrado = False
         while k < limite:
             if d > 0:
                 if l[k] <= sl:
-                    salida = sl * (1.0 - DESLIZ); cerrado = True; break
+                    salida = sl * (1.0 - desliz); cerrado = True; break
                 if h[k] >= tp:
-                    salida = tp; com = COM_TP; cerrado = True; break
+                    salida = tp; com = com_tp; cerrado = True; break
             else:
                 if h[k] >= sl:
-                    salida = sl * (1.0 + DESLIZ); cerrado = True; break
+                    salida = sl * (1.0 + desliz); cerrado = True; break
                 if l[k] <= tp:
-                    salida = tp; com = COM_TP; cerrado = True; break
+                    salida = tp; com = com_tp; cerrado = True; break
             k += 1
         if not cerrado:
             k = limite - 1
-            salida = c[k] * (1.0 - DESLIZ * d)
-        r = d * (salida / p0 - 1.0) - COM_ENTRADA - com
+            salida = c[k] * (1.0 - desliz * d)
+        r = d * (salida / p0 - 1.0) - com_ent - com
         if r <= -0.99:
             r = -0.99
         if guardar:
@@ -104,10 +104,24 @@ def simular_nb(o, h, l, c, atrp, entrada, ini, fin, d, tpm, slm, maxb, guardar):
 
 
 # ---------------------------------------------------------------- datos y condiciones
-def cargar_anio(simbolo: str) -> pd.DataFrame:
-    partes = [_descargar_dia(simbolo, HASTA - timedelta(days=i), "futuros") for i in range(DIAS - 1, -1, -1)]
+def cargar_anio(simbolo: str, universo: str = "cripto", anterior: bool = False) -> pd.DataFrame:
+    if universo == "forex":
+        import forex
+        rango = ("2024-11-01", "2025-11-01") if anterior else ("2025-11-01", "2026-11-01")
+        return forex.cargar(simbolo, *rango).set_index("tiempo")
+    fin = HASTA - timedelta(days=365) if anterior else HASTA
+    partes = [_descargar_dia(simbolo, fin - timedelta(days=i), "futuros") for i in range(DIAS - 1, -1, -1)]
     df = pd.concat([p for p in partes if p is not None], ignore_index=True)
     return df.drop_duplicates("tiempo").sort_values("tiempo").set_index("tiempo")
+
+
+def costos(universo: str, simbolo: str, cuenta: str = "estandar") -> tuple[float, float, float, float]:
+    """(entrada, objetivo, salida, deslizamiento) como fracción del precio por lado."""
+    if universo == "forex":
+        import forex
+        c = forex.COSTOS_FX[cuenta][simbolo]
+        return c, c, c, forex.DESLIZ_FX[simbolo]
+    return COM_ENTRADA, COM_TP, COM_SALIDA, DESLIZ
 
 
 def reagrupar(df: pd.DataFrame, marco: str) -> pd.DataFrame:
@@ -179,9 +193,10 @@ def resumen(n, g, sl, pos, neg, dd):
 
 
 def buscar_grupo(tarea):
-    simbolo, marco, n_estrategias, n_azar, semilla = tarea
+    simbolo, marco, n_estrategias, n_azar, semilla, universo, cuenta = tarea
     rng = np.random.default_rng(semilla)
-    df = reagrupar(cargar_anio(simbolo), marco)
+    cst = costos(universo, simbolo, cuenta)
+    df = reagrupar(cargar_anio(simbolo, universo), marco)
     N = len(df)
     f1, f2 = int(N * 0.6), int(N * 0.8)
     nombres, M, atrp = banco_condiciones(df, f1)
@@ -192,16 +207,16 @@ def buscar_grupo(tarea):
     sobrevivientes = []
 
     def evaluar(entrada, d, tpm, slm, mb, emb, guardar_info):
-        n, g, slog, pos, neg, dd, _ = simular_nb(o, h, l, c, atrp, entrada, 0, f1, d, tpm, slm, mb, False)
+        n, g, slog, pos, neg, dd, _ = simular_nb(o, h, l, c, atrp, entrada, 0, f1, d, tpm, slm, mb, False, *cst)
         emb["probadas"] += 1
         if n < min_ops or slog <= 0 or neg <= 0 or pos / neg < 1.1:
             return None
         emb["pasan_busqueda"] += 1
-        rv = simular_nb(o, h, l, c, atrp, entrada, f1, f2, d, tpm, slm, mb, False)
+        rv = simular_nb(o, h, l, c, atrp, entrada, f1, f2, d, tpm, slm, mb, False, *cst)
         if rv[0] < max(5, min_ops // 3) or rv[2] <= 0:
             return None
         emb["pasan_validacion"] += 1
-        rp = simular_nb(o, h, l, c, atrp, entrada, f2, N, d, tpm, slm, mb, False)
+        rp = simular_nb(o, h, l, c, atrp, entrada, f2, N, d, tpm, slm, mb, False, *cst)
         if rp[2] > 0:
             emb["positivas_prueba"] += 1
         if not guardar_info:
@@ -219,7 +234,7 @@ def buscar_grupo(tarea):
         tpm, slm, mb = float(rng.choice(TP_MULT)), float(rng.choice(SL_MULT)), int(rng.choice(MAX_BARRAS))
         r = evaluar(entrada, d, tpm, slm, mb, embudo, True)
         if r:
-            r.update({"simbolo": simbolo, "marco": marco, "direccion": "compra" if d > 0 else "venta",
+            r.update({"universo": universo, "cuenta": cuenta, "simbolo": simbolo, "marco": marco, "direccion": "compra" if d > 0 else "venta",
                       "condiciones": [nombres[j] for j in idx], "tp_atr": tpm, "sl_atr": slm, "max_barras": mb})
             sobrevivientes.append(r)
         if n_azar and rng.random() < n_azar / n_estrategias:
@@ -227,23 +242,31 @@ def buscar_grupo(tarea):
             p = max(entrada[:f1].mean(), 1e-5)
             azar = rng.random(N) < p
             evaluar(azar, d, tpm, slm, mb, embudo_azar, False)
-    return {"simbolo": simbolo, "marco": marco, "embudo": embudo, "embudo_azar": embudo_azar, "sobrevivientes": sobrevivientes}
+    return {"universo": universo, "cuenta": cuenta, "simbolo": simbolo, "marco": marco, "embudo": embudo, "embudo_azar": embudo_azar, "sobrevivientes": sobrevivientes}
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=1_000_000)
     ap.add_argument("--azar", type=float, default=0.2, help="fracción de pruebas de control con entradas al azar")
+    ap.add_argument("--universo", choices=["cripto", "forex"], default="cripto")
+    ap.add_argument("--cuenta", choices=["estandar", "ecn"], default="estandar", help="solo forex: tipo de cuenta del bróker")
     a = ap.parse_args()
     t0 = time.time()
-    grupos = [(s, m) for s in SIMBOLOS for m in MARCOS]
+    if a.universo == "forex":
+        import forex
+        simbolos = forex.INSTRUMENTOS
+    else:
+        simbolos = SIMBOLOS
+    grupos = [(s, m) for s in simbolos for m in MARCOS]
     por_grupo = a.n // len(grupos)
     # Partir cada grupo en trozos para repartir carga entre núcleos
     trozos = 8
-    tareas = [(s, m, por_grupo // trozos, int(por_grupo // trozos * a.azar), hash((s, m, t)) % 2**32) for s, m in grupos for t in range(trozos)]
+    tareas = [(s, m, por_grupo // trozos, int(por_grupo // trozos * a.azar), hash((s, m, t)) % 2**32, a.universo, a.cuenta)
+              for s, m in grupos for t in range(trozos)]
     # Compilar el simulador una vez antes de repartir
     z = np.zeros(10)
-    simular_nb(z + 1, z + 1, z + 1, z + 1, z + 0.01, np.zeros(10, dtype=np.bool_), 0, 10, 1, 1.0, 1.0, 3, False)
+    simular_nb(z + 1, z + 1, z + 1, z + 1, z + 0.01, np.zeros(10, dtype=np.bool_), 0, 10, 1, 1.0, 1.0, 3, False, 0.0, 0.0, 0.0, 0.0)
     resultados = []
     with Pool() as pool:
         for i, r in enumerate(pool.imap_unordered(buscar_grupo, tareas), 1):
@@ -256,7 +279,8 @@ def main():
     sobrev = [s for r in resultados for s in r["sobrevivientes"]]
     sobrev.sort(key=lambda s: -s["log_bv"])
     DIR_RES.mkdir(exist_ok=True)
-    (DIR_RES / "busqueda_masiva.json").write_text(json.dumps({"n": a.n, "embudo": total, "embudo_azar": total_azar,
+    nombre = "busqueda_masiva.json" if a.universo == "cripto" else f"busqueda_masiva_forex_{a.cuenta}.json"
+    (DIR_RES / nombre).write_text(json.dumps({"n": a.n, "embudo": total, "embudo_azar": total_azar,
         "segundos": round(time.time() - t0), "sobrevivientes": sobrev[:2000]}, ensure_ascii=False, indent=1))
     print("\nEMBUDO estrategias:", total)
     print("EMBUDO al azar     :", total_azar)

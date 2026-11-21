@@ -47,18 +47,18 @@ for s in top:
     for nom in s["condiciones"]:
         entrada &= M[nombres.index(nom)]
     dd = 1 if s["direccion"] == "compra" else -1
-    real = b.simular_nb(o, h, l, c, atrp, entrada, f2, N, dd, s["tp_atr"], s["sl_atr"], s["max_barras"], True)
+    real = b.simular_nb(o, h, l, c, atrp, entrada, f2, N, dd, s["tp_atr"], s["sl_atr"], s["max_barras"], True, *b.costos("cripto", ""))
     p = max(entrada[f2:].mean(), 1e-4)
     azar = []
     for _ in range(1000):
         e2 = rng.random(N) < p
-        r = b.simular_nb(o, h, l, c, atrp, e2, f2, N, dd, s["tp_atr"], s["sl_atr"], s["max_barras"], False)
+        r = b.simular_nb(o, h, l, c, atrp, e2, f2, N, dd, s["tp_atr"], s["sl_atr"], s["max_barras"], False, *b.costos("cripto", ""))
         azar.append(np.exp(r[2]) - 1)
     azar = np.array(azar) * 100
     ret_real = (np.exp(real[2]) - 1) * 100
     percentil = (azar < ret_real).mean() * 100
     # operaciones fuera de muestra (validación + prueba) para el Monte Carlo
-    val = b.simular_nb(o, h, l, c, atrp, entrada, f1, f2, dd, s["tp_atr"], s["sl_atr"], s["max_barras"], True)[6]
+    val = b.simular_nb(o, h, l, c, atrp, entrada, f1, f2, dd, s["tp_atr"], s["sl_atr"], s["max_barras"], True, *b.costos("cripto", ""))[6]
     fuera = np.concatenate([val, real[6]])
     informe.append({**{k2: s[k2] for k2 in ("simbolo", "marco", "direccion", "condiciones", "tp_atr", "sl_atr", "max_barras")},
                     "prueba_pct": round(ret_real, 1), "azar_mediana_pct": round(float(np.median(azar)), 1), "percentil_vs_azar": round(percentil, 1),

@@ -1,0 +1,213 @@
+[
+ {
+  "simbolo": "XAUUSD",
+  "marco": "4h",
+  "direccion": "compra",
+  "condiciones": [
+   "ret3<p10"
+  ],
+  "tp_atr": 6.0,
+  "sl_atr": 1.0,
+  "max_barras": 50,
+  "prueba_pct": -7.3,
+  "azar_mediana_pct": -9.1,
+  "percentil_vs_azar": 85.5,
+  "anio_anterior": {
+   "ops": 55,
+   "aciertos": 25.5,
+   "retorno": 13.31,
+   "pf": 1.413,
+   "caida_max": 8.98
+  }
+ },
+ {
+  "simbolo": "XAUUSD",
+  "marco": "4h",
+  "direccion": "compra",
+  "condiciones": [
+   "hora_eeuu"
+  ],
+  "tp_atr": 3.0,
+  "sl_atr": 0.5,
+  "max_barras": 5,
+  "prueba_pct": -7.4,
+  "azar_mediana_pct": -6.7,
+  "percentil_vs_azar": 43.0,
+  "anio_anterior": {
+   "ops": 262,
+   "aciertos": 39.3,
+   "retorno": 54.07,
+   "pf": 1.885,
+   "caida_max": 4.22
+  }
+ },
+ {
+  "simbolo": "XAUUSD",
+  "marco": "4h",
+  "direccion": "compra",
+  "condiciones": [
+   "ret1<p10"
+  ],
+  "tp_atr": 4.0,
+  "sl_atr": 0.5,
+  "max_barras": 200,
+  "prueba_pct": -5.0,
+  "azar_mediana_pct": -4.1,
+  "percentil_vs_azar": 24.5,
+  "anio_anterior": {
+   "ops": 92,
+   "aciertos": 17.4,
+   "retorno": 18.05,
+   "pf": 1.613,
+   "caida_max": 7.38
+  }
+ },
+ {
+  "simbolo": "XAUUSD",
+  "marco": "4h",
+  "direccion": "compra",
+  "condiciones": [
+   "ret3<p10"
+  ],
+  "tp_atr": 6.0,
+  "sl_atr": 1.0,
+  "max_barras": 100,
+  "prueba_pct": -7.3,
+  "azar_mediana_pct": -9.2,
+  "percentil_vs_azar": 86.4,
+  "anio_anterior": {
+   "ops": 52,
+   "aciertos": 23.1,
+   "retorno": 11.62,
+   "pf": 1.374,
+   "caida_max": 10.08
+  }
+ },
+ {
+  "simbolo": "XAUUSD",
+  "marco": "1h",
+  "direccion": "compra",
+  "condiciones": [
+   "ema20<50",
+   "hora_asia"
+  ],
+  "tp_atr": 4.0,
+  "sl_atr": 1.0,
+  "max_barras": 20,
+  "prueba_pct": -1.7,
+  "azar_mediana_pct": -10.5,
+  "percentil_vs_azar": 99.7,
+  "anio_anterior": {
+   "ops": 183,
+   "aciertos": 30.1,
+   "retorno": -0.75,
+   "pf": 0.992,
+   "caida_max": 8.68
+  }
+ },
+ {
+  "simbolo": "XAUUSD",
+  "marco": "1h",
+  "direccion": "venta",
+  "condiciones": [
+   "ret1<p5"
+  ],
+  "tp_atr": 2.0,
+  "sl_atr": 3.0,
+  "max_barras": 10,
+  "prueba_pct": 1.5,
+  "azar_mediana_pct": 2.1,
+  "percentil_vs_azar": 42.7,
+  "anio_anterior": {
+   "ops": 179,
+   "aciertos": 41.9,
+   "retorno": -12.83,
+   "pf": 0.812,
+   "caida_max": 17.75
+  }
+ },
+ {
+  "simbolo": "XAUUSD",
+  "marco": "4h",
+  "direccion": "compra",
+  "condiciones": [
+   "hora_eeuu"
+  ],
+  "tp_atr": 4.0,
+  "sl_atr": 1.5,
+  "max_barras": 200,
+  "prueba_pct": -10.4,
+  "azar_mediana_pct": -11.6,
+  "percentil_vs_azar": 73.0,
+  "anio_anterior": {
+   "ops": 95,
+   "aciertos": 38.9,
+   "retorno": 30.68,
+   "pf": 1.47,
+   "caida_max": 9.42
+  }
+ },
+ {
+  "simbolo": "XAUUSD",
+  "marco": "4h",
+  "direccion": "compra",
+  "condiciones": [
+   "ret1<p10"
+  ],
+  "tp_atr": 4.0,
+  "sl_atr": 1.0,
+  "max_barras": 100,
+  "prueba_pct": -8.0,
+  "azar_mediana_pct": -6.9,
+  "percentil_vs_azar": 29.1,
+  "anio_anterior": {
+   "ops": 75,
+   "aciertos": 25.3,
+   "retorno": 6.22,
+   "pf": 1.165,
+   "caida_max": 13.57
+  }
+ },
+ {
+  "simbolo": "XAUUSD",
+  "marco": "5min",
+  "direccion": "venta",
+  "condiciones": [
+   "ema9x↓21"
+  ],
+  "tp_atr": 6.0,
+  "sl_atr": 3.0,
+  "max_barras": 200,
+  "prueba_pct": 10.0,
+  "azar_mediana_pct": 6.6,
+  "percentil_vs_azar": 76.2,
+  "anio_anterior": {
+   "ops": 834,
+   "aciertos": 30.8,
+   "retorno": -17.01,
+   "pf": 0.878,
+   "caida_max": 23.76
+  }
+ },
+ {
+  "simbolo": "XAUUSD",
+  "marco": "1h",
+  "direccion": "venta",
+  "condiciones": [
+   "volatil_alta"
+  ],
+  "tp_atr": 4.0,
+  "sl_atr": 0.5,
+  "max_barras": 20,
+  "prueba_pct": 5.6,
+  "azar_mediana_pct": 4.8,
+  "percentil_vs_azar": 58.4,
+  "anio_anterior": {
+   "ops": 565,
+   "aciertos": 12.9,
+   "retorno": -12.41,
+   "pf": 0.873,
+   "caida_max": 24.32
+  }
+ }
+]

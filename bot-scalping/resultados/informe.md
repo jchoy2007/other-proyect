@@ -92,3 +92,21 @@ Las estrategias no superan al azar. Las "ganadoras" son casi todas ventas en cor
 - **Año anterior, nunca visto** (`prueba_anio_anterior.py`): las 10 mejores pierden todas, entre -5% y -65%, con caídas máximas de 42% a 71%.
 
 El Monte Carlo que parece llevar 10 USD a 1.000 solo repite las operaciones de un año bajista: asume que el mercado seguirá cayendo igual durante años.
+
+## Divisas y oro: 2.000.000 de estrategias (`forex.py`, `busqueda_masiva.py --universo forex`, `confirmar.py`)
+
+Datos de 1 minuto de HistData (calidad de bróker) de XAUUSD, EURUSD, GBPUSD y USDJPY. Año de búsqueda: nov 2025 - oct 2026 (60/20/20). Año de confirmación: nov 2024 - oct 2025. Dos tipos de cuenta: **estándar** (sin comisión; spread de 0,35 USD en oro y 1,2 pips en EURUSD) y **ECN** (spread bruto + 3,5 USD por lote por lado). Los costos son 5-10 veces menores que en futuros de cripto.
+
+| Etapa | Estándar | Al azar | ECN | Al azar |
+|---|---|---|---|---|
+| Pasan búsqueda | 3,6% | 3,9% | 4,1% | 4,3% |
+| Pasan validación | 1,2% | 1,6% | 1,4% | 1,8% |
+| De esas, positivas en prueba | 41% | 39% | 42% | 40% |
+
+Las 20 mejores (10 por tipo de cuenta) son todas de XAUUSD. El oro subió 46% el año anterior y bajó 14% en el tramo de prueba reciente; por eso las compras ganan en un año y pierden en el otro.
+
+- **Contra copias al azar en los dos años:** ninguna supera al azar de forma consistente. "Comprar tras una caída de 3 velas" supera al 86% de las copias en el año reciente y solo al 2-7% en el anterior. "Comprar en la sesión asiática con EMA20<50" supera al 99,7% en el reciente y al 0,2% en el anterior.
+- **Dinero real:** la mejor en el año reciente según la búsqueda (ventas en 1h con EMA9<EMA21) pierde entre 8% y 16% en el año anterior.
+- **Monte Carlo:** los resultados de 10 a 1.000 USD cambian por completo según qué año se usa. Con las operaciones de un año el 99% llega a 1.000; con las del otro año quiebra el 80-100%. El sistema no tiene ventaja: solo sigue la dirección del oro de ese año.
+
+**Para operar oro con 10-20 USD:** el lote mínimo de 0,01 en XAUUSD es 1 onza (~3.900 USD), es decir, un apalancamiento efectivo de 200-400x con 10-20 USD. Una subida o bajada de 10 USD en el oro (0,25%) borra la cuenta. Solo es practicable en cuentas "cent".

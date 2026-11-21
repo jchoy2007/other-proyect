@@ -43,7 +43,7 @@ for s in mejores:
     for nom in s["condiciones"]:
         entrada &= M[nombres.index(nom)]
     d = 1 if s["direccion"] == "compra" else -1
-    n, g, slog, pos, neg, dd, rets = b.simular_nb(o, h, l, c, atrp, entrada, 0, N, d, s["tp_atr"], s["sl_atr"], s["max_barras"], True)
+    n, g, slog, pos, neg, dd, rets = b.simular_nb(o, h, l, c, atrp, entrada, 0, N, d, s["tp_atr"], s["sl_atr"], s["max_barras"], True, *b.costos("cripto", ""))
     r = b.resumen(n, g, slog, pos, neg, dd)
     filas.append({**{k2: s[k2] for k2 in ("simbolo", "marco", "direccion", "condiciones", "prueba_pct")}, "anio_anterior": r})
     print(f"{s['simbolo']:8} {s['marco']:4} {s['direccion']:6} {'+'.join(s['condiciones'])[:24]:24} prueba (2026) {s['prueba_pct']:+6.1f}%  →  año anterior {r['retorno']:+7.1f}% ({r['ops']} ops, caída máx {r['caida_max']}%)")
