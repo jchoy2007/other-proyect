@@ -1,0 +1,1350 @@
+{
+  "reglas": [
+    {
+      "mercado": "spot",
+      "simbolo": "BTCUSDT",
+      "estrategia": "cruce_ema",
+      "params": {
+        "rapida": 12,
+        "lenta": 55
+      },
+      "tp": 0.004,
+      "sl": 0.006,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 700,
+        "aciertos": 22.429,
+        "retorno_total": -79.329,
+        "factor_beneficio": 0.14,
+        "caida_maxima": 79.366,
+        "promedio_pb": -22.452
+      },
+      "prueba": {
+        "operaciones": 343,
+        "aciertos": 25.073,
+        "retorno_total": -56.563,
+        "factor_beneficio": 0.153,
+        "caida_maxima": 56.502,
+        "promedio_pb": -24.228
+      },
+      "prueba_sin_costos": {
+        "operaciones": 341,
+        "aciertos": 51.613,
+        "retorno_total": -7.871,
+        "factor_beneficio": 0.837,
+        "caida_maxima": 8.553,
+        "promedio_pb": -2.352
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "BTCUSDT",
+      "estrategia": "rebote_bollinger",
+      "params": {
+        "n": 20,
+        "k": 3.0,
+        "rsi_lim": 20
+      },
+      "tp": 0.01,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 900,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 161,
+        "aciertos": 26.708,
+        "retorno_total": -25.24,
+        "factor_beneficio": 0.314,
+        "caida_maxima": 26.464,
+        "promedio_pb": -17.963
+      },
+      "prueba": {
+        "operaciones": 88,
+        "aciertos": 21.591,
+        "retorno_total": -20.844,
+        "factor_beneficio": 0.172,
+        "caida_maxima": 20.356,
+        "promedio_pb": -26.432
+      },
+      "prueba_sin_costos": {
+        "operaciones": 88,
+        "aciertos": 47.727,
+        "retorno_total": -4.052,
+        "factor_beneficio": 0.74,
+        "caida_maxima": 4.811,
+        "promedio_pb": -4.603
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "BTCUSDT",
+      "estrategia": "ruptura",
+      "params": {
+        "n": 60,
+        "vol_mult": 4.0
+      },
+      "tp": 0.004,
+      "sl": 0.0025,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 245,
+        "aciertos": 24.49,
+        "retorno_total": -41.203,
+        "factor_beneficio": 0.176,
+        "caida_maxima": 41.32,
+        "promedio_pb": -21.618
+      },
+      "prueba": {
+        "operaciones": 104,
+        "aciertos": 18.269,
+        "retorno_total": -25.069,
+        "factor_beneficio": 0.108,
+        "caida_maxima": 25.171,
+        "promedio_pb": -27.681
+      },
+      "prueba_sin_costos": {
+        "operaciones": 103,
+        "aciertos": 33.01,
+        "retorno_total": -5.876,
+        "factor_beneficio": 0.589,
+        "caida_maxima": 6.793,
+        "promedio_pb": -5.847
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "BTCUSDT",
+      "estrategia": "reversion_vwap",
+      "params": {
+        "n": 120,
+        "z": 3.0
+      },
+      "tp": 0.01,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 184,
+        "aciertos": 36.413,
+        "retorno_total": -22.231,
+        "factor_beneficio": 0.44,
+        "caida_maxima": 23.872,
+        "promedio_pb": -13.555
+      },
+      "prueba": {
+        "operaciones": 138,
+        "aciertos": 34.058,
+        "retorno_total": -31.101,
+        "factor_beneficio": 0.31,
+        "caida_maxima": 31.711,
+        "promedio_pb": -26.774
+      },
+      "prueba_sin_costos": {
+        "operaciones": 138,
+        "aciertos": 52.174,
+        "retorno_total": -7.138,
+        "factor_beneficio": 0.806,
+        "caida_maxima": 13.94,
+        "promedio_pb": -5.181
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "ETHUSDT",
+      "estrategia": "cruce_ema",
+      "params": {
+        "rapida": 12,
+        "lenta": 55
+      },
+      "tp": 0.006,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 704,
+        "aciertos": 24.858,
+        "retorno_total": -79.593,
+        "factor_beneficio": 0.234,
+        "caida_maxima": 79.809,
+        "promedio_pb": -22.469
+      },
+      "prueba": {
+        "operaciones": 362,
+        "aciertos": 29.282,
+        "retorno_total": -58.074,
+        "factor_beneficio": 0.266,
+        "caida_maxima": 57.97,
+        "promedio_pb": -23.877
+      },
+      "prueba_sin_costos": {
+        "operaciones": 362,
+        "aciertos": 49.724,
+        "retorno_total": -6.963,
+        "factor_beneficio": 0.899,
+        "caida_maxima": 10.407,
+        "promedio_pb": -1.889
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "ETHUSDT",
+      "estrategia": "rebote_bollinger",
+      "params": {
+        "n": 20,
+        "k": 3.0,
+        "rsi_lim": 20
+      },
+      "tp": 0.004,
+      "sl": 0.004,
+      "max_barras": 60,
+      "combinaciones": 900,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 169,
+        "aciertos": 40.237,
+        "retorno_total": -26.603,
+        "factor_beneficio": 0.296,
+        "caida_maxima": 27.333,
+        "promedio_pb": -18.224
+      },
+      "prueba": {
+        "operaciones": 97,
+        "aciertos": 36.082,
+        "retorno_total": -20.193,
+        "factor_beneficio": 0.219,
+        "caida_maxima": 20.353,
+        "promedio_pb": -23.166
+      },
+      "prueba_sin_costos": {
+        "operaciones": 97,
+        "aciertos": 45.361,
+        "retorno_total": -1.833,
+        "factor_beneficio": 0.889,
+        "caida_maxima": 2.991,
+        "promedio_pb": -1.849
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "ETHUSDT",
+      "estrategia": "ruptura",
+      "params": {
+        "n": 60,
+        "vol_mult": 4.0
+      },
+      "tp": 0.01,
+      "sl": 0.006,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 308,
+        "aciertos": 22.078,
+        "retorno_total": -52.08,
+        "factor_beneficio": 0.317,
+        "caida_maxima": 52.326,
+        "promedio_pb": -23.742
+      },
+      "prueba": {
+        "operaciones": 131,
+        "aciertos": 20.611,
+        "retorno_total": -37.173,
+        "factor_beneficio": 0.176,
+        "caida_maxima": 36.66,
+        "promedio_pb": -35.311
+      },
+      "prueba_sin_costos": {
+        "operaciones": 131,
+        "aciertos": 34.351,
+        "retorno_total": -16.231,
+        "factor_beneficio": 0.499,
+        "caida_maxima": 15.726,
+        "promedio_pb": -13.406
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "ETHUSDT",
+      "estrategia": "reversion_vwap",
+      "params": {
+        "n": 120,
+        "z": 3.0
+      },
+      "tp": 0.006,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 214,
+        "aciertos": 42.991,
+        "retorno_total": -33.768,
+        "factor_beneficio": 0.437,
+        "caida_maxima": 34.402,
+        "promedio_pb": -19.067
+      },
+      "prueba": {
+        "operaciones": 160,
+        "aciertos": 45.625,
+        "retorno_total": -32.961,
+        "factor_beneficio": 0.398,
+        "caida_maxima": 32.892,
+        "promedio_pb": -24.746
+      },
+      "prueba_sin_costos": {
+        "operaciones": 160,
+        "aciertos": 57.5,
+        "retorno_total": -6.22,
+        "factor_beneficio": 0.876,
+        "caida_maxima": 12.799,
+        "promedio_pb": -3.799
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "SOLUSDT",
+      "estrategia": "cruce_ema",
+      "params": {
+        "rapida": 12,
+        "lenta": 55
+      },
+      "tp": 0.01,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 709,
+        "aciertos": 28.35,
+        "retorno_total": -81.013,
+        "factor_beneficio": 0.333,
+        "caida_maxima": 81.17,
+        "promedio_pb": -23.26
+      },
+      "prueba": {
+        "operaciones": 351,
+        "aciertos": 30.769,
+        "retorno_total": -58.083,
+        "factor_beneficio": 0.338,
+        "caida_maxima": 58.091,
+        "promedio_pb": -24.579
+      },
+      "prueba_sin_costos": {
+        "operaciones": 351,
+        "aciertos": 47.293,
+        "retorno_total": -9.482,
+        "factor_beneficio": 0.887,
+        "caida_maxima": 13.334,
+        "promedio_pb": -2.679
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "SOLUSDT",
+      "estrategia": "rebote_bollinger",
+      "params": {
+        "n": 20,
+        "k": 3.0,
+        "rsi_lim": 20
+      },
+      "tp": 0.006,
+      "sl": 0.006,
+      "max_barras": 60,
+      "combinaciones": 900,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 136,
+        "aciertos": 43.382,
+        "retorno_total": -20.446,
+        "factor_beneficio": 0.478,
+        "caida_maxima": 21.337,
+        "promedio_pb": -16.675
+      },
+      "prueba": {
+        "operaciones": 68,
+        "aciertos": 32.353,
+        "retorno_total": -17.723,
+        "factor_beneficio": 0.274,
+        "caida_maxima": 17.093,
+        "promedio_pb": -28.527
+      },
+      "prueba_sin_costos": {
+        "operaciones": 68,
+        "aciertos": 45.588,
+        "retorno_total": -3.517,
+        "factor_beneficio": 0.79,
+        "caida_maxima": 5.378,
+        "promedio_pb": -5.149
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "SOLUSDT",
+      "estrategia": "ruptura",
+      "params": {
+        "n": 60,
+        "vol_mult": 4.0
+      },
+      "tp": 0.006,
+      "sl": 0.01,
+      "max_barras": 15,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 323,
+        "aciertos": 24.149,
+        "retorno_total": -48.484,
+        "factor_beneficio": 0.267,
+        "caida_maxima": 48.494,
+        "promedio_pb": -20.444
+      },
+      "prueba": {
+        "operaciones": 115,
+        "aciertos": 24.348,
+        "retorno_total": -24.662,
+        "factor_beneficio": 0.222,
+        "caida_maxima": 24.494,
+        "promedio_pb": -24.521
+      },
+      "prueba_sin_costos": {
+        "operaciones": 115,
+        "aciertos": 42.609,
+        "retorno_total": -3.016,
+        "factor_beneficio": 0.843,
+        "caida_maxima": 5.529,
+        "promedio_pb": -2.589
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "SOLUSDT",
+      "estrategia": "reversion_vwap",
+      "params": {
+        "n": 120,
+        "z": 3.0
+      },
+      "tp": 0.01,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 207,
+        "aciertos": 43.478,
+        "retorno_total": -22.805,
+        "factor_beneficio": 0.633,
+        "caida_maxima": 24.787,
+        "promedio_pb": -12.276
+      },
+      "prueba": {
+        "operaciones": 148,
+        "aciertos": 36.486,
+        "retorno_total": -34.762,
+        "factor_beneficio": 0.422,
+        "caida_maxima": 35.302,
+        "promedio_pb": -28.525
+      },
+      "prueba_sin_costos": {
+        "operaciones": 147,
+        "aciertos": 48.299,
+        "retorno_total": -9.644,
+        "factor_beneficio": 0.82,
+        "caida_maxima": 20.477,
+        "promedio_pb": -6.606
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "DOGEUSDT",
+      "estrategia": "cruce_ema",
+      "params": {
+        "rapida": 9,
+        "lenta": 55
+      },
+      "tp": 0.006,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 763,
+        "aciertos": 35.387,
+        "retorno_total": -84.019,
+        "factor_beneficio": 0.324,
+        "caida_maxima": 83.884,
+        "promedio_pb": -23.866
+      },
+      "prueba": {
+        "operaciones": 378,
+        "aciertos": 33.069,
+        "retorno_total": -61.365,
+        "factor_beneficio": 0.297,
+        "caida_maxima": 61.231,
+        "promedio_pb": -24.99
+      },
+      "prueba_sin_costos": {
+        "operaciones": 378,
+        "aciertos": 50.529,
+        "retorno_total": -12.909,
+        "factor_beneficio": 0.846,
+        "caida_maxima": 14.334,
+        "promedio_pb": -3.521
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "DOGEUSDT",
+      "estrategia": "rebote_bollinger",
+      "params": {
+        "n": 20,
+        "k": 3.0,
+        "rsi_lim": 20
+      },
+      "tp": 0.0015,
+      "sl": 0.01,
+      "max_barras": 30,
+      "combinaciones": 900,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 136,
+        "aciertos": 0.0,
+        "retorno_total": -26.358,
+        "factor_beneficio": 0.0,
+        "caida_maxima": 26.321,
+        "promedio_pb": -22.419
+      },
+      "prueba": {
+        "operaciones": 76,
+        "aciertos": 0.0,
+        "retorno_total": -18.209,
+        "factor_beneficio": 0.0,
+        "caida_maxima": 18.168,
+        "promedio_pb": -26.341
+      },
+      "prueba_sin_costos": {
+        "operaciones": 76,
+        "aciertos": 68.421,
+        "retorno_total": -4.294,
+        "factor_beneficio": 0.642,
+        "caida_maxima": 6.759,
+        "promedio_pb": -5.703
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "DOGEUSDT",
+      "estrategia": "ruptura",
+      "params": {
+        "n": 60,
+        "vol_mult": 4.0
+      },
+      "tp": 0.01,
+      "sl": 0.004,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 277,
+        "aciertos": 27.798,
+        "retorno_total": -42.359,
+        "factor_beneficio": 0.433,
+        "caida_maxima": 43.238,
+        "promedio_pb": -19.738
+      },
+      "prueba": {
+        "operaciones": 104,
+        "aciertos": 22.115,
+        "retorno_total": -24.693,
+        "factor_beneficio": 0.26,
+        "caida_maxima": 24.231,
+        "promedio_pb": -27.136
+      },
+      "prueba_sin_costos": {
+        "operaciones": 104,
+        "aciertos": 33.654,
+        "retorno_total": -5.347,
+        "factor_beneficio": 0.743,
+        "caida_maxima": 4.967,
+        "promedio_pb": -5.189
+      }
+    },
+    {
+      "mercado": "spot",
+      "simbolo": "DOGEUSDT",
+      "estrategia": "reversion_vwap",
+      "params": {
+        "n": 60,
+        "z": 3.0
+      },
+      "tp": 0.01,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 272,
+        "aciertos": 43.015,
+        "retorno_total": -30.264,
+        "factor_beneficio": 0.632,
+        "caida_maxima": 30.879,
+        "promedio_pb": -13.004
+      },
+      "prueba": {
+        "operaciones": 169,
+        "aciertos": 34.911,
+        "retorno_total": -35.51,
+        "factor_beneficio": 0.424,
+        "caida_maxima": 36.676,
+        "promedio_pb": -25.666
+      },
+      "prueba_sin_costos": {
+        "operaciones": 169,
+        "aciertos": 49.112,
+        "retorno_total": -7.413,
+        "factor_beneficio": 0.867,
+        "caida_maxima": 18.514,
+        "promedio_pb": -4.302
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "BTCUSDT",
+      "estrategia": "cruce_ema",
+      "params": {
+        "rapida": 12,
+        "lenta": 55
+      },
+      "tp": 0.0015,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 982,
+        "aciertos": 55.092,
+        "retorno_total": -58.545,
+        "factor_beneficio": 0.328,
+        "caida_maxima": 58.814,
+        "promedio_pb": -8.932
+      },
+      "prueba": {
+        "operaciones": 482,
+        "aciertos": 59.336,
+        "retorno_total": -40.852,
+        "factor_beneficio": 0.301,
+        "caida_maxima": 40.996,
+        "promedio_pb": -10.843
+      },
+      "prueba_sin_costos": {
+        "operaciones": 490,
+        "aciertos": 67.347,
+        "retorno_total": -5.816,
+        "factor_beneficio": 0.89,
+        "caida_maxima": 7.879,
+        "promedio_pb": -1.183
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "BTCUSDT",
+      "estrategia": "rebote_bollinger",
+      "params": {
+        "n": 20,
+        "k": 3.0,
+        "rsi_lim": 20
+      },
+      "tp": 0.006,
+      "sl": 0.006,
+      "max_barras": 60,
+      "combinaciones": 900,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 318,
+        "aciertos": 36.792,
+        "retorno_total": -25.775,
+        "factor_beneficio": 0.509,
+        "caida_maxima": 26.367,
+        "promedio_pb": -9.306
+      },
+      "prueba": {
+        "operaciones": 146,
+        "aciertos": 41.096,
+        "retorno_total": -16.214,
+        "factor_beneficio": 0.442,
+        "caida_maxima": 16.637,
+        "promedio_pb": -12.038
+      },
+      "prueba_sin_costos": {
+        "operaciones": 146,
+        "aciertos": 55.479,
+        "retorno_total": -0.494,
+        "factor_beneficio": 0.982,
+        "caida_maxima": 4.309,
+        "promedio_pb": -0.271
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "BTCUSDT",
+      "estrategia": "ruptura",
+      "params": {
+        "n": 60,
+        "vol_mult": 4.0
+      },
+      "tp": 0.0025,
+      "sl": 0.006,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 769,
+        "aciertos": 43.953,
+        "retorno_total": -59.489,
+        "factor_beneficio": 0.394,
+        "caida_maxima": 59.456,
+        "promedio_pb": -11.696
+      },
+      "prueba": {
+        "operaciones": 397,
+        "aciertos": 46.096,
+        "retorno_total": -38.945,
+        "factor_beneficio": 0.392,
+        "caida_maxima": 39.6,
+        "promedio_pb": -12.368
+      },
+      "prueba_sin_costos": {
+        "operaciones": 399,
+        "aciertos": 54.386,
+        "retorno_total": -8.542,
+        "factor_beneficio": 0.844,
+        "caida_maxima": 9.902,
+        "promedio_pb": -2.191
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "BTCUSDT",
+      "estrategia": "reversion_vwap",
+      "params": {
+        "n": 60,
+        "z": 3.0
+      },
+      "tp": 0.006,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 478,
+        "aciertos": 42.678,
+        "retorno_total": -24.014,
+        "factor_beneficio": 0.689,
+        "caida_maxima": 24.809,
+        "promedio_pb": -5.661
+      },
+      "prueba": {
+        "operaciones": 252,
+        "aciertos": 44.048,
+        "retorno_total": -22.613,
+        "factor_beneficio": 0.585,
+        "caida_maxima": 22.981,
+        "promedio_pb": -10.052
+      },
+      "prueba_sin_costos": {
+        "operaciones": 253,
+        "aciertos": 54.15,
+        "retorno_total": 2.893,
+        "factor_beneficio": 1.069,
+        "caida_maxima": 8.3,
+        "promedio_pb": 1.238
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "ETHUSDT",
+      "estrategia": "cruce_ema",
+      "params": {
+        "rapida": 9,
+        "lenta": 34
+      },
+      "tp": 0.004,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 1047,
+        "aciertos": 41.165,
+        "retorno_total": -60.91,
+        "factor_beneficio": 0.552,
+        "caida_maxima": 62.766,
+        "promedio_pb": -8.893
+      },
+      "prueba": {
+        "operaciones": 539,
+        "aciertos": 43.97,
+        "retorno_total": -52.81,
+        "factor_beneficio": 0.451,
+        "caida_maxima": 53.078,
+        "promedio_pb": -13.82
+      },
+      "prueba_sin_costos": {
+        "operaciones": 540,
+        "aciertos": 55.741,
+        "retorno_total": -16.903,
+        "factor_beneficio": 0.827,
+        "caida_maxima": 19.737,
+        "promedio_pb": -3.33
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "ETHUSDT",
+      "estrategia": "rebote_bollinger",
+      "params": {
+        "n": 20,
+        "k": 3.0,
+        "rsi_lim": 20
+      },
+      "tp": 0.004,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 900,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 308,
+        "aciertos": 52.922,
+        "retorno_total": -20.24,
+        "factor_beneficio": 0.673,
+        "caida_maxima": 20.703,
+        "promedio_pb": -7.23
+      },
+      "prueba": {
+        "operaciones": 153,
+        "aciertos": 54.248,
+        "retorno_total": -10.768,
+        "factor_beneficio": 0.676,
+        "caida_maxima": 11.343,
+        "promedio_pb": -7.331
+      },
+      "prueba_sin_costos": {
+        "operaciones": 153,
+        "aciertos": 62.745,
+        "retorno_total": 4.114,
+        "factor_beneficio": 1.156,
+        "caida_maxima": 5.298,
+        "promedio_pb": 2.741
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "ETHUSDT",
+      "estrategia": "ruptura",
+      "params": {
+        "n": 60,
+        "vol_mult": 4.0
+      },
+      "tp": 0.01,
+      "sl": 0.006,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 660,
+        "aciertos": 33.333,
+        "retorno_total": -47.323,
+        "factor_beneficio": 0.616,
+        "caida_maxima": 48.733,
+        "promedio_pb": -9.586
+      },
+      "prueba": {
+        "operaciones": 347,
+        "aciertos": 31.7,
+        "retorno_total": -40.19,
+        "factor_beneficio": 0.537,
+        "caida_maxima": 40.791,
+        "promedio_pb": -14.651
+      },
+      "prueba_sin_costos": {
+        "operaciones": 347,
+        "aciertos": 39.193,
+        "retorno_total": -11.656,
+        "factor_beneficio": 0.858,
+        "caida_maxima": 15.388,
+        "promedio_pb": -3.425
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "ETHUSDT",
+      "estrategia": "reversion_vwap",
+      "params": {
+        "n": 120,
+        "z": 3.0
+      },
+      "tp": 0.004,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 442,
+        "aciertos": 54.977,
+        "retorno_total": -28.646,
+        "factor_beneficio": 0.679,
+        "caida_maxima": 30.284,
+        "promedio_pb": -7.511
+      },
+      "prueba": {
+        "operaciones": 258,
+        "aciertos": 61.628,
+        "retorno_total": -19.314,
+        "factor_beneficio": 0.692,
+        "caida_maxima": 22.712,
+        "promedio_pb": -8.157
+      },
+      "prueba_sin_costos": {
+        "operaciones": 260,
+        "aciertos": 68.077,
+        "retorno_total": 3.226,
+        "factor_beneficio": 1.061,
+        "caida_maxima": 7.813,
+        "promedio_pb": 1.37
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "SOLUSDT",
+      "estrategia": "cruce_ema",
+      "params": {
+        "rapida": 5,
+        "lenta": 55
+      },
+      "tp": 0.0025,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 1190,
+        "aciertos": 63.361,
+        "retorno_total": -52.857,
+        "factor_beneficio": 0.641,
+        "caida_maxima": 52.741,
+        "promedio_pb": -6.244
+      },
+      "prueba": {
+        "operaciones": 597,
+        "aciertos": 60.804,
+        "retorno_total": -53.68,
+        "factor_beneficio": 0.454,
+        "caida_maxima": 53.576,
+        "promedio_pb": -12.783
+      },
+      "prueba_sin_costos": {
+        "operaciones": 601,
+        "aciertos": 64.559,
+        "retorno_total": -17.983,
+        "factor_beneficio": 0.828,
+        "caida_maxima": 19.411,
+        "promedio_pb": -3.207
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "SOLUSDT",
+      "estrategia": "rebote_bollinger",
+      "params": {
+        "n": 20,
+        "k": 3.0,
+        "rsi_lim": 20
+      },
+      "tp": 0.006,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 900,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 252,
+        "aciertos": 45.635,
+        "retorno_total": -22.659,
+        "factor_beneficio": 0.653,
+        "caida_maxima": 25.593,
+        "promedio_pb": -10.028
+      },
+      "prueba": {
+        "operaciones": 119,
+        "aciertos": 46.218,
+        "retorno_total": -12.537,
+        "factor_beneficio": 0.625,
+        "caida_maxima": 12.762,
+        "promedio_pb": -11.089
+      },
+      "prueba_sin_costos": {
+        "operaciones": 119,
+        "aciertos": 53.782,
+        "retorno_total": -1.014,
+        "factor_beneficio": 0.97,
+        "caida_maxima": 5.734,
+        "promedio_pb": -0.703
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "SOLUSDT",
+      "estrategia": "ruptura",
+      "params": {
+        "n": 60,
+        "vol_mult": 4.0
+      },
+      "tp": 0.006,
+      "sl": 0.006,
+      "max_barras": 15,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 717,
+        "aciertos": 34.589,
+        "retorno_total": -48.699,
+        "factor_beneficio": 0.561,
+        "caida_maxima": 48.332,
+        "promedio_pb": -9.231
+      },
+      "prueba": {
+        "operaciones": 357,
+        "aciertos": 32.213,
+        "retorno_total": -30.142,
+        "factor_beneficio": 0.526,
+        "caida_maxima": 31.019,
+        "promedio_pb": -9.974
+      },
+      "prueba_sin_costos": {
+        "operaciones": 358,
+        "aciertos": 45.531,
+        "retorno_total": 3.392,
+        "factor_beneficio": 1.072,
+        "caida_maxima": 5.815,
+        "promedio_pb": 0.996
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "SOLUSDT",
+      "estrategia": "reversion_vwap",
+      "params": {
+        "n": 60,
+        "z": 3.0
+      },
+      "tp": 0.01,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 540,
+        "aciertos": 48.333,
+        "retorno_total": -31.259,
+        "factor_beneficio": 0.767,
+        "caida_maxima": 35.251,
+        "promedio_pb": -6.737
+      },
+      "prueba": {
+        "operaciones": 285,
+        "aciertos": 47.368,
+        "retorno_total": -16.37,
+        "factor_beneficio": 0.806,
+        "caida_maxima": 22.864,
+        "promedio_pb": -6.033
+      },
+      "prueba_sin_costos": {
+        "operaciones": 285,
+        "aciertos": 58.246,
+        "retorno_total": 15.029,
+        "factor_beneficio": 1.2,
+        "caida_maxima": 11.449,
+        "promedio_pb": 5.147
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "DOGEUSDT",
+      "estrategia": "cruce_ema",
+      "params": {
+        "rapida": 9,
+        "lenta": 34
+      },
+      "tp": 0.006,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 1064,
+        "aciertos": 45.771,
+        "retorno_total": -57.415,
+        "factor_beneficio": 0.699,
+        "caida_maxima": 58.849,
+        "promedio_pb": -7.879
+      },
+      "prueba": {
+        "operaciones": 506,
+        "aciertos": 40.711,
+        "retorno_total": -48.476,
+        "factor_beneficio": 0.539,
+        "caida_maxima": 48.4,
+        "promedio_pb": -12.959
+      },
+      "prueba_sin_costos": {
+        "operaciones": 507,
+        "aciertos": 50.69,
+        "retorno_total": -10.605,
+        "factor_beneficio": 0.905,
+        "caida_maxima": 17.133,
+        "promedio_pb": -2.08
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "DOGEUSDT",
+      "estrategia": "rebote_bollinger",
+      "params": {
+        "n": 20,
+        "k": 3.0,
+        "rsi_lim": 20
+      },
+      "tp": 0.006,
+      "sl": 0.0015,
+      "max_barras": 60,
+      "combinaciones": 900,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 265,
+        "aciertos": 23.396,
+        "retorno_total": -22.269,
+        "factor_beneficio": 0.512,
+        "caida_maxima": 22.275,
+        "promedio_pb": -9.457
+      },
+      "prueba": {
+        "operaciones": 137,
+        "aciertos": 22.628,
+        "retorno_total": -14.565,
+        "factor_beneficio": 0.427,
+        "caida_maxima": 15.697,
+        "promedio_pb": -11.444
+      },
+      "prueba_sin_costos": {
+        "operaciones": 137,
+        "aciertos": 24.088,
+        "retorno_total": -0.56,
+        "factor_beneficio": 0.967,
+        "caida_maxima": 3.047,
+        "promedio_pb": -0.373
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "DOGEUSDT",
+      "estrategia": "ruptura",
+      "params": {
+        "n": 15,
+        "vol_mult": 4.0
+      },
+      "tp": 0.01,
+      "sl": 0.006,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 741,
+        "aciertos": 36.977,
+        "retorno_total": -43.648,
+        "factor_beneficio": 0.746,
+        "caida_maxima": 43.783,
+        "promedio_pb": -7.558
+      },
+      "prueba": {
+        "operaciones": 379,
+        "aciertos": 31.926,
+        "retorno_total": -38.062,
+        "factor_beneficio": 0.592,
+        "caida_maxima": 39.98,
+        "promedio_pb": -12.476
+      },
+      "prueba_sin_costos": {
+        "operaciones": 377,
+        "aciertos": 42.44,
+        "retorno_total": -2.281,
+        "factor_beneficio": 0.98,
+        "caida_maxima": 11.787,
+        "promedio_pb": -0.461
+      }
+    },
+    {
+      "mercado": "futuros",
+      "simbolo": "DOGEUSDT",
+      "estrategia": "reversion_vwap",
+      "params": {
+        "n": 60,
+        "z": 3.0
+      },
+      "tp": 0.006,
+      "sl": 0.01,
+      "max_barras": 60,
+      "combinaciones": 675,
+      "rentables_en_entreno": 0,
+      "entreno": {
+        "operaciones": 582,
+        "aciertos": 53.78,
+        "retorno_total": -29.868,
+        "factor_beneficio": 0.798,
+        "caida_maxima": 34.016,
+        "promedio_pb": -5.902
+      },
+      "prueba": {
+        "operaciones": 299,
+        "aciertos": 53.846,
+        "retorno_total": -19.831,
+        "factor_beneficio": 0.748,
+        "caida_maxima": 22.032,
+        "promedio_pb": -7.21
+      },
+      "prueba_sin_costos": {
+        "operaciones": 299,
+        "aciertos": 59.866,
+        "retorno_total": 11.013,
+        "factor_beneficio": 1.157,
+        "caida_maxima": 8.29,
+        "promedio_pb": 3.665
+      }
+    }
+  ],
+  "modelo": [
+    {
+      "simbolo": "BTCUSDT",
+      "mercado": "futuros",
+      "umbral": 0.55,
+      "tasa_base_tp": 13.6,
+      "validacion": {
+        "operaciones": 71,
+        "aciertos": 52.113,
+        "retorno_total": 1.764,
+        "factor_beneficio": 1.157,
+        "caida_maxima": 3.42,
+        "promedio_pb": 2.537
+      },
+      "prueba": {
+        "operaciones": 257,
+        "aciertos": 36.187,
+        "retorno_total": -28.064,
+        "factor_beneficio": 0.523,
+        "caida_maxima": 29.022,
+        "promedio_pb": -12.724
+      },
+      "prueba_sin_costos": {
+        "operaciones": 260,
+        "aciertos": 43.077,
+        "retorno_total": -4.069,
+        "factor_beneficio": 0.922,
+        "caida_maxima": 10.686,
+        "promedio_pb": -1.518
+      }
+    },
+    {
+      "simbolo": "ETHUSDT",
+      "mercado": "futuros",
+      "umbral": 0.65,
+      "tasa_base_tp": 21.5,
+      "validacion": {
+        "operaciones": 77,
+        "aciertos": 54.545,
+        "retorno_total": 2.116,
+        "factor_beneficio": 1.15,
+        "caida_maxima": 1.979,
+        "promedio_pb": 2.81
+      },
+      "prueba": {
+        "operaciones": 223,
+        "aciertos": 42.601,
+        "retorno_total": -22.396,
+        "factor_beneficio": 0.595,
+        "caida_maxima": 24.494,
+        "promedio_pb": -11.265
+      },
+      "prueba_sin_costos": {
+        "operaciones": 224,
+        "aciertos": 43.75,
+        "retorno_total": -3.289,
+        "factor_beneficio": 0.934,
+        "caida_maxima": 9.838,
+        "promedio_pb": -1.403
+      }
+    },
+    {
+      "simbolo": "SOLUSDT",
+      "mercado": "futuros",
+      "umbral": 0.75,
+      "tasa_base_tp": 29.8,
+      "validacion": {
+        "operaciones": 28,
+        "aciertos": 21.429,
+        "retorno_total": -7.182,
+        "factor_beneficio": 0.258,
+        "caida_maxima": 7.579,
+        "promedio_pb": -26.508
+      },
+      "prueba": {
+        "operaciones": 60,
+        "aciertos": 45.0,
+        "retorno_total": -4.733,
+        "factor_beneficio": 0.701,
+        "caida_maxima": 5.958,
+        "promedio_pb": -7.975
+      },
+      "prueba_sin_costos": {
+        "operaciones": 60,
+        "aciertos": 46.667,
+        "retorno_total": 0.761,
+        "factor_beneficio": 1.066,
+        "caida_maxima": 2.6,
+        "promedio_pb": 1.359
+      }
+    },
+    {
+      "simbolo": "DOGEUSDT",
+      "mercado": "futuros",
+      "umbral": 0.75,
+      "tasa_base_tp": 32.1,
+      "validacion": {
+        "operaciones": 28,
+        "aciertos": 42.857,
+        "retorno_total": -3.015,
+        "factor_beneficio": 0.623,
+        "caida_maxima": 4.098,
+        "promedio_pb": -10.823
+      },
+      "prueba": {
+        "operaciones": 64,
+        "aciertos": 45.312,
+        "retorno_total": -4.763,
+        "factor_beneficio": 0.716,
+        "caida_maxima": 6.631,
+        "promedio_pb": -7.518
+      },
+      "prueba_sin_costos": {
+        "operaciones": 63,
+        "aciertos": 47.619,
+        "retorno_total": 0.58,
+        "factor_beneficio": 1.048,
+        "caida_maxima": 4.031,
+        "promedio_pb": 1.014
+      }
+    }
+  ]
+}

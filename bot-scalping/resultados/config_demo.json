@@ -1,0 +1,14 @@
+{
+  "estrategia": "rebote_bollinger",
+  "params": {
+    "n": 20,
+    "k": 3.0,
+    "rsi_lim": 20
+  },
+  "tp": 0.006,
+  "sl": 0.0015,
+  "max_barras": 60,
+  "simbolo": "DOGEUSDT",
+  "mercado": "futuros",
+  "resultado_prueba_pct": -14.565
+}

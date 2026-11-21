@@ -1,0 +1,9 @@
+Par       Objetivo   Stop   Ops  Aciertos  Resultado  Peor op.  Con 5 USD y 5x
+BTCUSDT       0.3%     5%   185     91.4%     -35.1%    -5.1%    0.35 USD
+BTCUSDT       0.2%    10%   154     94.2%     -25.4%   -10.1%    0.77 USD
+ETHUSDT       0.3%     5%   366     93.4%     -35.2%    -5.1%    0.26 USD
+ETHUSDT       0.2%    10%   224     95.5%     -36.3%   -10.1%    0.21 USD
+SOLUSDT       0.3%     5%   472     93.4%     -44.7%    -5.1%    0.09 USD
+SOLUSDT       0.2%    10%   349     97.1%     -33.3%   -10.1%    0.20 USD
+DOGEUSDT      0.3%     5%   559     93.2%     -54.0%    -5.1%    0.03 USD
+DOGEUSDT      0.2%    10%   440     97.0%     -53.1%   -10.1%    0.01 USD

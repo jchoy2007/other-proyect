@@ -7,6 +7,7 @@ Monorepo con varios proyectos independientes. Cada carpeta tiene su propio READM
 | `whatsapp-bot-negocio/` | Landing + bot de WhatsApp con IA para negocios (Next.js + Express). | En producción (GitHub Pages). |
 | `buscador-cupones/` | Le pasas un enlace de Amazon/Newegg/Best Buy/Walmart/eBay y busca códigos, cupones, ofertas, historial de precios y cashback en fuentes existentes. Web + API + CLI + bookmarklet. | Funciona; probado con enlaces reales. |
 | `calibrador-mandos-ps/` | PWA que mide el drift de DualShock 4 / DualSense y recalibra centro y rango por WebHID (USB). | Escrito y cargado sin errores; **falta probar con un mando real**. |
+| `bot-scalping/` | Bot de scalping (cripto spot y futuros, divisas con OANDA, MetaTrader 5): datos reales, entrenamiento con validación fuera de muestra, ejecución en cuentas demo oficiales. | Probado con 90 días de datos: **ninguna estrategia gana después de comisiones** (ver `resultados/informe.md`). Conexión a demos escrita; falta probarla con claves. |
 | `fabrica-videos-gta6/` | Pipeline diario: tendencias → guiones con Claude → voz → montaje ffmpeg → YouTube/TikTok. | Tendencias, voz y montaje probados; **guiones y subida requieren credenciales** (no probados). |
 
 ## Traspaso para la siguiente sesión
