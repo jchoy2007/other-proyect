@@ -1,0 +1,162 @@
+[
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "1h",
+  "direccion": "venta",
+  "condiciones": [
+   "rsi7>65"
+  ],
+  "prueba_pct": 18.4,
+  "anio_anterior": {
+   "ops": 264,
+   "aciertos": 31.4,
+   "retorno": -32.05,
+   "pf": 0.977,
+   "caida_max": 61.61
+  }
+ },
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "4h",
+  "direccion": "venta",
+  "condiciones": [
+   "rsi7>70"
+  ],
+  "prueba_pct": 4.1,
+  "anio_anterior": {
+   "ops": 52,
+   "aciertos": 44.2,
+   "retorno": -32.94,
+   "pf": 0.899,
+   "caida_max": 42.52
+  }
+ },
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "4h",
+  "direccion": "venta",
+  "condiciones": [
+   "ema12>26"
+  ],
+  "prueba_pct": 36.8,
+  "anio_anterior": {
+   "ops": 47,
+   "aciertos": 48.9,
+   "retorno": -14.28,
+   "pf": 1.044,
+   "caida_max": 66.75
+  }
+ },
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "1h",
+  "direccion": "venta",
+  "condiciones": [
+   "rsi7>65"
+  ],
+  "prueba_pct": 27.2,
+  "anio_anterior": {
+   "ops": 304,
+   "aciertos": 27.3,
+   "retorno": -39.03,
+   "pf": 0.948,
+   "caida_max": 67.23
+  }
+ },
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "4h",
+  "direccion": "venta",
+  "condiciones": [
+   "rsi7>75"
+  ],
+  "prueba_pct": 12.4,
+  "anio_anterior": {
+   "ops": 48,
+   "aciertos": 27.1,
+   "retorno": -27.14,
+   "pf": 0.915,
+   "caida_max": 52.62
+  }
+ },
+ {
+  "simbolo": "XRPUSDT",
+  "marco": "1h",
+  "direccion": "venta",
+  "condiciones": [
+   "c<ema20"
+  ],
+  "prueba_pct": 29.2,
+  "anio_anterior": {
+   "ops": 260,
+   "aciertos": 36.9,
+   "retorno": -52.19,
+   "pf": 0.912,
+   "caida_max": 65.45
+  }
+ },
+ {
+  "simbolo": "XRPUSDT",
+  "marco": "1h",
+  "direccion": "venta",
+  "condiciones": [
+   "rsi7>70"
+  ],
+  "prueba_pct": 8.3,
+  "anio_anterior": {
+   "ops": 271,
+   "aciertos": 13.7,
+   "retorno": -64.58,
+   "pf": 0.754,
+   "caida_max": 71.46
+  }
+ },
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "4h",
+  "direccion": "venta",
+  "condiciones": [
+   "ret1<p10"
+  ],
+  "prueba_pct": 36.0,
+  "anio_anterior": {
+   "ops": 100,
+   "aciertos": 82.0,
+   "retorno": -4.86,
+   "pf": 1.1,
+   "caida_max": 61.23
+  }
+ },
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "1h",
+  "direccion": "venta",
+  "condiciones": [
+   "rsi7>65"
+  ],
+  "prueba_pct": 46.8,
+  "anio_anterior": {
+   "ops": 265,
+   "aciertos": 21.9,
+   "retorno": -37.84,
+   "pf": 0.957,
+   "caida_max": 68.49
+  }
+ },
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "4h",
+  "direccion": "venta",
+  "condiciones": [
+   "ema9x↑21"
+  ],
+  "prueba_pct": 27.5,
+  "anio_anterior": {
+   "ops": 28,
+   "aciertos": 46.4,
+   "retorno": -31.64,
+   "pf": 0.823,
+   "caida_max": 52.68
+  }
+ }
+]

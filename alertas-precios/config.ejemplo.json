@@ -1,0 +1,17 @@
+{
+  "ntfy_topic": "",
+  "ntfy_servidor": "https://ntfy.sh",
+  "tiendas": ["amazon", "newegg"],
+  "descuento_minimo": 50,
+  "pct_error": 80,
+  "precio_minimo": 15,
+  "palabras_clave": [],
+  "excluir": ["kindle edition", "ebook", "audiobook", "subscription"],
+  "subreddits": ["buildapcsales", "deals"],
+  "silenciar_primera_pasada": true,
+  "pausa_entre_productos": 3,
+  "productos": [
+    {"url": "https://www.amazon.com/dp/B0CL5KNB9M", "precio_objetivo": 380, "caida_pct": 10},
+    {"url": "https://www.newegg.com/p/N82E16814137790", "precio_objetivo": 500, "caida_pct": 10}
+  ]
+}

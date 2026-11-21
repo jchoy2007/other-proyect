@@ -1,0 +1,152 @@
+[
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "1h",
+  "direccion": "venta",
+  "condiciones": [
+   "rsi7>65"
+  ],
+  "tp_atr": 6.0,
+  "sl_atr": 2.0,
+  "max_barras": 50,
+  "prueba_pct": 18.4,
+  "azar_mediana_pct": 19.1,
+  "percentil_vs_azar": 47.4,
+  "ops_fuera_muestra": 93
+ },
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "4h",
+  "direccion": "venta",
+  "condiciones": [
+   "rsi7>70"
+  ],
+  "tp_atr": 3.0,
+  "sl_atr": 3.0,
+  "max_barras": 50,
+  "prueba_pct": 4.1,
+  "azar_mediana_pct": 46.3,
+  "percentil_vs_azar": 0.3,
+  "ops_fuera_muestra": 21
+ },
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "4h",
+  "direccion": "venta",
+  "condiciones": [
+   "ema12>26"
+  ],
+  "tp_atr": 4.0,
+  "sl_atr": 4.0,
+  "max_barras": 50,
+  "prueba_pct": 36.8,
+  "azar_mediana_pct": 54.3,
+  "percentil_vs_azar": 6.6,
+  "ops_fuera_muestra": 18
+ },
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "1h",
+  "direccion": "venta",
+  "condiciones": [
+   "rsi7>65"
+  ],
+  "tp_atr": 4.0,
+  "sl_atr": 1.5,
+  "max_barras": 100,
+  "prueba_pct": 27.2,
+  "azar_mediana_pct": 18.9,
+  "percentil_vs_azar": 72.9,
+  "ops_fuera_muestra": 116
+ },
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "4h",
+  "direccion": "venta",
+  "condiciones": [
+   "rsi7>75"
+  ],
+  "tp_atr": 4.0,
+  "sl_atr": 2.0,
+  "max_barras": 200,
+  "prueba_pct": 12.4,
+  "azar_mediana_pct": 29.5,
+  "percentil_vs_azar": 14.3,
+  "ops_fuera_muestra": 21
+ },
+ {
+  "simbolo": "XRPUSDT",
+  "marco": "1h",
+  "direccion": "venta",
+  "condiciones": [
+   "c<ema20"
+  ],
+  "tp_atr": 4.0,
+  "sl_atr": 2.0,
+  "max_barras": 100,
+  "prueba_pct": 29.2,
+  "azar_mediana_pct": 26.1,
+  "percentil_vs_azar": 63.7,
+  "ops_fuera_muestra": 91
+ },
+ {
+  "simbolo": "XRPUSDT",
+  "marco": "1h",
+  "direccion": "venta",
+  "condiciones": [
+   "rsi7>70"
+  ],
+  "tp_atr": 6.0,
+  "sl_atr": 1.0,
+  "max_barras": 200,
+  "prueba_pct": 8.3,
+  "azar_mediana_pct": 11.8,
+  "percentil_vs_azar": 39.5,
+  "ops_fuera_muestra": 101
+ },
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "4h",
+  "direccion": "venta",
+  "condiciones": [
+   "ret1<p10"
+  ],
+  "tp_atr": 1.0,
+  "sl_atr": 4.0,
+  "max_barras": 100,
+  "prueba_pct": 36.0,
+  "azar_mediana_pct": 33.1,
+  "percentil_vs_azar": 58.5,
+  "ops_fuera_muestra": 34
+ },
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "1h",
+  "direccion": "venta",
+  "condiciones": [
+   "rsi7>65"
+  ],
+  "tp_atr": 6.0,
+  "sl_atr": 1.5,
+  "max_barras": 100,
+  "prueba_pct": 46.8,
+  "azar_mediana_pct": 25.7,
+  "percentil_vs_azar": 93.8,
+  "ops_fuera_muestra": 96
+ },
+ {
+  "simbolo": "DOGEUSDT",
+  "marco": "4h",
+  "direccion": "venta",
+  "condiciones": [
+   "ema9x↑21"
+  ],
+  "tp_atr": 3.0,
+  "sl_atr": 3.0,
+  "max_barras": 200,
+  "prueba_pct": 27.5,
+  "azar_mediana_pct": 19.1,
+  "percentil_vs_azar": 74.3,
+  "ops_fuera_muestra": 14
+ }
+]

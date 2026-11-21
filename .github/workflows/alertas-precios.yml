@@ -1,0 +1,44 @@
+name: Alertas de precios (Amazon y Newegg)
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"   # cada 10 minutos (GitHub puede retrasarlo unos minutos)
+  workflow_dispatch:
+
+concurrency:
+  group: alertas-precios
+  cancel-in-progress: false
+
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    defaults:
+      run:
+        working-directory: alertas-precios
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # estado.json recuerda qué ofertas ya se avisaron, entre una ejecución y la siguiente
+      - name: Recuperar estado
+        uses: actions/cache/restore@v4
+        with:
+          path: alertas-precios/estado.json
+          key: alertas-estado-${{ github.run_id }}
+          restore-keys: alertas-estado-
+      - name: Revisar ofertas
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          KEEPA_KEY: ${{ secrets.KEEPA_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT: ${{ secrets.TELEGRAM_CHAT }}
+        # Sin KEEPA_KEY, Amazon y Newegg bloquean las consultas directas desde GitHub: solo se usan los feeds
+        run: python alertas.py ${{ secrets.KEEPA_KEY != '' && 'todo' || 'descubrir' }}
+      - name: Guardar estado
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: alertas-precios/estado.json
+          key: alertas-estado-${{ github.run_id }}

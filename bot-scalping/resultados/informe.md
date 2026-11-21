@@ -75,3 +75,20 @@ Objetivo minúsculo y stop enorme: se acierta entre el 91% y el 97% de las veces
 ## Conclusión
 
 Con datos reales de 90 días, comisiones reales y validación honesta, **no apareció ninguna estrategia de scalping con ventaja positiva**. Reinvertir solo acelera el resultado: con ventaja negativa, acelera la quiebra.
+
+## Búsqueda masiva: 1.000.000 de estrategias (`busqueda_masiva.py`)
+
+Un año de futuros (nov 2025 - nov 2026), 6 criptomonedas, marcos de 1 minuto a 4 horas, 1 a 3 condiciones combinadas de entre ~90 posibles, salidas en múltiplos de ATR. Etapas separadas: búsqueda (60%), validación (20%) y prueba final (20%). Control: 200.000 estrategias con **entradas al azar**.
+
+| Etapa | Estrategias | Entradas al azar |
+|---|---|---|
+| Pasan búsqueda | 3,5% | 3,9% |
+| Pasan validación | 0,51% | 0,84% |
+| De esas, positivas en la prueba final | 45% | 49% |
+
+Las estrategias no superan al azar. Las "ganadoras" son casi todas ventas en corto de DOGE y XRP porque ese año todo el mercado cayó (DOGE -51% y -36% en búsqueda y prueba).
+
+- **Contra copias al azar** (`analisis_ganadoras.py`): las 10 mejores, comparadas con 1.000 copias con entradas al azar y las mismas salidas, quedan en promedio a mitad de tabla (entre el percentil 0,3 y el 94).
+- **Año anterior, nunca visto** (`prueba_anio_anterior.py`): las 10 mejores pierden todas, entre -5% y -65%, con caídas máximas de 42% a 71%.
+
+El Monte Carlo que parece llevar 10 USD a 1.000 solo repite las operaciones de un año bajista: asume que el mercado seguirá cayendo igual durante años.
